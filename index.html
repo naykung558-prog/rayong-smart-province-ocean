@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ระยอง ทะเลอัจฉริยะ | Rayong Blue Coast Smart Province</title>
+  <meta name="description" content="เว็บไซต์นำเสนอวิสัยทัศน์จังหวัดระยองสู่การเป็นจังหวัดอัจฉริยะ พ.ศ. 2578 — เมืองอัจฉริยะ ศูนย์กลางนวัตกรรม และจังหวัดน่าอยู่" />
+  <link rel="icon" href="assets/favicon.ico" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&family=Sarabun:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="preload" as="image" href="assets/images/seal-rayong.svg" />
+  <link rel="stylesheet" href="assets/css/site.css" />
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4.1.11"></script>
+  <style type="text/tailwindcss">
+    @theme {
+      --font-sans: "Sarabun", ui-sans-serif, system-ui, sans-serif;
+      --font-display: "Kanit", "Sarabun", sans-serif;
+      --color-deep: #faf6ee;
+      --color-abyss: #e8f4f0;
+      --color-coral: #e8573c;
+      --color-sand: #f3e9d7;
+      --color-navy: #06303f;
+      --color-azure: #0b8199;
+      --color-cyan: #0aa2c0;
+      --color-mint: #0f9a84;
+      --color-amber: #e2674f;
+      --color-slate-400: #94a3b8;
+      --color-slate-500: #62748e;
+      --color-slate-600: #45556c;
+      --color-slate-700: #314158;
+    }
+    @utility font-display { font-family: var(--font-display); }
+  </style>
+  <script src="https://unpkg.com/lucide@0.469.0/dist/umd/lucide.min.js"></script>
+  <script src="https://unpkg.com/lenis@1.1.20/dist/lenis.min.js"></script>
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js",
+        "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/"
+      }
+    }
+  </script>
+</head>
+<body class="bg-deep text-navy antialiased">
+
+  <!-- ===================== HEADER ===================== -->
+  <header id="site-header" class="header-in fixed inset-x-0 top-0 z-50 transition-all duration-500 bg-transparent py-2.5">
+    <div id="util-bar" class="mx-auto max-w-7xl border-b px-5 pb-1.5 lg:px-8 border-white/12">
+      <div class="flex items-center justify-end gap-1.5">
+        <div class="flex items-center gap-0.5" role="group" data-i18n-aria="util.fontSize" aria-label="ขนาดตัวอักษร">
+          <button data-font="sm" data-i18n-aria="util.fontSmall" aria-label="ตัวอักษรขนาดเล็ก" class="util-btn font-display flex h-9 min-w-9 items-center justify-center rounded-lg px-1.5 text-xs font-semibold transition-colors">ก-</button>
+          <button data-font="base" data-i18n-aria="util.fontNormal" aria-label="ตัวอักษรขนาดปกติ" class="util-btn font-display flex h-9 min-w-9 items-center justify-center rounded-lg px-1.5 text-xs font-semibold transition-colors">ก</button>
+          <button data-font="lg" data-i18n-aria="util.fontLarge" aria-label="ตัวอักษรขนาดใหญ่" class="util-btn font-display flex h-9 min-w-9 items-center justify-center rounded-lg px-1.5 text-xs font-semibold transition-colors">ก+</button>
+        </div>
+        <span class="util-sep mx-1 h-4 w-px"></span>
+        <button id="search-open" data-i18n-aria="util.search" aria-label="ค้นหา" class="util-plain font-display flex h-9 items-center gap-2 rounded-lg px-3 text-xs font-medium transition-colors">
+          <i data-lucide="search" class="h-3.5 w-3.5"></i>
+          <span class="hidden sm:inline" data-i18n="util.search">ค้นหา</span>
+          <kbd class="util-kbd hidden rounded border px-1.5 py-0.5 text-[9px] tracking-wider lg:inline">⌘K</kbd>
+        </button>
+        <span class="util-sep mx-1 h-4 w-px"></span>
+        <div class="flex items-center gap-0.5" role="group" data-i18n-aria="util.lang" aria-label="เปลี่ยนภาษา">
+          <button data-lang="th" class="util-btn font-display flex h-9 min-w-9 items-center justify-center rounded-lg px-2 text-xs font-semibold uppercase transition-colors">ไทย</button>
+          <button data-lang="en" class="util-btn font-display flex h-9 min-w-9 items-center justify-center rounded-lg px-2 text-xs font-semibold uppercase transition-colors">EN</button>
+        </div>
+      </div>
+    </div>
+    <nav class="mx-auto flex max-w-7xl items-center justify-between px-5 pt-1.5 lg:px-8">
+      <a href="#hero" class="flex items-center gap-3">
+        <span id="brand-seal" class="flex h-13 w-13 items-center justify-center overflow-hidden rounded-full border bg-white transition-colors border-white/40">
+          <img src="assets/images/seal-rayong.svg" alt="ตราประจำจังหวัดระยอง" width="48" height="48" class="h-12 w-12" />
+        </span>
+        <span class="font-display leading-tight">
+          <span id="brand-name" class="block text-sm font-bold transition-colors text-white">จังหวัดระยอง</span>
+          <span id="brand-sub" class="block text-[10px] tracking-[0.25em] transition-colors text-white/70">RAYONG · BLUE COAST</span>
+        </span>
+      </a>
+      <div id="desktop-nav" class="hidden items-center gap-0.5 lg:flex"></div>
+      <button id="menu-toggle" class="flex h-10 w-10 items-center justify-center rounded-xl border lg:hidden border-white/30 bg-white/10 text-white" aria-label="เปิดเมนู" aria-expanded="false">
+        <i data-lucide="menu" class="h-5 w-5"></i>
+      </button>
+    </nav>
+    <div id="mobile-menu" class="glass-strong mobile-menu mx-4 mt-2 max-h-[70vh] overflow-y-auto rounded-2xl lg:hidden" hidden>
+      <div id="mobile-nav" class="flex flex-col p-3"></div>
+    </div>
+  </header>
+
+  <main>
+    <!-- ===================== HERO ===================== -->
+    <section id="hero" class="relative flex min-h-screen items-center overflow-hidden bg-[#022331]">
+      <div id="hero-video-wrap" class="absolute inset-x-[-3%] inset-y-[-9%]">
+        <video src="assets/videos/hero-bg.mp4" autoplay muted loop playsinline preload="metadata" aria-hidden="true" class="h-full w-full object-cover"></video>
+      </div>
+      <div class="absolute inset-0 bg-[#06303f] mix-blend-multiply opacity-15"></div>
+      <div class="absolute inset-0 bg-[#00a6b8] mix-blend-color opacity-5"></div>
+      <div class="absolute inset-0 bg-[linear-gradient(180deg,rgba(2,28,38,0.35)_0%,rgba(2,35,49,0.05)_38%,rgba(2,35,49,0.04)_70%,rgba(6,48,63,0.35)_100%)]"></div>
+      <div id="hero-glow" class="absolute top-[8%] right-[6%] h-[28rem] w-[28rem] rounded-full bg-[#7ee8dc]/12 blur-3xl"></div>
+      <div class="hero-cloud absolute top-[14%] left-0 h-36 w-[130%] bg-[radial-gradient(ellipse_55%_100%_at_28%_50%,rgba(170,235,228,0.10),transparent),radial-gradient(ellipse_40%_100%_at_72%_50%,rgba(170,235,228,0.07),transparent)] blur-lg"></div>
+      <div id="hero-stars" class="absolute inset-0"></div>
+      <div class="absolute inset-y-0 left-0 w-full bg-[linear-gradient(90deg,rgba(2,30,40,0.62)_0%,rgba(2,30,40,0.32)_32%,transparent_58%)]"></div>
+      <div id="hero-rays" class="hero-rays pointer-events-none absolute inset-0"></div>
+      <div id="hero-bubbles" class="pointer-events-none absolute inset-0 overflow-hidden"></div>
+      <div class="hero-waves pointer-events-none absolute inset-x-0 bottom-0 h-40" aria-hidden="true"></div>
+
+      <div id="hero-content" class="relative z-10 mx-auto w-full max-w-7xl px-5 pt-24 pb-16 lg:px-8">
+        <div class="max-w-2xl">
+          <p class="hero-in font-display mb-6 flex items-center gap-3 text-xs font-medium tracking-[0.35em] text-[#72e0d4] uppercase">
+            <i data-lucide="waves" class="h-4 w-4"></i>ไข่มุกแห่งทะเลตะวันออก · Blue Coast 2035
+          </p>
+          <h1 class="hero-in font-display text-5xl font-bold leading-[1.12] tracking-tight text-white sm:text-6xl lg:text-[5.2rem]">
+            RAYONG<span class="text-ocean-gradient mt-1 block">SMART PROVINCE</span>
+          </h1>
+          <div class="hero-in mt-7 flex items-start gap-4">
+            <span class="mt-1.5 h-14 w-1 shrink-0 rounded-full bg-gradient-to-b from-[#72e0d4] to-coral"></span>
+            <p class="max-w-xl text-base leading-relaxed text-slate-200/95 sm:text-lg">เมืองชายทะเลอัจฉริยะ 100 กิโลเมตรแห่งชายฝั่งตะวันออก — เศรษฐกิจสีน้ำเงินเติบโตอย่างยั่งยืน ด้วยนวัตกรรม เทคโนโลยี และการมีส่วนร่วมของประชาชน</p>
+          </div>
+          <div class="hero-in mt-12 flex flex-wrap gap-x-10 gap-y-4 border-t border-white/15 pt-6">
+            <div><p class="font-display text-xl font-bold text-white sm:text-2xl">1.08 ล้าน</p><p class="mt-0.5 text-xs tracking-wide text-slate-300/80">ประชากร</p></div>
+            <div><p class="font-display text-xl font-bold text-white sm:text-2xl">9.6 ล้าน/ปี</p><p class="mt-0.5 text-xs tracking-wide text-slate-300/80">นักท่องเที่ยว</p></div>
+            <div><p class="font-display text-xl font-bold text-white sm:text-2xl">อันดับ 1</p><p class="mt-0.5 text-xs tracking-wide text-slate-300/80">GPP ต่อหัวของประเทศ</p></div>
+            <div><p class="font-display text-xl font-bold text-white sm:text-2xl">8 อำเภอ</p><p class="mt-0.5 text-xs tracking-wide text-slate-300/80">ครอบคลุมทั้งจังหวัด</p></div>
+          </div>
+        </div>
+      </div>
+
+      <a href="#about" class="fade-in-late font-display absolute bottom-6 left-1/2 z-10 flex -translate-x-1/2 flex-col items-center gap-2 text-[10px] tracking-[0.3em] text-white/55 uppercase" aria-label="เลื่อนลงเพื่อสำรวจ">
+        เลื่อนลงเพื่อสำรวจ<span class="hero-bob"><i data-lucide="arrow-down" class="h-4 w-4"></i></span>
+      </a>
+    </section>
+
+    <!-- ===================== ABOUT ===================== -->
+    <section id="about" class="relative scroll-mt-28 overflow-hidden py-24">
+      <div class="orb -top-20 right-[-8%]" data-color="#0b8199" data-size="480" data-speed="70"></div>
+      <div class="orb bottom-0 left-[-6%]" data-color="#0aa2c0" data-size="360" data-speed="-50"></div>
+      <div class="grid-overlay pointer-events-none absolute inset-0 opacity-50 [mask-image:radial-gradient(ellipse_at_center,black_25%,transparent_70%)]"></div>
+      <div class="relative mx-auto max-w-7xl px-5 lg:px-8">
+        <div class="grid grid-cols-1 items-start gap-12 lg:grid-cols-2">
+          <div class="section-head mb-0" data-key="sec.about"></div>
+          <div data-parallax="-26"><div id="about-kpis" class="grid grid-cols-2 gap-x-8 gap-y-10"></div></div>
+        </div>
+        <div id="about-chips" class="mt-14 flex flex-wrap gap-3 border-t border-navy/10 pt-8" data-reveal style="--ry:20px;--rd:.3s"></div>
+      </div>
+    </section>
+
+    <!-- ===================== GOVERNOR ===================== -->
+    <section id="governor" class="relative scroll-mt-28 overflow-hidden py-24">
+      <div class="orb -top-16 left-[-8%]" data-color="#0b8199" data-size="460" data-speed="65"></div>
+      <div class="relative mx-auto max-w-7xl px-5 lg:px-8">
+        <div class="section-head" data-key="sec.governor"></div>
+        <div class="grid grid-cols-1 gap-8 lg:grid-cols-5">
+          <div class="lg:col-span-2" data-reveal>
+            <div data-parallax="32">
+              <div class="rounded-2xl glass-strong holo-border overflow-hidden">
+                <div class="relative flex aspect-[4/4.4] items-center justify-center bg-[#0b4a5e]">
+                  <div class="grid-overlay absolute inset-0 opacity-40"></div>
+                  <img src="assets/images/governor.jpg" alt="ผู้ว่าราชการจังหวัดระยอง นายไตรภพ วงศ์ไตรรัตน์" class="h-full w-full object-cover object-top" />
+                  <span class="absolute right-4 bottom-4 h-12 w-12 overflow-hidden rounded-full border border-white/50 bg-white">
+                    <img src="assets/images/seal-rayong.svg" alt="" aria-hidden="true" width="48" height="48" class="h-full w-full" loading="lazy" />
+                  </span>
+                </div>
+                <div class="p-6">
+                  <h3 class="font-display text-xl font-bold text-navy">นายไตรภพ วงศ์ไตรรัตน์</h3>
+                  <p class="mt-1 text-sm text-azure">ผู้ว่าราชการจังหวัดระยอง</p>
+                  <p class="mt-0.5 text-xs text-slate-500">ดำรงตำแหน่งตั้งแต่ พ.ศ. 2566</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="flex flex-col gap-6 lg:col-span-3" data-reveal style="--rd:.15s">
+            <div class="rounded-2xl glass holo-border relative flex-1 p-7">
+              <i data-lucide="quote" class="absolute top-5 right-6 h-10 w-10 text-azure/15"></i>
+              <div class="space-y-4">
+                <p class="text-base leading-relaxed text-slate-600">จังหวัดระยองกำลังก้าวเข้าสู่บทใหม่ของการพัฒนา — จากเมืองอุตสาหกรรมชายฝั่งทะเลตะวันออก สู่จังหวัดอัจฉริยะที่เศรษฐกิจ สิ่งแวดล้อม และคุณภาพชีวิตของประชาชนเติบโตไปด้วยกันอย่างสมดุล</p>
+                <p class="text-base leading-relaxed text-slate-600">ภายใต้แผนพัฒนาจังหวัดระยอง พ.ศ. 2568–2578 เรามุ่งใช้เทคโนโลยีดิจิทัล ข้อมูลเปิด และการมีส่วนร่วมของประชาชนทุกภาคส่วน เป็นกลไกขับเคลื่อนเมือง เพื่อให้ระยองเป็นบ้านที่น่าอยู่ น่าลงทุน และน่ามาเยือนของทุกคน</p>
+              </div>
+              <p class="font-display mt-6 border-t border-navy/10 pt-5 text-lg font-bold text-gradient-holo">“ระยองเมืองน่าอยู่ เศรษฐกิจมูลค่าสูง สังคมมีสุข สิ่งแวดล้อมยั่งยืน”</p>
+            </div>
+            <div>
+              <h3 class="font-display mb-4 text-base font-bold text-navy" data-i18n="sec.governor.activities">กิจกรรมผู้บริหารล่าสุด</h3>
+              <div id="gov-activities" class="grid grid-cols-1 gap-3 sm:grid-cols-2"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== DIGITAL TWIN ===================== -->
+    <section id="twin" class="relative scroll-mt-28 py-28">
+      <div class="mx-auto max-w-7xl px-5 lg:px-8">
+        <div class="section-head" data-key="sec.twin"></div>
+        <div class="relative">
+          <div class="perspective-1200" data-tilt-in="10">
+            <div class="tilt-target">
+              <div class="rounded-2xl glass holo-border relative h-[560px] overflow-hidden lg:h-[640px]">
+                <div id="twin-stage" class="relative h-full w-full touch-none">
+                  <div class="twin-loading flex h-full items-center justify-center"><span class="font-display text-sm tracking-widest text-cyan animate-blink">กำลังโหลดแบบจำลองเมือง...</span></div>
+                </div>
+                <div id="twin-legend" class="pointer-events-none absolute top-4 left-4 hidden flex-col gap-1.5 md:flex"></div>
+                <p class="font-display pointer-events-none absolute bottom-4 left-1/2 -translate-x-1/2 rounded-full bg-white/90 px-4 py-1.5 text-[11px] tracking-widest whitespace-nowrap text-slate-600 backdrop-blur">ลากเพื่อหมุน · สกรอลล์เพื่อซูม · คลิกจุดเรืองแสงเพื่อสำรวจ</p>
+              </div>
+            </div>
+          </div>
+          <div id="twin-panel"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== LIVE DATA ===================== -->
+    <section id="data" class="relative scroll-mt-28 bg-abyss py-24">
+      <div class="orb -top-10 left-[-7%]" data-color="#0b8199" data-size="440" data-speed="65"></div>
+      <div class="mx-auto max-w-7xl px-5 lg:px-8">
+        <div class="flex flex-col justify-between gap-6 lg:flex-row lg:items-end">
+          <div class="section-head mb-0" data-key="sec.data"></div>
+          <div class="font-display mb-1 flex items-center gap-2 self-start rounded-full border border-mint/30 bg-mint/8 px-4 py-2 text-sm text-mint tabular-nums lg:self-auto">
+            <i data-lucide="radio" class="h-4 w-4 animate-blink"></i>LIVE · <span id="live-clock">--:--:--</span> น. · ระบบปกติ 14/14
+          </div>
+        </div>
+        <div id="live-metrics" class="mt-10 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4"></div>
+        <div id="live-trends" class="mt-5 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4"></div>
+        <div class="glass mt-6 overflow-hidden rounded-2xl py-3">
+          <div id="live-ticker" class="animate-ticker flex w-max gap-12 whitespace-nowrap"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== CALENDAR ===================== -->
+    <section id="calendar" class="relative scroll-mt-28 overflow-hidden bg-abyss py-24">
+      <div class="orb top-10 right-[-7%]" data-color="#0aa2c0" data-size="420" data-speed="60"></div>
+      <div class="orb bottom-0 left-[-6%]" data-color="#0b8199" data-size="360" data-speed="-45"></div>
+      <div class="relative mx-auto max-w-7xl px-5 lg:px-8">
+        <div class="section-head" data-key="sec.calendar"></div>
+        <div class="grid grid-cols-1 gap-6 lg:grid-cols-5">
+          <div class="lg:col-span-3" data-parallax="16">
+            <div class="rounded-2xl glass-strong holo-border p-6">
+              <div class="mb-5 flex items-center justify-between">
+                <h3 id="cal-month" class="font-display text-lg font-bold text-navy">มิถุนายน 2569</h3>
+              </div>
+              <div id="cal-grid" class="grid grid-cols-7 gap-1.5"></div>
+            </div>
+          </div>
+          <div class="lg:col-span-2" data-parallax="-22">
+            <h3 class="font-display mb-4 flex items-center gap-2 text-base font-bold text-navy">
+              <span class="flex h-9 w-9 items-center justify-center rounded-xl bg-azure/10 text-azure"><i data-lucide="calendar-days" class="h-4.5 w-4.5"></i></span>
+              <span id="cal-heading"></span>
+            </h3>
+            <div id="cal-events" class="space-y-3"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== ANNOUNCEMENTS ===================== -->
+    <section id="announcements" class="relative scroll-mt-28 overflow-hidden py-24">
+      <div class="orb top-0 right-[-10%]" data-color="#0b8199" data-size="520" data-speed="80"></div>
+      <div class="orb bottom-20 left-[-8%]" data-color="#0aa2c0" data-size="420" data-speed="-70"></div>
+      <div class="relative mx-auto max-w-7xl px-5 lg:px-8">
+        <div class="section-head" data-key="sec.announcements"></div>
+        <div class="tabs glass mb-8 inline-flex rounded-2xl p-1.5" data-tabs="announce"></div>
+        <div id="announce-body"></div>
+        <div class="mt-8 flex justify-center">
+          <button class="font-display flex items-center gap-2 rounded-full bg-azure px-6 py-2.5 text-sm font-semibold text-white shadow-[0_6px_18px_-6px_#0b819988] transition-colors hover:bg-[#086a7e]">ดูประกาศทั้งหมด <i data-lucide="arrow-right" class="h-4 w-4"></i></button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== RESOURCES ===================== -->
+    <section id="resources" class="relative scroll-mt-28 overflow-hidden bg-abyss py-24">
+      <div class="orb -top-10 left-[-7%]" data-color="#0aa2c0" data-size="440" data-speed="60"></div>
+      <div class="relative mx-auto max-w-7xl px-5 lg:px-8">
+        <div class="section-head" data-key="sec.resources"></div>
+        <div class="tabs glass mb-8 inline-flex rounded-2xl p-1.5" data-tabs="resources"></div>
+        <div id="resources-body"></div>
+      </div>
+    </section>
+
+    <!-- ===================== TOURISM MAP ===================== -->
+    <section id="map" class="relative scroll-mt-28 overflow-hidden py-24">
+      <div class="mx-auto max-w-7xl px-5 lg:px-8">
+        <div class="section-head" data-key="sec.map"></div>
+        <div class="perspective-1200" data-tilt-in="10">
+          <div class="tilt-target">
+            <div class="overflow-hidden rounded-3xl border border-white/10 bg-[#073c4f] shadow-[0_32px_70px_-28px_rgba(0,0,0,0.75)]">
+              <div class="grid grid-cols-1 lg:grid-cols-3">
+                <div class="relative lg:col-span-2">
+                  <div class="relative aspect-[4/3] sm:aspect-[16/10]">
+                    <div id="map-stage" class="relative h-full w-full touch-none">
+                      <div class="map-loading flex h-full items-center justify-center"><span class="font-display text-sm tracking-widest text-white/60 animate-blink">กำลังโหลดแบบจำลองแผนที่...</span></div>
+                    </div>
+                    <div class="pointer-events-none absolute bottom-5 left-5 flex h-14 w-14 items-center justify-center rounded-full border border-white/20 bg-[#04293a]/60 backdrop-blur">
+                      <i data-lucide="compass" class="h-7 w-7 text-white/70" stroke-width="1.2"></i>
+                    </div>
+                    <span class="font-display pointer-events-none absolute top-5 right-5 rounded-full bg-[#04293a]/70 px-3.5 py-1.5 text-[10px] tracking-[0.25em] text-white/60 uppercase backdrop-blur">อ่าวไทย</span>
+                    <div id="map-popup"></div>
+                  </div>
+                </div>
+                <div class="flex flex-col border-t border-white/10 p-6 lg:border-t-0 lg:border-l">
+                  <div id="map-list" class="flex-1 divide-y divide-white/10"></div>
+                  <button class="font-display mt-5 flex items-center justify-center gap-2 rounded-full border border-white/25 px-5 py-3 text-sm font-medium text-white transition-all hover:border-white/60 hover:bg-white/10">ดูสถานที่ท่องเที่ยวทั้งหมด<i data-lucide="arrow-right" class="h-4 w-4"></i></button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== EXPLORE ===================== -->
+    <section id="explore" class="relative scroll-mt-28 overflow-hidden py-24">
+      <div class="orb -top-20 right-[-8%]" data-color="#0b8199" data-size="480" data-speed="70"></div>
+      <div class="orb bottom-0 left-[-6%]" data-color="#0f9a84" data-size="380" data-speed="-55"></div>
+      <div class="relative mx-auto max-w-7xl px-5 lg:px-8">
+        <div class="section-head" data-key="sec.explore"></div>
+        <div class="tabs glass mb-8 inline-flex max-w-full flex-wrap rounded-2xl p-1.5" data-tabs="explore"></div>
+        <div id="explore-body"></div>
+      </div>
+    </section>
+
+    <!-- ===================== SERVICES & INVESTMENT ===================== -->
+    <section id="services" class="relative scroll-mt-28 overflow-hidden py-24">
+      <div class="orb top-10 left-[-8%]" data-color="#0b8199" data-size="460" data-speed="60"></div>
+      <div class="orb right-[-6%] bottom-10" data-color="#14a9a0" data-size="380" data-speed="-60"></div>
+      <div class="mx-auto max-w-7xl px-5 lg:px-8">
+        <div class="section-head" data-key="sec.services"></div>
+        <div id="service-cards" class="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-6"></div>
+        <div class="mt-12 grid grid-cols-1 gap-8 lg:grid-cols-5">
+          <div class="lg:col-span-2">
+            <h3 class="font-display mb-5 flex items-center gap-2 text-lg font-bold text-navy"><i data-lucide="trending-up" class="h-5 w-5 text-azure"></i>ตัวชี้วัดเศรษฐกิจจังหวัด</h3>
+            <div id="econ-cards" class="grid grid-cols-2 gap-4"></div>
+          </div>
+          <div class="lg:col-span-3">
+            <div class="mb-5 flex items-center justify-between">
+              <h3 class="font-display flex items-center gap-2 text-lg font-bold text-navy"><i data-lucide="arrow-up-right" class="h-5 w-5 text-azure"></i>สาขาการลงทุนสำคัญ</h3>
+              <span class="font-display text-xs tracking-wider text-slate-500">มูลค่ารวมในเขต EEC ระยอง</span>
+            </div>
+            <div id="sector-bars" class="space-y-3.5"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== E-SERVICE ===================== -->
+    <section id="eservice" class="relative scroll-mt-28 overflow-hidden bg-abyss py-24">
+      <div class="orb top-10 right-[-8%]" data-color="#0b8199" data-size="460" data-speed="65"></div>
+      <div class="relative mx-auto max-w-7xl px-5 lg:px-8">
+        <div class="section-head" data-key="sec.eservice"></div>
+        <div id="eservice-cards" class="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3"></div>
+      </div>
+    </section>
+
+    <!-- ===================== POLL ===================== -->
+    <section id="poll" class="relative scroll-mt-28 overflow-hidden py-24">
+      <div class="orb top-0 left-[-7%]" data-color="#0b8199" data-size="420" data-speed="60"></div>
+      <div class="orb right-[-5%] bottom-10" data-color="#0f9a84" data-size="340" data-speed="-50"></div>
+      <div class="relative mx-auto max-w-3xl px-5 lg:px-8">
+        <div class="section-head" data-key="sec.poll" data-align="center"></div>
+        <div class="rounded-2xl glass-strong holo-border p-7 sm:p-9">
+          <h3 class="font-display mb-6 flex items-start gap-3 text-lg leading-snug font-bold text-navy sm:text-xl">
+            <span class="mt-0.5 flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-azure/10 text-azure"><i data-lucide="vote" class="h-5 w-5"></i></span>
+            <span id="poll-question"></span>
+          </h3>
+          <div id="poll-options" class="space-y-3"></div>
+          <div class="mt-6 flex flex-wrap items-center justify-between gap-3 border-t border-navy/10 pt-5">
+            <p class="flex items-center gap-2 text-xs text-slate-500">
+              <i data-lucide="users" class="h-3.5 w-3.5 text-azure"></i><span data-i18n="sec.poll.totalVotes">ผู้ร่วมโหวตทั้งหมด</span>
+              <span id="poll-total" class="font-display font-bold text-navy tabular-nums"></span>
+            </p>
+            <p id="poll-thanks" class="font-display flex items-center gap-1.5 text-xs font-semibold text-mint" hidden>
+              <i data-lucide="circle-check" class="h-3.5 w-3.5"></i><span data-i18n="sec.poll.voted">ขอบคุณสำหรับความคิดเห็นของท่าน</span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== AGENCIES ===================== -->
+    <section id="agencies" class="relative scroll-mt-28 overflow-hidden py-14">
+      <div class="mx-auto max-w-7xl px-5 lg:px-8">
+        <p class="font-display mb-7 text-center text-xs font-semibold tracking-[0.3em] text-slate-500 uppercase" data-reveal style="--ry:16px" data-i18n="sec.agencies.title">หน่วยงานที่เกี่ยวข้อง</p>
+      </div>
+      <div class="group relative overflow-hidden">
+        <div class="pointer-events-none absolute inset-y-0 left-0 z-10 w-16 bg-deep [mask-image:linear-gradient(90deg,black,transparent)] sm:w-28"></div>
+        <div class="pointer-events-none absolute inset-y-0 right-0 z-10 w-16 bg-deep [mask-image:linear-gradient(270deg,black,transparent)] sm:w-28"></div>
+        <div id="agency-track" class="animate-ticker flex w-max gap-4 py-1 group-hover:[animation-play-state:paused]"></div>
+      </div>
+    </section>
+
+    <!-- ===================== NEWS & CONTACT ===================== -->
+    <section id="news" class="relative scroll-mt-28 bg-abyss pt-24 pb-10">
+      <div class="orb top-10 right-[-6%]" data-color="#0b8199" data-size="420" data-speed="60"></div>
+      <div class="mx-auto max-w-7xl px-5 lg:px-8">
+        <div class="flex flex-col justify-between gap-4 lg:flex-row lg:items-end">
+          <div class="section-head mb-0" data-key="sec.news"></div>
+          <button class="font-display mb-1 flex items-center gap-2 self-start rounded-full bg-azure px-5 py-2.5 text-sm font-semibold text-white shadow-[0_6px_18px_-6px_#0b819988] transition-colors hover:bg-[#086a7e] lg:self-auto">ดูข่าวทั้งหมด <i data-lucide="arrow-right" class="h-4 w-4"></i></button>
+        </div>
+        <div id="news-cards" class="mt-10 grid grid-cols-1 gap-5 md:grid-cols-3"></div>
+        <div class="rounded-2xl glass-strong holo-border mt-10 p-7">
+          <div id="contact-list" class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4"></div>
+        </div>
+        <footer class="mt-14">
+          <div class="flex flex-col items-center justify-between gap-4 rounded-2xl bg-[#06303f] px-6 py-6 sm:flex-row sm:px-8">
+            <div class="flex items-center gap-3">
+              <span class="flex h-12 w-12 items-center justify-center overflow-hidden rounded-full border border-white/30 bg-white">
+                <img src="assets/images/seal-rayong.svg" alt="ตราประจำจังหวัดระยอง" width="44" height="44" class="h-11 w-11" loading="lazy" />
+              </span>
+              <span class="font-display text-xs leading-tight">
+                <span class="block font-bold text-white">จังหวัดระยอง</span>
+                <span class="block text-[10px] tracking-[0.2em] text-[#a3efe6]">RAYONG SMART PROVINCE</span>
+              </span>
+            </div>
+            <p class="text-center text-[11px] text-slate-300/85">เว็บไซต์ต้นแบบเพื่อการนำเสนอวิสัยทัศน์ · ข้อมูลทั้งหมดเป็นข้อมูลจำลอง · © 2569 จังหวัดระยอง</p>
+          </div>
+        </footer>
+      </div>
+    </section>
+  </main>
+
+  <!-- Search dialog -->
+  <div id="search-modal" class="fade-overlay fixed inset-0 z-[100] flex items-start justify-center bg-[#06303f]/45 px-4 pt-[12vh] backdrop-blur-sm" role="dialog" aria-modal="true" aria-label="ค้นหา" hidden>
+    <div class="drop-in glass-strong holo-border w-full max-w-xl overflow-hidden rounded-2xl" id="search-box">
+      <div class="flex items-center gap-3 border-b border-navy/10 px-5 py-4">
+        <i data-lucide="search" class="h-5 w-5 shrink-0 text-azure"></i>
+        <input id="search-input" data-i18n-placeholder="util.searchPlaceholder" placeholder="ค้นหาข่าว สถานที่ บริการ กิจกรรม..." class="h-8 flex-1 bg-transparent text-base text-navy placeholder:text-slate-400 focus:outline-none" aria-label="ค้นหา" autocomplete="off" />
+        <button id="search-close" class="flex h-8 w-8 items-center justify-center rounded-lg text-slate-500 transition-colors hover:bg-navy/5 hover:text-navy" aria-label="ปิดหน้าต่างค้นหา"><i data-lucide="x" class="h-4 w-4"></i></button>
+      </div>
+      <div id="search-results" class="max-h-[50vh] overflow-y-auto p-2"></div>
+    </div>
+  </div>
+
+  <!-- AI assistant -->
+  <button id="chat-fab" class="chat-fab fixed right-5 bottom-5 z-50 flex h-14 w-14 items-center justify-center rounded-2xl bg-azure shadow-[0_0_36px_-6px_rgba(45,212,191,0.7)] transition-transform hover:scale-105" aria-label="เปิดผู้ช่วย AI">
+    <span class="absolute inset-0 rounded-2xl border border-cyan/40 animate-pulse-ring"></span>
+    <span id="chat-fab-icon" class="flex"><i data-lucide="bot" class="h-6 w-6 text-white"></i></span>
+  </button>
+  <div id="chat-panel" class="chat-in glass-strong holo-border fixed right-5 bottom-24 z-50 flex h-[min(540px,calc(100dvh-7.5rem))] w-[calc(100vw-2.5rem)] max-w-sm flex-col overflow-hidden rounded-3xl" hidden>
+    <div class="flex items-center gap-3 border-b border-navy/10 px-5 py-4">
+      <span class="relative flex h-10 w-10 items-center justify-center rounded-xl bg-azure">
+        <i data-lucide="bot" class="h-5 w-5 text-white"></i>
+        <span class="absolute -right-0.5 -bottom-0.5 h-2.5 w-2.5 rounded-full border-2 border-deep bg-mint"></span>
+      </span>
+      <div class="flex-1">
+        <p class="font-display text-sm font-bold text-navy">น้องคลื่น · ผู้ช่วยอัจฉริยะระยอง</p>
+        <p class="flex items-center gap-1 text-[11px] text-mint"><span class="h-1.5 w-1.5 rounded-full bg-mint animate-blink"></span>ออนไลน์ · พร้อมช่วยเหลือ</p>
+      </div>
+      <i data-lucide="sparkles" class="h-4 w-4 text-cyan/60"></i>
+    </div>
+    <div id="chat-log" class="flex-1 space-y-3 overflow-y-auto px-4 py-4"></div>
+    <div id="chat-suggestions" class="no-scrollbar flex gap-2 overflow-x-auto px-4 pb-2"></div>
+    <form id="chat-form" class="flex items-center gap-2 border-t border-navy/10 p-3">
+      <button type="button" class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-navy/10 text-slate-500 transition-colors hover:border-cyan/30 hover:text-cyan" aria-label="พูดคุยด้วยเสียง (เร็ว ๆ นี้)" title="Voice — เร็ว ๆ นี้"><i data-lucide="mic" class="h-4 w-4"></i></button>
+      <input id="chat-input" placeholder="พิมพ์คำถามของคุณ..." autocomplete="off" class="h-10 flex-1 rounded-xl border border-navy/10 bg-white px-4 text-sm text-navy placeholder:text-slate-500 focus:border-cyan/40 focus:outline-none" />
+      <button id="chat-send" type="submit" disabled class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-azure text-white transition-opacity disabled:opacity-40" aria-label="ส่งข้อความ"><i data-lucide="send-horizontal" class="h-4 w-4"></i></button>
+    </form>
+  </div>
+
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/sea-toons.js"></script>
+  <script src="assets/js/app.js"></script>
+  <script type="module" src="assets/js/scene-twin.js"></script>
+  <script type="module" src="assets/js/scene-map.js"></script>
+</body>
+</html>
