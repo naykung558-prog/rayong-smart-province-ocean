@@ -46,6 +46,20 @@ body {
   mask: linear-gradient(#fff 0 0) content-box exclude, linear-gradient(#fff 0 0);
 }
 .text-gradient-holo { color: #0b8199; }
+
+/* Rayong provincial colours: red, yellow, blue blended like a sunset over the sea */
+.rayong-ribbon { background: linear-gradient(90deg, #d7263d, #f4b400 50%, #1e4fa3); }
+#site-header::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 0 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #d7263d 20%, #f4b400 50%, #1e4fa3 80%, transparent);
+  opacity: 0;
+  transition: opacity .5s ease;
+  pointer-events: none;
+}
+#site-header.glass-strong::after { opacity: .75; }
 .text-glow-cyan { text-shadow: 0 2px 24px #0b819938; }
 .grid-overlay {
   background-image: linear-gradient(#06303f0d 1px, #0000 0), linear-gradient(90deg, #06303f0d 1px, #0000 0);

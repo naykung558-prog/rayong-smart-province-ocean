@@ -235,7 +235,7 @@ function init() {
   // Sailing boats circling the island
   const boats = [0, 1, 2, 3].map((i) => {
     const b = new THREE.Group();
-    b.add(mesh(new THREE.BoxGeometry(0.9, 0.18, 0.32), new THREE.MeshStandardMaterial({ color: i % 2 ? "#e8573c" : "#ffffff", roughness: 0.6 }), [0, 0.09, 0]));
+    b.add(mesh(new THREE.BoxGeometry(0.9, 0.18, 0.32), new THREE.MeshStandardMaterial({ color: ["#d7263d", "#f4b400", "#1e4fa3", "#ffffff"][i], roughness: 0.6 }), [0, 0.09, 0]));
     b.add(mesh(new THREE.ConeGeometry(0.32, 0.9, 3), new THREE.MeshStandardMaterial({ color: "#fdf8ec", roughness: 0.8 }), [0.05, 0.62, 0], [0, Math.PI / 2, 0], [0.25, 1, 1]));
     scene.add(b);
     return { b, r: 15 + 2.5 * i, speed: 0.05 + 0.02 * i, phase: i * 1.7 };

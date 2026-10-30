@@ -54,7 +54,7 @@
   /* ------------------------------------------------------------------ */
   /* Section headings                                                    */
   /* ------------------------------------------------------------------ */
-  const WAVE_GLYPH = `<svg class="eyebrow-wave" viewBox="0 0 28 8" aria-hidden="true"><path d="M0 4 Q3.5 0 7 4 T14 4 T21 4 T28 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" opacity=".7"/></svg>`;
+  const WAVE_GLYPH = `<svg class="eyebrow-wave" viewBox="0 0 28 8" aria-hidden="true"><defs><linearGradient id="ry-wave" x1="0" x2="28" y1="0" y2="0" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#d7263d"/><stop offset=".5" stop-color="#f4b400"/><stop offset="1" stop-color="#1e4fa3"/></linearGradient></defs><path d="M0 4 Q3.5 0 7 4 T14 4 T21 4 T28 4" fill="none" stroke="url(#ry-wave)" stroke-width="1.8" stroke-linecap="round" opacity=".85"/></svg>`;
 
   // Rolling wave seam at the top of a section whose colour differs from the one above it
   function initWaveDividers() {
@@ -161,14 +161,14 @@
 
   // Seaweed, coral, starfish and shells resting at the bottom of sand-coloured sections
   const SEABED = {
-    about: [["weed", "left-[1%] bottom-0 h-40 w-16", "#0f9a84", 0.22], ["coral", "right-[3%] bottom-0 h-24 w-24", "#e2674f", 0.2], ["star", "right-[12%] bottom-4 h-8 w-8", "#e8a33c", 0.35]],
+    about: [["weed", "left-[1%] bottom-0 h-40 w-16", "#0f9a84", 0.22], ["coral", "right-[3%] bottom-0 h-24 w-24", "#d7263d", 0.2], ["star", "right-[12%] bottom-4 h-8 w-8", "#f4b400", 0.35]],
     governor: [["shell", "left-[2%] bottom-6 h-7 w-8", "#e2674f", 0.3], ["weed", "right-[1%] bottom-0 h-36 w-14", "#0aa2c0", 0.2]],
-    twin: [["coral", "left-[1%] bottom-0 h-20 w-20 hide-sm", "#c084fc", 0.2], ["star", "right-[4%] bottom-8 h-7 w-7", "#e2674f", 0.35]],
-    announcements: [["weed", "right-[1%] bottom-0 h-44 w-16", "#0f9a84", 0.2], ["shell", "left-[3%] bottom-6 h-8 w-9", "#e8a33c", 0.32]],
-    map: [["coral", "right-[2%] bottom-0 h-24 w-24 hide-sm", "#e2674f", 0.18]],
-    explore: [["weed", "left-[1%] bottom-0 h-40 w-16", "#0aa2c0", 0.22], ["star", "left-[7%] bottom-5 h-8 w-8", "#e8a33c", 0.4], ["coral", "right-[2%] bottom-0 h-28 w-28", "#0f9a84", 0.18]],
+    twin: [["coral", "left-[1%] bottom-0 h-20 w-20 hide-sm", "#1e4fa3", 0.18], ["star", "right-[4%] bottom-8 h-7 w-7", "#e2674f", 0.35]],
+    announcements: [["weed", "right-[1%] bottom-0 h-44 w-16", "#0f9a84", 0.2], ["shell", "left-[3%] bottom-6 h-8 w-9", "#f4b400", 0.32]],
+    map: [["coral", "right-[2%] bottom-0 h-24 w-24 hide-sm", "#d7263d", 0.18]],
+    explore: [["weed", "left-[1%] bottom-0 h-40 w-16", "#0aa2c0", 0.22], ["star", "left-[7%] bottom-5 h-8 w-8", "#f4b400", 0.4], ["coral", "right-[2%] bottom-0 h-28 w-28", "#0f9a84", 0.18]],
     services: [["shell", "right-[4%] bottom-6 h-7 w-8", "#e2674f", 0.3], ["weed", "left-[1%] bottom-0 h-36 w-14", "#0f9a84", 0.2]],
-    poll: [["coral", "left-[3%] bottom-0 h-28 w-28", "#e2674f", 0.2], ["weed", "right-[3%] bottom-0 h-44 w-16", "#0aa2c0", 0.22], ["star", "right-[10%] bottom-6 h-7 w-7", "#e8a33c", 0.4]],
+    poll: [["coral", "left-[3%] bottom-0 h-28 w-28", "#d7263d", 0.2], ["weed", "right-[3%] bottom-0 h-44 w-16", "#0aa2c0", 0.22], ["star", "right-[10%] bottom-6 h-7 w-7", "#f4b400", 0.4]],
   };
   function initSeabed() {
     Object.entries(SEABED).forEach(([id, items]) => {
