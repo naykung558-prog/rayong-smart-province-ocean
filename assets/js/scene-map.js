@@ -38,8 +38,8 @@ function attractionLabel() {
 
 function init() {
   stage.querySelector(".map-loading")?.remove();
-  const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, powerPreference: "high-performance" });
-  renderer.setPixelRatio(Math.min(devicePixelRatio, 1.6));
+  const renderer = new THREE.WebGLRenderer({ antialias: devicePixelRatio < 1.5, alpha: true, powerPreference: "high-performance" });
+  renderer.setPixelRatio(Math.min(devicePixelRatio, 1.5));
   renderer.outputColorSpace = THREE.SRGBColorSpace;
   renderer.toneMapping = THREE.ACESFilmicToneMapping;
   renderer.domElement.style.display = "block";
@@ -73,8 +73,15 @@ function init() {
   // The slab floats on a gently rolling sea (lives outside the bobbing group)
   const seaGeo = new THREE.PlaneGeometry(40, 30, 80, 60);
   seaGeo.rotateX(-Math.PI / 2);
-  const seaBase = seaGeo.attributes.position.array.slice();
-  const sea = new THREE.Mesh(seaGeo, new THREE.MeshStandardMaterial({ color: "#1b8fa3", metalness: 0.3, roughness: 0.35, flatShading: true, transparent: true, opacity: 0.9 }));
+  const seaMat = new THREE.MeshStandardMaterial({ color: "#1b8fa3", metalness: 0.3, roughness: 0.35, flatShading: true, transparent: true, opacity: 0.9 });
+  const seaTime = { value: 0 };
+  seaMat.onBeforeCompile = (shader) => {
+    shader.uniforms.uTime = seaTime;
+    shader.vertexShader = "uniform float uTime;\n" + shader.vertexShader.replace("#include <begin_vertex>",
+      "vec3 transformed = vec3(position);\n" +
+      "transformed.y = 0.07 * sin(0.9 * position.x + 1.2 * uTime) + 0.05 * sin(1.3 * position.z - 0.9 * uTime);");
+  };
+  const sea = new THREE.Mesh(seaGeo, seaMat);
   sea.position.y = -0.32;
   scene.add(sea);
   const foam = new THREE.Mesh(new THREE.PlaneGeometry(MAP_W * 1.06, MAP_D * 1.08), new THREE.MeshBasicMaterial({ color: "#ffffff", transparent: true, opacity: 0.35 }));
@@ -82,13 +89,7 @@ function init() {
   foam.position.y = -0.2;
   scene.add(foam);
   const waveSea = (t) => {
-    const p = seaGeo.attributes.position.array;
-    for (let i = 0; i < p.length; i += 3) {
-      const x = seaBase[i], z = seaBase[i + 2];
-      p[i + 1] = 0.07 * Math.sin(0.9 * x + 1.2 * t) + 0.05 * Math.sin(1.3 * z - 0.9 * t);
-    }
-    seaGeo.attributes.position.needsUpdate = true;
-    seaGeo.computeVertexNormals();
+    seaTime.value = t;
     foam.material.opacity = 0.25 + 0.12 * Math.sin(1.6 * t);
   };
   scene.add(group);
@@ -145,6 +146,8 @@ function init() {
     l.el.style.transform = `translate3d(${((v.x + 1) / 2) * stage.clientWidth}px,${((1 - v.y) / 2) * stage.clientHeight}px,0) scale(${s})`;
     l.el.style.zIndex = Math.round(l.z - dist);
   };
+  // Falls back to 1x resolution when the GPU cannot keep up (slow frames pile up)
+  let slowFrames = 0, lastFrame = 0;
   (function loop() {
     requestAnimationFrame(loop);
     if (!visible) return;
@@ -155,6 +158,10 @@ function init() {
     group.updateMatrixWorld();
     controls.update();
     renderer.render(scene, camera);
+    const now = performance.now();
+    slowFrames = now - lastFrame > 22 ? slowFrames + 1 : Math.max(slowFrames - 1, 0);
+    lastFrame = now;
+    if (slowFrames > 40 && renderer.getPixelRatio() > 1) renderer.setPixelRatio(1);
     labels.forEach(place);
     if (!active.el.hidden) place(active);
   })();

@@ -17,18 +17,20 @@ body {
 
 /* Glass surfaces */
 .glass {
-  -webkit-backdrop-filter: blur(18px) saturate(120%);
-  backdrop-filter: blur(18px) saturate(120%);
-  background: #ffffffc7;
+  background: #ffffffdb;
   border: 1px solid #06303f14;
   box-shadow: inset 0 1px #ffffffe6, 0 18px 44px -18px #06303f2e;
 }
 .glass-strong {
-  -webkit-backdrop-filter: blur(24px) saturate(130%);
-  backdrop-filter: blur(24px) saturate(130%);
   background: #ffffffed;
   border: 1px solid #06303f1a;
   box-shadow: inset 0 1px #fff, 0 24px 56px -20px #06303f38;
+}
+/* Frosted blur only on fixed overlays: on in-page cards it re-blurs the
+   animated sea behind them every frame, which is what made scrolling stutter */
+#site-header.glass-strong, #mobile-menu, #chat-panel, #search-box {
+  -webkit-backdrop-filter: blur(14px) saturate(125%);
+  backdrop-filter: blur(14px) saturate(125%);
 }
 .holo-border { position: relative; }
 .holo-border::before {
@@ -195,7 +197,6 @@ body {
     linear-gradient(105deg, transparent 20%, #bff7ef14 24%, transparent 30%),
     linear-gradient(98deg, transparent 42%, #bff7ef10 46%, transparent 53%),
     linear-gradient(110deg, transparent 62%, #bff7ef12 66%, transparent 72%);
-  mix-blend-mode: screen;
   animation: rays-sway 12s ease-in-out infinite alternate;
   transform-origin: 50% 0;
 }
@@ -263,19 +264,13 @@ body {
 #sea-bg .caustics {
   position: absolute;
   inset: -20%;
-  opacity: .55;
+  opacity: .3;
+  will-change: transform;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='260' height='260' viewBox='0 0 260 260'%3E%3Cg fill='none' stroke='%23ffffff' stroke-width='2.2' stroke-linecap='round' opacity='.9'%3E%3Cpath d='M10 40 C40 20 70 60 100 38 S160 20 190 44 S240 60 255 36'/%3E%3Cpath d='M0 120 C30 98 60 140 96 118 S150 96 180 124 S236 140 260 112'/%3E%3Cpath d='M14 200 C46 182 80 222 110 198 S170 178 200 206 S244 220 258 196'/%3E%3Cpath d='M60 0 C40 30 80 60 58 92 S40 150 64 180 S80 236 56 260' opacity='.6'/%3E%3Cpath d='M190 0 C214 34 172 66 196 98 S220 160 194 190 S176 236 200 260' opacity='.6'/%3E%3C/g%3E%3C/svg%3E");
   background-size: 260px 260px;
-  mix-blend-mode: soft-light;
   animation: caustic-a 28s linear infinite;
 }
-#sea-bg .caustics.b {
-  background-size: 340px 340px;
-  opacity: .4;
-  animation: caustic-b 36s linear infinite;
-}
 @keyframes caustic-a { to { transform: translate3d(260px, 130px, 0); } }
-@keyframes caustic-b { to { transform: translate3d(-340px, 170px, 0) rotate(.001deg); } }
 
 /* Sunbeams fading out as you dive */
 #sea-bg .beams {
@@ -288,7 +283,7 @@ body {
     linear-gradient(104deg, transparent 63%, #ffffff38 66%, transparent 72%),
     linear-gradient(97deg, transparent 80%, #ffffff24 83%, transparent 88%);
   mask-image: linear-gradient(180deg, #000 0%, transparent 85%);
-  animation: rays-sway 14s ease-in-out infinite alternate;
+  transform: skewX(2deg);
   transform-origin: 50% 0;
 }
 
@@ -334,7 +329,7 @@ section > .relative, section > .mx-auto { position: relative; z-index: 1; }
 }
 
 /* Cartoon creatures */
-.toon { position: absolute; left: 0; will-change: transform; filter: saturate(.9) drop-shadow(0 6px 8px #06303f1f); }
+.toon { position: absolute; left: 0; will-change: transform; }
 .toon .bob { width: 100%; height: 100%; animation: toon-bob ease-in-out infinite alternate; }
 .toon svg { display: block; width: 100%; height: 100%; overflow: visible; }
 .toon.swim-r svg { transform: scaleX(-1); }
@@ -347,8 +342,6 @@ section > .relative, section > .mx-auto { position: relative; z-index: 1; }
 @keyframes toon-tentacle { 0% { transform: skewX(-8deg) scaleY(.95); } to { transform: skewX(8deg) scaleY(1.06); } }
 .toon .spout { animation: spout 2.8s ease-out infinite; transform-box: fill-box; transform-origin: 50% 100%; }
 @keyframes spout { 0%, 55% { opacity: 0; transform: scale(.3) translateY(10px); } 70% { opacity: .9; transform: scale(1); } to { opacity: 0; transform: scale(1.2) translateY(-10px); } }
-.toon .pupil { animation: toon-look 5s ease-in-out infinite; }
-@keyframes toon-look { 0%, 40%, to { transform: translateX(0); } 50%, 85% { transform: translateX(1.6px); } }
 /* Octopus & seahorse travel with a gentle rise and fall */
 .toon.drift .bob { animation-name: toon-drift; }
 @keyframes toon-drift { 0% { transform: translateY(-26px); } to { transform: translateY(26px); } }
@@ -358,3 +351,13 @@ section > .relative, section > .mx-auto { position: relative; z-index: 1; }
 @keyframes crab-walk { 0% { transform: translateX(4vw); } to { transform: translateX(78vw); } }
 @keyframes crab-step { 0% { transform: translateY(0); } to { transform: translateY(-3px); } }
 @media (max-width: 767px) { .toon { scale: .7; } .toon.hide-sm { display: none; } }
+
+@media (prefers-reduced-motion: reduce) {
+  #sea-bg *, .toon, .toon *, .bubble, .wave-divider svg, .hero-waves, .hero-rays { animation: none !important; }
+  #sea-bg .toon, #sea-bg .critter, #sea-bg .bg-bubble { display: none; }
+}
+
+/* Swimming layers fade out and pause while a 3D scene is on screen (toggled by app.js) */
+#sea-bg .swimmers { position: absolute; inset: 0; transition: opacity .6s ease; }
+#sea-bg.is-calm .swimmers { opacity: 0; visibility: hidden; transition: opacity .6s ease, visibility 0s .6s; }
+#sea-bg.is-calm .swimmers * { animation-play-state: paused !important; }

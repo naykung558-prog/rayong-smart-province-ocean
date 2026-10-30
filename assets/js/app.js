@@ -93,10 +93,10 @@
     const rnd = seeded(404);
     // Faint far-away silhouettes give depth behind the cartoon cast
     const critters = [
-      { art: "fish", n: 5, w: [18, 26], op: [0.08, 0.12], dur: [50, 70], color: "#0b8199" },
+      { art: "fish", n: 3, w: [18, 26], op: [0.08, 0.12], dur: [50, 70], color: "#0b8199" },
       { art: "ray", n: 2, w: [110, 150], op: [0.05, 0.07], dur: [80, 110], color: "#06303f", sm: true },
     ];
-    let html = `<div class="depth"></div><div class="caustics"></div><div class="caustics b"></div><div class="beams"></div>`;
+    let html = `<div class="depth"></div><div class="beams"></div><div class="swimmers"><div class="caustics"></div>`;
     const span = ([a, b]) => a + (b - a) * rnd();
     critters.forEach((c) => {
       for (let i = 0; i < c.n; i++) {
@@ -108,8 +108,8 @@
     // Cartoon cast: [species, how many, seconds to cross the screen, extra class]
     const TOONS = window.SEA_TOONS || {};
     const cast = [
-      ["clownfish", 3, [26, 38]], ["tang", 2, [30, 42]], ["puffer", 2, [44, 60]], ["angelfish", 2, [36, 50]],
-      ["goldfish", 2, [28, 40]], ["turtle", 1, [70, 90]], ["whale", 1, [110, 140], "hide-sm"],
+      ["clownfish", 2, [26, 38]], ["tang", 1, [30, 42]], ["puffer", 1, [44, 60]], ["angelfish", 1, [36, 50]],
+      ["goldfish", 1, [28, 40]], ["turtle", 1, [70, 90]], ["whale", 1, [110, 140], "hide-sm"],
       ["octopus", 1, [60, 80], "drift"], ["seahorse", 1, [80, 100], "drift"],
     ];
     const lanes = cast.reduce((n, c) => n + c[1], 0);
@@ -131,21 +131,32 @@
       html += `<div class="toon crab" style="width:${TOONS.crab.w}px;height:${TOONS.crab.h}px;opacity:.85"><div class="bob">${TOONS.crab.svg}</div></div>`;
     }
 
-    // A school: a tight cluster of small fish travelling together
+    // A school: a tight cluster of small fish travelling together (one moving layer)
     const schoolTop = 30 + 30 * rnd();
+    let school = "";
     for (let i = 0; i < 9; i++) {
-      html += `<div class="critter swim-r hide-sm" style="top:calc(${schoolTop}% + ${(Math.sin(i * 1.7) * 26).toFixed(0)}px);left:${(i % 3) * 18}px;width:16px;height:8px;color:#0aa2c0;opacity:.18;animation-duration:52s;animation-delay:${(-8 - i * 0.35).toFixed(2)}s">${SEA_ART.fish}</div>`;
+      school += `<div style="position:absolute;top:${(26 + Math.sin(i * 1.7) * 26).toFixed(0)}px;left:${(i % 3) * 18 + i * 4}px;width:16px;height:8px">${SEA_ART.fish}</div>`;
     }
+    html += `<div class="critter swim-r hide-sm" style="top:${schoolTop.toFixed(1)}%;width:90px;height:60px;color:#0aa2c0;opacity:.18;animation-duration:52s;animation-delay:-8s">${school}</div>`;
     for (let i = 0; i < 3; i++) {
       const w = 34 + 22 * rnd();
       html += `<div class="critter jelly hide-sm" style="top:${(15 + 60 * rnd()).toFixed(0)}%;left:${(8 + 84 * rnd()).toFixed(0)}%;width:${w.toFixed(0)}px;height:${(w * 1.75).toFixed(0)}px;color:#c084fc;opacity:.16;animation-duration:${(7 + 5 * rnd()).toFixed(1)}s">${SEA_ART.jelly}</div>`;
     }
-    for (let i = 0; i < 18; i++) {
+    for (let i = 0; i < 10; i++) {
       const s = 3 + 9 * rnd();
       html += `<span class="bg-bubble" style="left:${(100 * rnd()).toFixed(1)}%;width:${s.toFixed(1)}px;height:${s.toFixed(1)}px;animation-duration:${(16 + 18 * rnd()).toFixed(1)}s;animation-delay:${(-30 * rnd()).toFixed(1)}s;--drift:${(-24 + 48 * rnd()).toFixed(0)}px"></span>`;
     }
-    bg.innerHTML = html;
+    bg.innerHTML = html + "</div>";
     document.body.prepend(bg);
+
+    // Fade the swimming layers out while a 3D scene fills the screen so the two
+    // don't compete for the GPU; they swim back once the scene scrolls away.
+    const busy = new Set();
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => (e.isIntersecting ? busy.add(e.target) : busy.delete(e.target)));
+      bg.classList.toggle("is-calm", busy.size > 0);
+    }, { rootMargin: "-30% 0px" });
+    ["#twin-stage", "#map-stage"].forEach((sel) => { const el = $(sel); if (el) io.observe(el); });
   }
 
   // Seaweed, coral, starfish and shells resting at the bottom of sand-coloured sections
@@ -318,7 +329,7 @@
       const size = +o.dataset.size;
       o.classList.add("pointer-events-none", "absolute");
       o.dataset.parallax = o.dataset.speed;
-      o.innerHTML = `<div class="rounded-full blur-3xl" style="width:${size}px;height:${size}px;background:${o.dataset.color}1a"></div>`;
+      o.innerHTML = `<div class="rounded-full" style="width:${size}px;height:${size}px;background:radial-gradient(closest-side,${o.dataset.color}22,${o.dataset.color}00)"></div>`;
     });
   }
 
@@ -352,30 +363,50 @@
 
   // Scroll-linked parallax, tilt-in panels and hero
   const hero = { mx: 0, my: 0, sx: 0, sy: 0 };
+  // Only does work on frames where the page scrolled, resized or the hero
+  // spring is still settling; all layout reads happen before any style writes.
+  let lastY = -1, layoutDirty = true;
+  new ResizeObserver(() => (layoutDirty = true)).observe(document.body);
   function scrollFrame() {
+    requestAnimationFrame(scrollFrame);
+    const y0 = scrollY;
+    const springing = Math.abs(hero.mx - hero.sx) + Math.abs(hero.my - hero.sy) > 0.0005;
+    const moved = y0 !== lastY || layoutDirty;
+    if (!moved && !springing) return;
+    lastY = y0;
+    layoutDirty = false;
     const vh = innerHeight;
-    $$("[data-parallax]").forEach((el) => {
-      const r = el.getBoundingClientRect();
-      const base = parseFloat(el.dataset.offset || 0);
-      const top = r.top - base;
-      const p = Math.min(Math.max((vh - top) / (vh + r.height), 0), 1);
-      const speed = +el.dataset.parallax;
-      const y = speed - 2 * speed * p;
-      el.dataset.offset = y;
-      el.style.transform = `translate3d(0,${y.toFixed(1)}px,0)`;
-    });
-    $$("[data-tilt-in]").forEach((el) => {
-      const r = el.getBoundingClientRect();
-      const p = Math.min(Math.max((vh - r.top) / (vh / 2 + r.height / 2), 0), 1);
-      $(".tilt-target", el).style.transform = `rotateX(${(+el.dataset.tiltIn * (1 - p)).toFixed(2)}deg)`;
-    });
-
-    // Hero: mouse spring + scroll parallax
-    const heroEl = $("#hero");
-    const h = heroEl.offsetHeight;
-    const sp = Math.min(Math.max(scrollY / h, 0), 1);
+    const h = $("#hero").offsetHeight;
+    const sp = Math.min(Math.max(y0 / h, 0), 1);
     hero.sx += (hero.mx - hero.sx) * 0.06;
     hero.sy += (hero.my - hero.sy) * 0.06;
+
+    if (moved) {
+      const para = $$("[data-parallax]").map((el) => [el, el.getBoundingClientRect()]);
+      const tilts = $$("[data-tilt-in]").map((el) => [el, el.getBoundingClientRect()]);
+      const depth = Math.min(y0 / Math.max(document.body.scrollHeight - vh, 1), 1);
+      para.forEach(([el, r]) => {
+        const top = r.top - parseFloat(el.dataset.offset || 0);
+        const p = Math.min(Math.max((vh - top) / (vh + r.height), 0), 1);
+        const speed = +el.dataset.parallax;
+        const y = speed - 2 * speed * p;
+        el.dataset.offset = y;
+        el.style.transform = `translate3d(0,${y.toFixed(1)}px,0)`;
+      });
+      tilts.forEach(([el, r]) => {
+        const p = Math.min(Math.max((vh - r.top) / (vh / 2 + r.height / 2), 0), 1);
+        $(".tilt-target", el).style.transform = `rotateX(${(+el.dataset.tiltIn * (1 - p)).toFixed(2)}deg)`;
+      });
+      // Diving deeper: background tint grows and sunbeams fade with page depth
+      const sea = $("#sea-bg");
+      if (sea) {
+        $(".depth", sea).style.opacity = (0.75 * depth).toFixed(3);
+        $(".beams", sea).style.opacity = (1 - 0.8 * depth).toFixed(3);
+      }
+      updateHeader();
+    }
+
+    // Hero: mouse spring + scroll parallax
     if (sp < 1) {
       $("#hero-video-wrap").style.transform = `translate3d(${(-22 * hero.sx).toFixed(2)}px,${(-14 * hero.sy + 110 * sp).toFixed(2)}px,0)`;
       $("#hero-content").style.transform = `translate3d(0,${(-160 * sp).toFixed(1)}px,0)`;
@@ -383,15 +414,6 @@
       $("#hero-stars").style.transform = `translate3d(0,${(90 * sp).toFixed(1)}px,0)`;
       $("#hero-glow").style.transform = `translate3d(0,${(220 * sp).toFixed(1)}px,0)`;
     }
-    // Diving deeper: background tint grows and sunbeams fade with page depth
-    const depth = Math.min(scrollY / Math.max(document.body.scrollHeight - vh, 1), 1);
-    const sea = $("#sea-bg");
-    if (sea) {
-      $(".depth", sea).style.opacity = (0.75 * depth).toFixed(3);
-      $(".beams", sea).style.opacity = (1 - 0.8 * depth).toFixed(3);
-    }
-    updateHeader();
-    requestAnimationFrame(scrollFrame);
   }
 
   function initHero() {

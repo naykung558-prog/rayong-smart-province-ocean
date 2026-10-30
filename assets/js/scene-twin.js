@@ -183,8 +183,8 @@ function label(zone) {
 
 function init() {
   stage.querySelector(".twin-loading")?.remove();
-  const renderer = new THREE.WebGLRenderer({ antialias: true, powerPreference: "high-performance" });
-  renderer.setPixelRatio(Math.min(devicePixelRatio, 1.6));
+  const renderer = new THREE.WebGLRenderer({ antialias: devicePixelRatio < 1.5, powerPreference: "high-performance" });
+  renderer.setPixelRatio(Math.min(devicePixelRatio, 1.5));
   renderer.outputColorSpace = THREE.SRGBColorSpace;
   renderer.toneMapping = THREE.ACESFilmicToneMapping;
   stage.appendChild(renderer.domElement);
@@ -206,11 +206,19 @@ function init() {
 
   const anim = [];
 
-  // Open sea: a segmented plane whose vertices roll with layered sine swells
+  // Open sea: a segmented plane whose vertices roll with layered sine swells.
+  // The swell runs in the vertex shader so the CPU does no per-vertex work.
   const seaGeo = new THREE.PlaneGeometry(70, 70, 90, 90);
   seaGeo.rotateX(-Math.PI / 2);
-  const seaBase = seaGeo.attributes.position.array.slice();
-  const sea = new THREE.Mesh(seaGeo, new THREE.MeshStandardMaterial({ color: "#0f7186", metalness: 0.35, roughness: 0.3, flatShading: true }));
+  const seaMat = new THREE.MeshStandardMaterial({ color: "#0f7186", metalness: 0.35, roughness: 0.3, flatShading: true });
+  const seaTime = { value: 0 };
+  seaMat.onBeforeCompile = (shader) => {
+    shader.uniforms.uTime = seaTime;
+    shader.vertexShader = "uniform float uTime;\n" + shader.vertexShader.replace("#include <begin_vertex>",
+      "vec3 transformed = vec3(position);\n" +
+      "transformed.y = 0.16 * sin(0.45 * position.x + 1.1 * uTime) + 0.12 * sin(0.6 * position.z - 0.8 * uTime) + 0.05 * sin(1.7 * (position.x + position.z) + 2.0 * uTime);");
+  };
+  const sea = new THREE.Mesh(seaGeo, seaMat);
   sea.position.y = -0.52; // swell peaks stay below the lagoon rim
   scene.add(sea);
 
@@ -233,13 +241,7 @@ function init() {
     return { b, r: 15 + 2.5 * i, speed: 0.05 + 0.02 * i, phase: i * 1.7 };
   });
   anim.push((t) => {
-    const p = seaGeo.attributes.position.array;
-    for (let i = 0; i < p.length; i += 3) {
-      const x = seaBase[i], z = seaBase[i + 2];
-      p[i + 1] = 0.16 * Math.sin(0.45 * x + 1.1 * t) + 0.12 * Math.sin(0.6 * z - 0.8 * t) + 0.05 * Math.sin(1.7 * (x + z) + 2 * t);
-    }
-    seaGeo.attributes.position.needsUpdate = true;
-    seaGeo.computeVertexNormals();
+    seaTime.value = t;
     foam.material.opacity = 0.4 + 0.2 * Math.sin(1.4 * t);
     boats.forEach((o) => {
       const a = o.phase + o.speed * t;
@@ -337,6 +339,8 @@ function init() {
   const clock = new THREE.Clock();
   const v = new THREE.Vector3();
   const fovScale = () => 1 / (2 * Math.tan(THREE.MathUtils.degToRad(camera.fov) / 2));
+  // Falls back to 1x resolution when the GPU cannot keep up (slow frames pile up)
+  let slowFrames = 0, lastFrame = 0;
   (function loop() {
     requestAnimationFrame(loop);
     if (!visible) { clock.getDelta(); return; }
@@ -349,6 +353,10 @@ function init() {
       o.ring.material.opacity = twin.selected === o.z.id ? 0.55 + 0.2 * Math.sin(3 * t) : 0.18;
     });
     renderer.render(scene, camera);
+    const now = performance.now();
+    slowFrames = now - lastFrame > 22 ? slowFrames + 1 : Math.max(slowFrames - 1, 0);
+    lastFrame = now;
+    if (slowFrames > 40 && renderer.getPixelRatio() > 1) renderer.setPixelRatio(1);
 
     // Position labels like drei <Html distanceFactor={14}>
     const w = stage.clientWidth, h = stage.clientHeight;
