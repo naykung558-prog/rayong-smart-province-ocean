@@ -162,7 +162,7 @@
       { art: "fish", n: 3, w: [18, 26], op: [0.08, 0.12], dur: [50, 70], color: "#1b4f8f" },
       { art: "ray", n: 2, w: [110, 150], op: [0.05, 0.07], dur: [80, 110], color: "#0c2340", sm: true },
     ];
-    let html = `<div class="depth"></div><div class="beams"></div><div class="swimmers"><div class="caustics"></div>`;
+    let html = `<div class="swimmers">`;
     const span = ([a, b]) => a + (b - a) * rnd();
     critters.forEach((c) => {
       for (let i = 0; i < c.n; i++) {
@@ -395,15 +395,6 @@
     else window.scrollTo({ top: el.getBoundingClientRect().top + scrollY + offset, behavior: "smooth" });
   }
 
-  function initOrbs() {
-    $$(".orb").forEach((o) => {
-      const size = +o.dataset.size;
-      o.classList.add("pointer-events-none", "absolute");
-      o.dataset.parallax = o.dataset.speed;
-      o.innerHTML = `<div class="rounded-full" style="width:${size}px;height:${size}px;background:radial-gradient(closest-side,${o.dataset.color}22,${o.dataset.color}00)"></div>`;
-    });
-  }
-
   // Reveal-on-scroll
   const revealObserver = new IntersectionObserver((entries) => {
     entries.forEach((en) => {
@@ -450,7 +441,6 @@
     if (moved) {
       const para = $$("[data-parallax]").map((el) => [el, el.getBoundingClientRect()]);
       const tilts = $$("[data-tilt-in]").map((el) => [el, el.getBoundingClientRect()]);
-      const depth = Math.min(y0 / Math.max(document.body.scrollHeight - vh, 1), 1);
       para.forEach(([el, r]) => {
         const top = r.top - parseFloat(el.dataset.offset || 0);
         const p = Math.min(Math.max((vh - top) / (vh + r.height), 0), 1);
@@ -463,12 +453,6 @@
         const p = Math.min(Math.max((vh - r.top) / (vh / 2 + r.height / 2), 0), 1);
         $(".tilt-target", el).style.transform = `rotateX(${(+el.dataset.tiltIn * (1 - p)).toFixed(2)}deg)`;
       });
-      // Diving deeper: background tint grows and sunbeams fade with page depth
-      const sea = $("#sea-bg");
-      if (sea) {
-        $(".depth", sea).style.opacity = (0.5 + 0.35 * depth).toFixed(3);
-        $(".beams", sea).style.opacity = (1 - 0.8 * depth).toFixed(3);
-      }
       updateHeader();
     }
 
@@ -1346,7 +1330,6 @@
   function boot() {
     applyFont();
     initTranslator();
-    initOrbs();
     initWaveDividers();
     initSeaBackground();
     initSeabed();

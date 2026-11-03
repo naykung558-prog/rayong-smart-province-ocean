@@ -260,49 +260,16 @@ body {
 .sea-float { animation: float-y 7s ease-in-out infinite; }
 
 /* ================================================================== */
-/* Living sea background                                               */
+/* Still, light-blue backdrop behind the see-through sections          */
 /* ================================================================== */
 #sea-bg {
   position: fixed;
   inset: 0;
   z-index: -1;
+  background: #dcedfa;
   overflow: hidden;
   pointer-events: none;
 }
-/* Gets bluer the deeper you scroll (opacity driven by app.js) */
-#sea-bg .depth {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg, #d4efea 0%, #b8e3e0 55%, #8fd0d3 100%);
-  opacity: 0;
-}
-/* Shimmering caustic light: two drifting layers of soft wavy cells */
-#sea-bg .caustics {
-  position: absolute;
-  inset: -20%;
-  opacity: .3;
-  will-change: transform;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='260' height='260' viewBox='0 0 260 260'%3E%3Cg fill='none' stroke='%23ffffff' stroke-width='2.2' stroke-linecap='round' opacity='.9'%3E%3Cpath d='M10 40 C40 20 70 60 100 38 S160 20 190 44 S240 60 255 36'/%3E%3Cpath d='M0 120 C30 98 60 140 96 118 S150 96 180 124 S236 140 260 112'/%3E%3Cpath d='M14 200 C46 182 80 222 110 198 S170 178 200 206 S244 220 258 196'/%3E%3Cpath d='M60 0 C40 30 80 60 58 92 S40 150 64 180 S80 236 56 260' opacity='.6'/%3E%3Cpath d='M190 0 C214 34 172 66 196 98 S220 160 194 190 S176 236 200 260' opacity='.6'/%3E%3C/g%3E%3C/svg%3E");
-  background-size: 260px 260px;
-  animation: caustic-a 28s linear infinite;
-}
-@keyframes caustic-a { to { transform: translate3d(260px, 130px, 0); } }
-
-/* Sunbeams fading out as you dive */
-#sea-bg .beams {
-  position: absolute;
-  inset: 0 -10% auto -10%;
-  height: 120vh;
-  background:
-    linear-gradient(100deg, transparent 18%, #ffffff40 21%, transparent 27%),
-    linear-gradient(95deg, transparent 40%, #ffffff30 43%, transparent 49%),
-    linear-gradient(104deg, transparent 63%, #ffffff38 66%, transparent 72%),
-    linear-gradient(97deg, transparent 80%, #ffffff24 83%, transparent 88%);
-  mask-image: linear-gradient(180deg, #000 0%, transparent 85%);
-  transform: skewX(2deg);
-  transform-origin: 50% 0;
-}
-
 /* Creatures */
 .critter { position: absolute; color: #1b4f8f; will-change: transform; }
 .critter svg { display: block; width: 100%; height: 100%; }
