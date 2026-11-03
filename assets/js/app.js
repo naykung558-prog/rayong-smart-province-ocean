@@ -59,7 +59,7 @@
   // Rolling wave seam at the top of a section whose colour differs from the one above it
   function initWaveDividers() {
     const sections = $$("main > section");
-    const tone = (s) => (s.classList.contains("bg-abyss") ? "#e8f4f0" : "#faf6ee");
+    const tone = (s) => (s.classList.contains("bg-abyss") ? "#edf1f6" : "#f6f7f9");
     sections.forEach((s, i) => {
       if (i < 2) return; // hero has its own waves; about sits on the same sand
       const prev = tone(sections[i - 1]);
@@ -75,16 +75,20 @@
   /* Living sea background                                               */
   /* ------------------------------------------------------------------ */
   const SEA_ART = {
-    fish: `<svg viewBox="0 0 40 20"><g class="fin-wiggle"><path d="M2 10 Q14 0 28 10 Q14 20 2 10Z" fill="currentColor"/><path d="M27 10 L38 3 L36 10 L38 17Z" fill="currentColor"/></g><circle cx="8" cy="9" r="1.3" fill="#faf6ee"/></svg>`,
-    stripe: `<svg viewBox="0 0 48 24"><g class="fin-wiggle"><path d="M2 12 Q16 0 34 12 Q16 24 2 12Z" fill="currentColor"/><path d="M33 12 L46 4 L43 12 L46 20Z" fill="currentColor"/><path d="M14 5 Q12 12 14 19 M21 4 Q19 12 21 20" stroke="#faf6ee" stroke-opacity=".55" stroke-width="2" fill="none"/></g><circle cx="7" cy="11" r="1.4" fill="#faf6ee"/></svg>`,
-    turtle: `<svg viewBox="0 0 80 50"><g class="fin-wiggle"><path d="M22 14 Q10 2 4 8 Q12 14 24 20Z M22 36 Q10 48 4 42 Q12 36 24 30Z M54 16 Q66 8 70 12 Q62 18 52 21Z M54 34 Q66 42 70 38 Q62 32 52 29Z" fill="currentColor" opacity=".8"/></g><ellipse cx="38" cy="25" rx="20" ry="14" fill="currentColor"/><path d="M28 18 L38 14 L48 18 L48 32 L38 36 L28 32Z M38 14 V36 M28 25 H48" fill="none" stroke="#faf6ee" stroke-opacity=".35" stroke-width="1.4"/><ellipse cx="62" cy="25" rx="8" ry="6" fill="currentColor"/><circle cx="65" cy="23" r="1.2" fill="#faf6ee"/></svg>`,
+    fish: `<svg viewBox="0 0 40 20"><g class="fin-wiggle"><path d="M2 10 Q14 0 28 10 Q14 20 2 10Z" fill="currentColor"/><path d="M27 10 L38 3 L36 10 L38 17Z" fill="currentColor"/></g><circle cx="8" cy="9" r="1.3" fill="#f6f7f9"/></svg>`,
+    stripe: `<svg viewBox="0 0 48 24"><g class="fin-wiggle"><path d="M2 12 Q16 0 34 12 Q16 24 2 12Z" fill="currentColor"/><path d="M33 12 L46 4 L43 12 L46 20Z" fill="currentColor"/><path d="M14 5 Q12 12 14 19 M21 4 Q19 12 21 20" stroke="#f6f7f9" stroke-opacity=".55" stroke-width="2" fill="none"/></g><circle cx="7" cy="11" r="1.4" fill="#f6f7f9"/></svg>`,
+    turtle: `<svg viewBox="0 0 80 50"><g class="fin-wiggle"><path d="M22 14 Q10 2 4 8 Q12 14 24 20Z M22 36 Q10 48 4 42 Q12 36 24 30Z M54 16 Q66 8 70 12 Q62 18 52 21Z M54 34 Q66 42 70 38 Q62 32 52 29Z" fill="currentColor" opacity=".8"/></g><ellipse cx="38" cy="25" rx="20" ry="14" fill="currentColor"/><path d="M28 18 L38 14 L48 18 L48 32 L38 36 L28 32Z M38 14 V36 M28 25 H48" fill="none" stroke="#f6f7f9" stroke-opacity=".35" stroke-width="1.4"/><ellipse cx="62" cy="25" rx="8" ry="6" fill="currentColor"/><circle cx="65" cy="23" r="1.2" fill="#f6f7f9"/></svg>`,
     jelly: `<svg viewBox="0 0 40 70"><path class="bell" d="M4 22 Q4 2 20 2 Q36 2 36 22 Q30 19 26 23 Q20 19 14 23 Q10 19 4 22Z" fill="currentColor" fill-opacity=".55"/><g fill="none" stroke="currentColor" stroke-opacity=".45" stroke-width="1.4" stroke-linecap="round"><path d="M10 23 Q6 36 11 48 T9 66"/><path d="M17 24 Q21 38 16 50 T19 68"/><path d="M24 24 Q20 36 25 48 T22 64"/><path d="M31 23 Q35 34 30 46 T33 60"/></g></svg>`,
     ray: `<svg viewBox="0 0 90 50"><path d="M45 8 Q60 10 86 26 Q62 30 50 40 L46 49 L44 49 L40 40 Q28 30 4 26 Q30 10 45 8Z" fill="currentColor"/><path d="M45 40 Q47 46 52 49" stroke="currentColor" fill="none" stroke-width="1.5"/></svg>`,
     weed: `<svg viewBox="0 0 60 160"><g fill="none" stroke="currentColor" stroke-linecap="round"><path class="sway" style="animation-duration:4.2s" d="M14 160 Q4 130 16 104 T12 54 T20 8" stroke-width="5"/><path class="sway" style="animation-duration:5.1s" d="M32 160 Q42 128 30 98 T36 46 T30 20" stroke-width="6" opacity=".8"/><path class="sway" style="animation-duration:3.6s" d="M48 160 Q40 140 50 118 T46 76" stroke-width="4" opacity=".65"/></g></svg>`,
     coral: `<svg viewBox="0 0 90 90"><g class="sway" style="animation-duration:7s" fill="none" stroke="currentColor" stroke-width="7" stroke-linecap="round"><path d="M45 90 V54 M45 62 Q30 52 28 30 M28 42 Q16 36 14 20 M45 56 Q62 46 62 24 M62 36 Q74 30 76 14 M45 54 V20"/></g><g fill="currentColor"><circle cx="28" cy="28" r="4.5"/><circle cx="14" cy="18" r="4"/><circle cx="62" cy="22" r="4.5"/><circle cx="76" cy="12" r="4"/><circle cx="45" cy="18" r="5"/></g></svg>`,
-    star: `<svg viewBox="0 0 40 40"><path d="M20 2 L25 15 L38 15 L27.5 23 L31.5 37 L20 29 L8.5 37 L12.5 23 L2 15 L15 15Z" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><g fill="#faf6ee" opacity=".5"><circle cx="20" cy="12" r="1"/><circle cx="26" cy="18" r="1"/><circle cx="14" cy="18" r="1"/><circle cx="20" cy="22" r="1"/></g></svg>`,
-    shell: `<svg viewBox="0 0 40 36"><path d="M20 34 L4 18 Q4 2 20 2 Q36 2 36 18Z" fill="currentColor"/><path d="M20 34 L10 6 M20 34 L20 3 M20 34 L30 6 M20 34 L5 15 M20 34 L35 15" stroke="#faf6ee" stroke-opacity=".45" stroke-width="1.3"/></svg>`,
+    star: `<svg viewBox="0 0 40 40"><path d="M20 2 L25 15 L38 15 L27.5 23 L31.5 37 L20 29 L8.5 37 L12.5 23 L2 15 L15 15Z" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><g fill="#f6f7f9" opacity=".5"><circle cx="20" cy="12" r="1"/><circle cx="26" cy="18" r="1"/><circle cx="14" cy="18" r="1"/><circle cx="20" cy="22" r="1"/></g></svg>`,
+    shell: `<svg viewBox="0 0 40 36"><path d="M20 34 L4 18 Q4 2 20 2 Q36 2 36 18Z" fill="currentColor"/><path d="M20 34 L10 6 M20 34 L20 3 M20 34 L30 6 M20 34 L5 15 M20 34 L35 15" stroke="#f6f7f9" stroke-opacity=".45" stroke-width="1.3"/></svg>`,
   };
+
+  // Cartoon creatures, bubbles and seabed decorations are off for the formal look;
+  // set to true to bring them back.
+  const PLAYFUL = false;
 
   function initSeaBackground() {
     const bg = document.createElement("div");
@@ -92,9 +96,9 @@
     bg.setAttribute("aria-hidden", "true");
     const rnd = seeded(404);
     // Faint far-away silhouettes give depth behind the cartoon cast
-    const critters = [
-      { art: "fish", n: 3, w: [18, 26], op: [0.08, 0.12], dur: [50, 70], color: "#0b8199" },
-      { art: "ray", n: 2, w: [110, 150], op: [0.05, 0.07], dur: [80, 110], color: "#06303f", sm: true },
+    const critters = !PLAYFUL ? [] : [
+      { art: "fish", n: 3, w: [18, 26], op: [0.08, 0.12], dur: [50, 70], color: "#1b4f8f" },
+      { art: "ray", n: 2, w: [110, 150], op: [0.05, 0.07], dur: [80, 110], color: "#0c2340", sm: true },
     ];
     let html = `<div class="depth"></div><div class="beams"></div><div class="swimmers"><div class="caustics"></div>`;
     const span = ([a, b]) => a + (b - a) * rnd();
@@ -106,7 +110,7 @@
       }
     });
     // Cartoon cast: [species, how many, seconds to cross the screen, extra class]
-    const TOONS = window.SEA_TOONS || {};
+    const TOONS = PLAYFUL ? window.SEA_TOONS || {} : {};
     const cast = [
       ["clownfish", 2, [26, 38]], ["tang", 1, [30, 42]], ["puffer", 1, [44, 60]], ["angelfish", 1, [36, 50]],
       ["goldfish", 1, [28, 40]], ["turtle", 1, [70, 90]], ["whale", 1, [110, 140], "hide-sm"],
@@ -134,15 +138,15 @@
     // A school: a tight cluster of small fish travelling together (one moving layer)
     const schoolTop = 30 + 30 * rnd();
     let school = "";
-    for (let i = 0; i < 9; i++) {
+    for (let i = 0; i < (PLAYFUL ? 9 : 0); i++) {
       school += `<div style="position:absolute;top:${(26 + Math.sin(i * 1.7) * 26).toFixed(0)}px;left:${(i % 3) * 18 + i * 4}px;width:16px;height:8px">${SEA_ART.fish}</div>`;
     }
-    html += `<div class="critter swim-r hide-sm" style="top:${schoolTop.toFixed(1)}%;width:90px;height:60px;color:#0aa2c0;opacity:.18;animation-duration:52s;animation-delay:-8s">${school}</div>`;
-    for (let i = 0; i < 3; i++) {
+    if (PLAYFUL)     html += `<div class="critter swim-r hide-sm" style="top:${schoolTop.toFixed(1)}%;width:90px;height:60px;color:#2f6db5;opacity:.18;animation-duration:52s;animation-delay:-8s">${school}</div>`;
+    for (let i = 0; i < (PLAYFUL ? 3 : 0); i++) {
       const w = 34 + 22 * rnd();
       html += `<div class="critter jelly hide-sm" style="top:${(15 + 60 * rnd()).toFixed(0)}%;left:${(8 + 84 * rnd()).toFixed(0)}%;width:${w.toFixed(0)}px;height:${(w * 1.75).toFixed(0)}px;color:#c084fc;opacity:.16;animation-duration:${(7 + 5 * rnd()).toFixed(1)}s">${SEA_ART.jelly}</div>`;
     }
-    for (let i = 0; i < 10; i++) {
+    for (let i = 0; i < (PLAYFUL ? 10 : 0); i++) {
       const s = 3 + 9 * rnd();
       html += `<span class="bg-bubble" style="left:${(100 * rnd()).toFixed(1)}%;width:${s.toFixed(1)}px;height:${s.toFixed(1)}px;animation-duration:${(16 + 18 * rnd()).toFixed(1)}s;animation-delay:${(-30 * rnd()).toFixed(1)}s;--drift:${(-24 + 48 * rnd()).toFixed(0)}px"></span>`;
     }
@@ -161,16 +165,17 @@
 
   // Seaweed, coral, starfish and shells resting at the bottom of sand-coloured sections
   const SEABED = {
-    about: [["weed", "left-[1%] bottom-0 h-40 w-16", "#0f9a84", 0.22], ["coral", "right-[3%] bottom-0 h-24 w-24", "#d7263d", 0.2], ["star", "right-[12%] bottom-4 h-8 w-8", "#f4b400", 0.35]],
-    governor: [["shell", "left-[2%] bottom-6 h-7 w-8", "#e2674f", 0.3], ["weed", "right-[1%] bottom-0 h-36 w-14", "#0aa2c0", 0.2]],
-    twin: [["coral", "left-[1%] bottom-0 h-20 w-20 hide-sm", "#1e4fa3", 0.18], ["star", "right-[4%] bottom-8 h-7 w-7", "#e2674f", 0.35]],
-    announcements: [["weed", "right-[1%] bottom-0 h-44 w-16", "#0f9a84", 0.2], ["shell", "left-[3%] bottom-6 h-8 w-9", "#f4b400", 0.32]],
+    about: [["weed", "left-[1%] bottom-0 h-40 w-16", "#2e7d5b", 0.22], ["coral", "right-[3%] bottom-0 h-24 w-24", "#d7263d", 0.2], ["star", "right-[12%] bottom-4 h-8 w-8", "#f4b400", 0.35]],
+    governor: [["shell", "left-[2%] bottom-6 h-7 w-8", "#b07a1f", 0.3], ["weed", "right-[1%] bottom-0 h-36 w-14", "#2f6db5", 0.2]],
+    twin: [["coral", "left-[1%] bottom-0 h-20 w-20 hide-sm", "#1e4fa3", 0.18], ["star", "right-[4%] bottom-8 h-7 w-7", "#b07a1f", 0.35]],
+    announcements: [["weed", "right-[1%] bottom-0 h-44 w-16", "#2e7d5b", 0.2], ["shell", "left-[3%] bottom-6 h-8 w-9", "#f4b400", 0.32]],
     map: [["coral", "right-[2%] bottom-0 h-24 w-24 hide-sm", "#d7263d", 0.18]],
-    explore: [["weed", "left-[1%] bottom-0 h-40 w-16", "#0aa2c0", 0.22], ["star", "left-[7%] bottom-5 h-8 w-8", "#f4b400", 0.4], ["coral", "right-[2%] bottom-0 h-28 w-28", "#0f9a84", 0.18]],
-    services: [["shell", "right-[4%] bottom-6 h-7 w-8", "#e2674f", 0.3], ["weed", "left-[1%] bottom-0 h-36 w-14", "#0f9a84", 0.2]],
-    poll: [["coral", "left-[3%] bottom-0 h-28 w-28", "#d7263d", 0.2], ["weed", "right-[3%] bottom-0 h-44 w-16", "#0aa2c0", 0.22], ["star", "right-[10%] bottom-6 h-7 w-7", "#f4b400", 0.4]],
+    explore: [["weed", "left-[1%] bottom-0 h-40 w-16", "#2f6db5", 0.22], ["star", "left-[7%] bottom-5 h-8 w-8", "#f4b400", 0.4], ["coral", "right-[2%] bottom-0 h-28 w-28", "#2e7d5b", 0.18]],
+    services: [["shell", "right-[4%] bottom-6 h-7 w-8", "#b07a1f", 0.3], ["weed", "left-[1%] bottom-0 h-36 w-14", "#2e7d5b", 0.2]],
+    poll: [["coral", "left-[3%] bottom-0 h-28 w-28", "#d7263d", 0.2], ["weed", "right-[3%] bottom-0 h-44 w-16", "#2f6db5", 0.22], ["star", "right-[10%] bottom-6 h-7 w-7", "#f4b400", 0.4]],
   };
   function initSeabed() {
+    if (!PLAYFUL) return;
     Object.entries(SEABED).forEach(([id, items]) => {
       const sec = document.getElementById(id);
       items.forEach(([art, cls, color, op]) => {
@@ -224,7 +229,7 @@
           ${esc(t(`nav.g.${g.id}`))}${icon("chevron-down", "h-3.5 w-3.5 transition-transform group-hover:rotate-180")}
         </button>
         <div class="pointer-events-none absolute left-0 top-full pt-2 opacity-0 transition-all duration-200 group-focus-within:pointer-events-auto group-focus-within:opacity-100 group-hover:pointer-events-auto group-hover:opacity-100">
-          <div class="glass-strong min-w-52 rounded-2xl p-2">
+          <div class="glass-strong min-w-52 rounded-xl p-2">
             ${g.items.map((i) => `<a href="#${i}" class="font-display block rounded-lg px-3.5 py-2.5 text-sm font-medium text-slate-600 transition-colors hover:bg-azure/10 hover:text-azure">${esc(t(`nav.${i}`))}</a>`).join("")}
           </div>
         </div>
@@ -251,7 +256,7 @@
     $("#util-bar").classList.toggle("border-white/12", !scrolled);
 
     const idle = scrolled ? "text-slate-600 hover:bg-azure/10 hover:text-azure" : "text-white/80 hover:bg-white/15 hover:text-white";
-    const active = scrolled ? "bg-azure text-white" : "bg-white text-[#06303f]";
+    const active = scrolled ? "bg-azure text-white" : "bg-white text-[#0c2340]";
     $$(".util-btn").forEach((b) => {
       b.dataset.base ??= b.className;
       const on = b.dataset.font ? b.dataset.font === settings.font : b.dataset.lang === settings.lang;
@@ -351,12 +356,7 @@
       const lift = +(el.dataset.lift || 0);
       const set = (rx, ry, y) => (el.style.transform = `perspective(900px) rotateX(${rx}deg) rotateY(${ry}deg) translateY(${y}px)`);
       set(0, 0, 0);
-      el.addEventListener("mousemove", (e) => {
-        const r = el.getBoundingClientRect();
-        const x = (e.clientX - r.left) / r.width - 0.5;
-        const y = (e.clientY - r.top) / r.height - 0.5;
-        set(-8 * y, 10 * x, -lift);
-      });
+      el.addEventListener("mouseenter", () => set(0, 0, -Math.min(lift, 3)));
       el.addEventListener("mouseleave", () => set(0, 0, 0));
     });
   }
@@ -418,13 +418,13 @@
 
   function initHero() {
     const rnd = seeded(2035);
-    $("#hero-stars").innerHTML = Array.from({ length: 50 }, () => {
+    if (PLAYFUL) $("#hero-stars").innerHTML = Array.from({ length: 50 }, () => {
       const x = 100 * rnd(), y = 38 * rnd(), s = 1 + 1.5 * rnd(), d = 4 * rnd();
       return `<span class="hero-star absolute rounded-full bg-white" style="left:${x}%;top:${y}%;width:${s}px;height:${s}px;animation-delay:${d.toFixed(2)}s"></span>`;
     }).join("");
     // Bubbles drifting up through the hero
     const brnd = seeded(71);
-    $("#hero-bubbles").innerHTML = Array.from({ length: 26 }, () => {
+    if (PLAYFUL) $("#hero-bubbles").innerHTML = Array.from({ length: 26 }, () => {
       const size = 4 + 14 * brnd();
       return `<span class="bubble" style="left:${(100 * brnd()).toFixed(1)}%;width:${size.toFixed(1)}px;height:${size.toFixed(1)}px;` +
         `animation-duration:${(9 + 10 * brnd()).toFixed(1)}s;animation-delay:${(-18 * brnd()).toFixed(1)}s;--drift:${(-20 + 40 * brnd()).toFixed(0)}px"></span>`;
@@ -451,7 +451,7 @@
   // Tabs with a sliding active pill
   function tabs(container, items, active, onChange) {
     container.classList.add("relative");
-    container.innerHTML = `<span class="tab-pill absolute rounded-xl bg-azure shadow-[0_4px_14px_#0b819944] transition-all duration-500 ease-[cubic-bezier(.34,1.3,.64,1)]"></span>` +
+    container.innerHTML = `<span class="tab-pill absolute rounded-xl bg-azure shadow-[0_4px_14px_#1b4f8f44] transition-all duration-500 ease-[cubic-bezier(.34,1.3,.64,1)]"></span>` +
       items.map((it) => `<button data-id="${it.id}" class="font-display relative flex items-center gap-2 rounded-xl ${it.pad || "px-5"} py-2.5 text-sm font-semibold transition-colors">${icon(it.icon, "relative z-10 h-4 w-4")}<span class="relative z-10">${esc(it.label())}</span></button>`).join("");
     const pill = $(".tab-pill", container);
     let current = active;
@@ -597,7 +597,7 @@
   /* ------------------------------------------------------------------ */
   function renderGovernor() {
     mount($("#gov-activities"), D.activities.map((a, i) => `
-      <div data-reveal style="--ry:24px;--rd:${0.08 * i}s" class="h-full"><a href="${a.url}" target="_blank" rel="noopener noreferrer" class="rounded-2xl glass holo-border group flex h-full flex-col overflow-hidden" data-tilt data-lift="5">
+      <div data-reveal style="--ry:24px;--rd:${0.08 * i}s" class="h-full"><a href="${a.url}" target="_blank" rel="noopener noreferrer" class="rounded-xl glass holo-border group flex h-full flex-col overflow-hidden" data-tilt data-lift="5">
         <div class="relative aspect-[550/400] overflow-hidden bg-abyss">
           <img src="${a.photo}" alt="${esc(a.person)} ${esc(a.title)}" loading="lazy" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
           <span class="font-display absolute top-3 left-3 flex items-center gap-1.5 rounded-full bg-white/95 px-2.5 py-1 text-[10px] font-semibold text-navy shadow-sm">${icon("calendar-days", "h-3 w-3 text-azure")}${esc(a.date)}</span>
@@ -625,7 +625,7 @@
     const drawLegend = () => {
       legend.innerHTML = D.zones.map((z) => {
         const on = twin.selected === z.id;
-        return `<button data-zone="${z.id}" class="pointer-events-auto flex items-center gap-2 rounded-lg px-3 py-1.5 text-left text-xs backdrop-blur transition-all ${on ? "bg-white opacity-100 shadow-[0_4px_14px_#0b819933] ring-1 ring-azure/30" : "bg-white/85 opacity-85 hover:bg-white hover:opacity-100"}">
+        return `<button data-zone="${z.id}" class="pointer-events-auto flex items-center gap-2 rounded-lg px-3 py-1.5 text-left text-xs backdrop-blur transition-all ${on ? "bg-white opacity-100 shadow-[0_4px_14px_#1b4f8f33] ring-1 ring-azure/30" : "bg-white/85 opacity-85 hover:bg-white hover:opacity-100"}">
           <span class="h-2 w-2 rounded-full" style="background:${z.color}"></span><span class="font-display text-navy">${esc(z.name)}</span></button>`;
       }).join("");
     };
@@ -637,7 +637,7 @@
     const drawPanel = () => {
       const z = D.zones.find((x) => x.id === twin.selected);
       if (!z) { panel.innerHTML = ""; return; }
-      panel.innerHTML = `<div class="glass-strong holo-border animate-panel-in mt-6 rounded-2xl p-6 sm:p-8">
+      panel.innerHTML = `<div class="glass-strong holo-border animate-panel-in mt-6 rounded-xl p-6 sm:p-8">
         <div class="mb-4 flex items-start justify-between">
           <div><span class="font-display text-xs tracking-[0.25em] uppercase" style="color:${z.color}">Smart Zone</span>
             <h3 class="font-display mt-1 text-2xl font-bold text-navy">${esc(z.name)}</h3>
@@ -666,7 +666,7 @@
   /* ------------------------------------------------------------------ */
   const LIVE_IDS = ["weather", "pm25", "tourists", "energy"];
   const LIVE_ICONS = { weather: "thermometer", pm25: "wind", tourists: "users", energy: "zap" };
-  const STATUS = { good: { label: "ดีมาก", color: "#0f9a84" }, normal: { label: "ปกติ", color: "#0b8199" }, warning: { label: "เฝ้าระวัง", color: "#e2674f" } };
+  const STATUS = { good: { label: "ดีมาก", color: "#2e7d5b" }, normal: { label: "ปกติ", color: "#1b4f8f" }, warning: { label: "เฝ้าระวัง", color: "#b07a1f" } };
   const TREND_IDS = ["visitors", "ev", "air", "economy"];
   const MONTHS = ["ม.ค.", "ก.พ.", "มี.ค.", "เม.ย.", "พ.ค.", "มิ.ย.", "ก.ค.", "ส.ค.", "ก.ย.", "ต.ค.", "พ.ย.", "ธ.ค."];
 
@@ -674,7 +674,7 @@
     const metrics = D.liveMetrics.filter((m) => LIVE_IDS.includes(m.id));
     mount($("#live-metrics"), metrics.map((m) => {
       const st = STATUS[m.status];
-      return `<div class="rounded-2xl glass holo-border p-5" data-tilt>
+      return `<div class="rounded-xl glass holo-border p-5" data-tilt>
         <div class="flex items-center justify-between">
           <span class="flex items-center gap-2 text-xs text-slate-500">${icon(LIVE_ICONS[m.id], "h-4 w-4 text-azure")}${esc(m.label)}</span>
           <span class="flex items-center gap-1.5 rounded-full px-2 py-0.5 text-[10px] font-semibold" style="color:${st.color};background:${st.color}14"><span class="h-1.5 w-1.5 rounded-full animate-blink" style="background:${st.color}"></span>${st.label}</span>
@@ -701,13 +701,13 @@
       const pts = m.series.map((v, i) => ({ x: 8 + (i / (m.series.length - 1)) * 304, y: 104 - ((v - min) / span) * 84 }));
       const line = pts.map((p, i) => `${i ? "L" : "M"}${p.x.toFixed(1)},${p.y.toFixed(1)}`).join(" ");
       const w = 304 / m.series.length;
-      return `<div data-reveal style="--ry:28px"><div class="rounded-2xl glass holo-border p-5 h-full" data-tilt>
+      return `<div data-reveal style="--ry:28px"><div class="rounded-xl glass holo-border p-5 h-full" data-tilt>
         <div class="mb-1 flex items-start justify-between gap-2"><p class="text-sm text-slate-500">${esc(m.label)}</p>
           <span class="flex items-center gap-1 rounded-full px-2 py-0.5 text-[11px] font-semibold ${good ? "bg-mint/10 text-mint" : "bg-amber/10 text-amber"}">${icon(up ? "trending-up" : "trending-down", "h-3 w-3")}${up ? "+" : ""}${m.change}%</span></div>
         <p class="font-display mb-3 text-2xl font-bold text-navy tabular-nums">${fmt(m.current, 0, m.decimals)}<span class="ml-1.5 text-xs font-medium text-slate-500">${esc(m.unit)}</span></p>
         <div class="chart relative" data-id="${m.id}">
           <svg viewBox="0 0 320 120" class="w-full">
-            ${[0.25, 0.5, 0.75].map((f) => `<line x1="8" x2="312" y1="${104 - 84 * f}" y2="${104 - 84 * f}" stroke="rgba(6,48,63,0.08)" stroke-dasharray="3 5"></line>`).join("")}
+            ${[0.25, 0.5, 0.75].map((f) => `<line x1="8" x2="312" y1="${104 - 84 * f}" y2="${104 - 84 * f}" stroke="rgba(12,35,64,0.08)" stroke-dasharray="3 5"></line>`).join("")}
             <path d="${line} L312,112 L8,112 Z" fill="${m.color}" fill-opacity="0.1"></path>
             <path class="draw-line" d="${line}" fill="none" stroke="${m.color}" stroke-width="2.2" stroke-linecap="round" pathLength="1"></path>
             <g class="hover-mark" style="display:none"><line class="hl" y1="8" y2="112" stroke="${m.color}" stroke-opacity=".35" stroke-dasharray="2 3"></line><circle class="hc" r="4.5" fill="${m.color}"></circle><circle class="hr" r="8" fill="none" stroke="${m.color}" stroke-opacity=".4"></circle></g>
@@ -750,18 +750,18 @@
       cells.map((d) => {
         if (!d) return "<span></span>";
         const sel = d === calDay, has = eventDays.has(d);
-        const cls = sel ? "bg-azure text-white shadow-[0_6px_18px_#0b819955]" : has ? "bg-azure/8 text-navy hover:bg-azure/15" : "text-slate-500 hover:bg-navy/5";
+        const cls = sel ? "bg-azure text-white shadow-[0_6px_18px_#1b4f8f55]" : has ? "bg-azure/8 text-navy hover:bg-azure/15" : "text-slate-500 hover:bg-navy/5";
         return `<button data-day="${d}" aria-pressed="${sel}" aria-label="กิจกรรมวันที่ ${d}" class="font-display relative flex aspect-square flex-col items-center justify-center rounded-xl text-sm font-medium transition-all ${cls}">${d}${has ? `<span class="absolute bottom-1.5 h-1 w-1 rounded-full ${sel ? "bg-white" : "bg-azure"}"></span>` : ""}</button>`;
       }).join("");
     $("#cal-heading").textContent = `${t("sec.calendar.eventsOn")} ${calDay} ${settings.lang === "th" ? "มิ.ย. 2569" : "Jun 2026"}`;
     const list = D.events.filter((e) => e.day === calDay);
     mount($("#cal-events"), `<div class="tab-swap space-y-3">${list.length ? list.map((e) => `
-      <div class="rounded-2xl glass holo-border p-5">${chip(e.category, e.color)}
+      <div class="rounded-xl glass holo-border p-5">${chip(e.category, e.color)}
         <h4 class="font-display mt-2.5 text-sm leading-snug font-semibold text-navy">${esc(e.title)}</h4>
         <div class="mt-3 space-y-1.5 text-xs text-slate-500">
           <p class="flex items-center gap-1.5">${icon("clock", "h-3 w-3 shrink-0 text-azure")}${esc(e.time)}</p>
           <p class="flex items-center gap-1.5">${icon("map-pin", "h-3 w-3 shrink-0 text-azure")}${esc(e.location)}</p>
-        </div></div>`).join("") : `<div class="rounded-2xl glass holo-border p-6 text-center text-sm text-slate-500">${esc(t("sec.calendar.noEvents"))}</div>`}</div>`);
+        </div></div>`).join("") : `<div class="rounded-xl glass holo-border p-6 text-center text-sm text-slate-500">${esc(t("sec.calendar.noEvents"))}</div>`}</div>`);
   }
   function initCalendar() {
     $("#cal-grid").addEventListener("click", (e) => {
@@ -775,10 +775,10 @@
   /* ------------------------------------------------------------------ */
   /* Announcements                                                       */
   /* ------------------------------------------------------------------ */
-  const PROC_COLORS = { "ประกาศจัดซื้อจัดจ้าง": "#0b8199", "ประกาศผู้ชนะ": "#0f9d76", "ร่าง TOR": "#c2410c", "ราคากลาง": "#0aa2c0" };
+  const PROC_COLORS = { "ประกาศจัดซื้อจัดจ้าง": "#1b4f8f", "ประกาศผู้ชนะ": "#0f9d76", "ร่าง TOR": "#c2410c", "ราคากลาง": "#2f6db5" };
   const ANNOUNCE_TABS = [["pr", "megaphone"], ["procurement", "gavel"], ["datasets", "library"], ["eoffice", "monitor-check"],
     ["agenda", "calendar-clock"], ["downloads", "folder-down"], ["damrongdhama", "scale"]];
-  const DOC_FORMAT = { PDF: ["file-text", "#c2410c"], WEB: ["globe", "#1e4fa3"], DATA: ["database", "#0f9a84"] };
+  const DOC_FORMAT = { PDF: ["file-text", "#c2410c"], WEB: ["globe", "#1e4fa3"], DATA: ["database", "#2e7d5b"] };
   const ext = (url) => `href="${url}" target="_blank" rel="noopener noreferrer"`;
   const iconTile = (name, c, size = "h-11 w-11") =>
     `<span class="flex ${size} shrink-0 items-center justify-center rounded-xl border" style="color:${c};border-color:${c}33;background:${c}0d">${icon(name, "h-5 w-5")}</span>`;
@@ -788,7 +788,7 @@
     if (tab === "datasets") {
       mount(body, `<div class="tab-swap grid grid-cols-1 gap-3 lg:grid-cols-2">${D.provinceDocs.map((d, i) => {
         const [ic, c] = DOC_FORMAT[d.format] || DOC_FORMAT.PDF;
-        return `<a ${ext(d.url)} class="rounded-2xl glass holo-border group flex items-center gap-4 p-4 sm:p-5" data-reveal style="--ry:18px;--rd:${0.04 * i}s">
+        return `<a ${ext(d.url)} class="rounded-xl glass holo-border group flex items-center gap-4 p-4 sm:p-5" data-reveal style="--ry:18px;--rd:${0.04 * i}s">
           ${iconTile(ic, c)}
           <div class="min-w-0 flex-1"><h3 class="font-display truncate text-sm font-semibold text-navy transition-colors group-hover:text-azure sm:text-base">${esc(d.title)}</h3>
             <p class="mt-0.5 text-xs text-slate-500"><span class="font-display font-semibold" style="color:${c}">${d.format}</span> · ${esc(d.note)}</p></div>
@@ -801,7 +801,7 @@
       mount(body, `<div class="tab-swap">
         <p class="mb-5 flex items-center gap-2 text-sm text-slate-500">${icon("lock-keyhole", "h-4 w-4 text-azure")}${esc(t("sec.announcements.eofficeNote"))}</p>
         <div class="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">${D.eoffice.map((e, i) => `
-          <div data-reveal style="--ry:22px;--rd:${0.06 * i}s" class="h-full"><a ${ext(e.url)} class="rounded-2xl glass holo-border group flex h-full flex-col p-6" data-tilt data-lift="4">
+          <div data-reveal style="--ry:22px;--rd:${0.06 * i}s" class="h-full"><a ${ext(e.url)} class="rounded-xl glass holo-border group flex h-full flex-col p-6" data-tilt data-lift="4">
             ${iconTile(e.icon, e.color, "h-12 w-12")}
             <h3 class="font-display mt-4 text-base font-semibold text-navy transition-colors group-hover:text-azure">${esc(e.name)}</h3>
             <p class="mt-1.5 flex-1 text-xs leading-relaxed text-slate-500">${esc(e.description)}</p>
@@ -814,7 +814,7 @@
       mount(body, `<div class="tab-swap">
         <p class="mb-5 flex items-center gap-2 text-xs text-slate-500">${icon("info", "h-3.5 w-3.5 text-amber")}${esc(t("util.sampleAgenda"))}</p>
         <div class="grid grid-cols-1 gap-6 lg:grid-cols-3">${days.map((day, di) => `
-          <div data-reveal style="--ry:22px;--rd:${0.08 * di}s"><div class="rounded-2xl glass holo-border h-full p-5">
+          <div data-reveal style="--ry:22px;--rd:${0.08 * di}s"><div class="rounded-xl glass holo-border h-full p-5">
             <p class="font-display mb-4 flex items-center gap-2 text-sm font-bold text-navy">${icon("calendar-days", "h-4 w-4 text-azure")}${esc(day)}</p>
             <ol class="relative space-y-5 border-l-2 border-azure/20 pl-5">${D.agenda.filter((a) => a.day === day).map((a) => `
               <li class="relative"><span class="absolute top-1.5 -left-[27px] h-3 w-3 rounded-full border-2 border-white bg-azure shadow"></span>
@@ -828,7 +828,7 @@
       mount(body, `<div class="tab-swap">
         <p class="mb-5 flex items-center gap-2 text-sm text-slate-500">${icon("folder-open", "h-4 w-4 text-azure")}${esc(t("sec.announcements.downloadsNote"))}</p>
         <div class="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">${D.workGroups.map((g, i) => `
-          <div data-reveal style="--ry:22px;--rd:${0.05 * i}s" class="h-full"><a ${ext(g.url)} class="rounded-2xl glass holo-border group flex h-full items-start gap-4 p-5" data-tilt data-lift="4">
+          <div data-reveal style="--ry:22px;--rd:${0.05 * i}s" class="h-full"><a ${ext(g.url)} class="rounded-xl glass holo-border group flex h-full items-start gap-4 p-5" data-tilt data-lift="4">
             ${iconTile(g.icon, g.color)}
             <div class="min-w-0 flex-1"><h3 class="font-display text-sm leading-snug font-semibold text-navy transition-colors group-hover:text-azure sm:text-base">${esc(g.name)}</h3>
               <p class="mt-1 text-xs leading-relaxed text-slate-500">${esc(g.description)}</p>
@@ -839,23 +839,23 @@
     if (tab === "damrongdhama") {
       const dd = D.damrongdhama;
       mount(body, `<div class="tab-swap grid grid-cols-1 gap-6 lg:grid-cols-5">
-        <div class="lg:col-span-2" data-reveal style="--ry:22px"><div class="relative h-full overflow-hidden rounded-2xl bg-[#06303f] p-7 text-white">
+        <div class="lg:col-span-2" data-reveal style="--ry:22px"><div class="relative h-full overflow-hidden rounded-xl bg-[#0c2340] p-7 text-white">
           <span class="rayong-ribbon absolute inset-x-0 top-0 h-1" aria-hidden="true"></span>
           ${icon("scale", "absolute -right-4 -bottom-6 h-40 w-40 text-white/5")}
           <p class="font-display text-lg font-bold">${esc(t("sec.announcements.damrong.title"))}</p>
           <p class="mt-1 text-sm text-white/70">${esc(t("sec.announcements.damrong.lead"))}</p>
           <a href="tel:${dd.hotline}" class="mt-6 flex items-center gap-4">
-            <span class="flex h-14 w-14 items-center justify-center rounded-2xl bg-white/10">${icon("phone-call", "h-7 w-7 text-[#f4b400]")}</span>
+            <span class="flex h-14 w-14 items-center justify-center rounded-xl bg-white/10">${icon("phone-call", "h-7 w-7 text-[#f4b400]")}</span>
             <span><span class="font-display block text-5xl leading-none font-bold tracking-tight">${dd.hotline}</span><span class="mt-1 block text-xs text-white/70">${esc(dd.hours)}</span></span></a>
           <p class="mt-6 flex items-start gap-2 border-t border-white/10 pt-4 text-xs text-white/70">${icon("map-pin", "mt-0.5 h-3.5 w-3.5 shrink-0")}${esc(dd.address)}</p>
         </div></div>
         <div class="flex flex-col gap-6 lg:col-span-3">
           <div class="grid grid-cols-1 gap-3 sm:grid-cols-2">${dd.actions.map((a, i) => `
-            <a ${ext(a.url)} class="rounded-2xl glass holo-border group flex items-center gap-3 p-4" data-reveal style="--ry:18px;--rd:${0.05 * i}s">
-              ${iconTile(a.icon, i < 2 ? "#0b8199" : "#d7263d", "h-10 w-10")}
+            <a ${ext(a.url)} class="rounded-xl glass holo-border group flex items-center gap-3 p-4" data-reveal style="--ry:18px;--rd:${0.05 * i}s">
+              ${iconTile(a.icon, i < 2 ? "#1b4f8f" : "#d7263d", "h-10 w-10")}
               <span class="font-display flex-1 text-sm font-semibold text-navy transition-colors group-hover:text-azure">${esc(a.label)}</span>
               ${icon("arrow-up-right", "h-4 w-4 shrink-0 text-slate-400 transition-colors group-hover:text-azure")}</a>`).join("")}</div>
-          <div class="rounded-2xl glass holo-border p-5" data-reveal style="--ry:18px;--rd:.3s">
+          <div class="rounded-xl glass holo-border p-5" data-reveal style="--ry:18px;--rd:.3s">
             <p class="font-display mb-4 text-sm font-bold text-navy">${esc(t("sec.announcements.damrong.steps"))}</p>
             <ol class="grid grid-cols-2 gap-4 sm:grid-cols-4">${dd.steps.map((s, i) => `
               <li class="flex flex-col items-start gap-2"><span class="font-display flex h-8 w-8 items-center justify-center rounded-full bg-azure text-sm font-bold text-white">${i + 1}</span>
@@ -867,7 +867,7 @@
     if (tab === "pr") {
       mount(body, `<div class="tab-swap grid grid-cols-1 gap-5 sm:grid-cols-2">${D.pr.map((a, i) => `
         <div data-parallax="${i % 2 === 0 ? 20 : -16}"><div data-reveal style="--ry:24px;--rd:${0.06 * i}s" class="h-full">
-          <div class="rounded-2xl glass holo-border group flex h-full cursor-pointer flex-col p-6" data-tilt data-lift="4">
+          <div class="rounded-xl glass holo-border group flex h-full cursor-pointer flex-col p-6" data-tilt data-lift="4">
             <div class="mb-3 flex items-center justify-between gap-3">${chip("ประชาสัมพันธ์", a.color, "px-3 py-1 text-[10px] tracking-wider")}
               <span class="flex items-center gap-1.5 text-[11px] text-slate-500">${icon("calendar-days", "h-3 w-3")}${esc(a.date)}</span></div>
             <h3 class="font-display text-base leading-snug font-semibold text-navy transition-colors group-hover:text-azure">${esc(a.title)}</h3>
@@ -876,8 +876,8 @@
           </div></div></div>`).join("")}</div>`);
     } else {
       mount(body, `<div class="tab-swap space-y-4">${D.procurement.map((p, i) => {
-        const c = PROC_COLORS[p.type] || "#0b8199";
-        return `<div data-reveal style="--ry:20px;--rd:${0.05 * i}s"><div class="rounded-2xl glass holo-border group cursor-pointer p-5 sm:p-6" data-tilt data-lift="3">
+        const c = PROC_COLORS[p.type] || "#1b4f8f";
+        return `<div data-reveal style="--ry:20px;--rd:${0.05 * i}s"><div class="rounded-xl glass holo-border group cursor-pointer p-5 sm:p-6" data-tilt data-lift="3">
           <div class="flex items-start gap-4">
             <span class="mt-0.5 flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border" style="color:${c};border-color:${c}33;background:${c}0d">${icon("file-text", "h-5 w-5")}</span>
             <div class="min-w-0 flex-1">
@@ -898,14 +898,14 @@
   /* ------------------------------------------------------------------ */
   /* Resources                                                           */
   /* ------------------------------------------------------------------ */
-  const FORMAT = { PDF: ["file-text", "#c2410c"], XLSX: ["table-2", "#0f9a84"], CSV: ["table-2", "#0aa2c0"], GIS: ["map", "#6d28d9"] };
+  const FORMAT = { PDF: ["file-text", "#c2410c"], XLSX: ["table-2", "#2e7d5b"], CSV: ["table-2", "#2f6db5"], GIS: ["map", "#6d28d9"] };
   const MEDIA_ICON = { video: "circle-play", infographic: "chart-pie", image: "image" };
   function renderResources(tab) {
     const body = $("#resources-body");
     if (tab === "data") {
       mount(body, `<div class="tab-swap space-y-3">${D.datasets.map((d, i) => {
-        const [ic, c] = FORMAT[d.format] || ["file-text", "#0b8199"];
-        return `<div class="rounded-2xl glass holo-border group flex items-center gap-4 p-4 sm:p-5" data-reveal style="--ry:18px;--rd:${0.05 * i}s">
+        const [ic, c] = FORMAT[d.format] || ["file-text", "#1b4f8f"];
+        return `<div class="rounded-xl glass holo-border group flex items-center gap-4 p-4 sm:p-5" data-reveal style="--ry:18px;--rd:${0.05 * i}s">
           <span class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border" style="color:${c};border-color:${c}33;background:${c}0d">${icon(ic, "h-5 w-5")}</span>
           <div class="min-w-0 flex-1"><h3 class="font-display truncate text-sm font-semibold text-navy sm:text-base">${esc(d.title)}</h3>
             <p class="mt-0.5 text-xs text-slate-500"><span class="font-display font-semibold" style="color:${c}">${d.format}</span> · ${esc(d.size)} · ${esc(t("sec.resources.updated"))} ${esc(d.updated)}</p></div>
@@ -915,7 +915,7 @@
     } else {
       mount(body, `<div class="tab-swap grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">${D.media.map((m, i) => `
         <div data-parallax="${i % 2 === 0 ? 20 : -14}"><div data-reveal style="--ry:22px;--rd:${0.07 * i}s" class="h-full">
-          <div class="rounded-2xl glass holo-border group flex h-full cursor-pointer flex-col overflow-hidden" data-tilt data-lift="5">
+          <div class="rounded-xl glass holo-border group flex h-full cursor-pointer flex-col overflow-hidden" data-tilt data-lift="5">
             <div class="relative flex h-32 items-center justify-center overflow-hidden" style="background:${m.art}">
               <div class="grid-overlay absolute inset-0 opacity-40"></div>
               ${icon(MEDIA_ICON[m.type] || "image", "relative h-10 w-10 text-white/90 transition-transform group-hover:scale-110", 'stroke-width="1.4"')}
@@ -944,25 +944,25 @@
       list.innerHTML = D.attractions.map((a) => {
         const on = mapState.attraction === a.id, dim = mapState.attraction && !on;
         return `<button data-attr="${a.id}" class="group flex w-full items-center gap-4 py-3.5 text-left transition-opacity ${dim ? "opacity-50" : ""}">
-          <span class="relative h-14 w-20 shrink-0 overflow-hidden rounded-xl border transition-all ${on ? "border-[#72e0d4]/70 ring-2 ring-[#72e0d4]/40" : "border-white/15"}">
+          <span class="relative h-14 w-20 shrink-0 overflow-hidden rounded-xl border transition-all ${on ? "border-[#e3c26f]/70 ring-2 ring-[#e3c26f]/40" : "border-white/15"}">
             <img src="${a.photo}" alt="${esc(a.name)}" loading="lazy" class="absolute inset-0 h-full w-full object-cover transition-transform duration-300 group-hover:scale-110" /></span>
-          <span><span class="font-display block text-sm font-semibold text-white group-hover:text-[#a3efe6]">${esc(a.name)}</span>
+          <span><span class="font-display block text-sm font-semibold text-white group-hover:text-[#efdba6]">${esc(a.name)}</span>
             <span class="mt-0.5 block text-xs text-slate-400">${esc(a.district)}</span></span></button>`;
       }).join("");
       const a = D.attractions.find((x) => x.id === mapState.attraction);
       const d = D.districts.find((x) => x.id === mapState.district);
       if (a) {
-        popup.innerHTML = `<div class="chat-in absolute right-5 bottom-5 z-20 w-52 overflow-hidden rounded-2xl border border-white/20 bg-[#04293a]/85 shadow-[0_18px_40px_-12px_rgba(0,0,0,0.7)] backdrop-blur sm:w-64">
+        popup.innerHTML = `<div class="chat-in absolute right-5 bottom-5 z-20 w-52 overflow-hidden rounded-xl border border-white/20 bg-[#04293a]/85 shadow-[0_18px_40px_-12px_rgba(0,0,0,0.7)] backdrop-blur sm:w-64">
           <span class="relative block h-28 sm:h-36"><img src="${a.photo}" alt="${esc(a.name)}" class="absolute inset-0 h-full w-full object-cover" /></span>
           <span class="block px-4 py-3"><span class="font-display block text-sm font-semibold text-white">${esc(a.name)}</span><span class="mt-0.5 block text-[11px] text-slate-400">${esc(a.district)}</span></span></div>`;
       } else if (d) {
-        popup.innerHTML = `<div class="chat-in absolute right-5 bottom-5 z-20 w-[calc(100%-2.5rem)] overflow-hidden rounded-2xl border border-white/20 bg-[#04293a]/90 p-5 shadow-[0_18px_40px_-12px_rgba(0,0,0,0.7)] backdrop-blur sm:w-80">
+        popup.innerHTML = `<div class="chat-in absolute right-5 bottom-5 z-20 w-[calc(100%-2.5rem)] overflow-hidden rounded-xl border border-white/20 bg-[#04293a]/90 p-5 shadow-[0_18px_40px_-12px_rgba(0,0,0,0.7)] backdrop-blur sm:w-80">
           <div class="flex items-start justify-between gap-3">
-            <div><h4 class="font-display text-base font-bold text-white">${esc(d.name)}</h4><p class="mt-0.5 text-[11px] leading-relaxed text-[#a3efe6]">${esc(d.tagline)}</p></div>
+            <div><h4 class="font-display text-base font-bold text-white">${esc(d.name)}</h4><p class="mt-0.5 text-[11px] leading-relaxed text-[#efdba6]">${esc(d.tagline)}</p></div>
             <button data-close class="shrink-0 rounded-lg border border-white/15 p-1.5 text-white/60 transition-colors hover:bg-white/10 hover:text-white" aria-label="ปิดรายละเอียดอำเภอ">${icon("x", "h-3.5 w-3.5")}</button>
           </div>
           <p class="mt-2.5 text-xs leading-relaxed text-slate-300/90">${esc(d.description)}</p>
-          <div class="mt-3 flex flex-wrap gap-1.5">${d.highlights.map((h) => `<span class="flex items-center gap-1 rounded-full border border-[#ff7a5c]/35 bg-[#ff7a5c]/10 px-2.5 py-0.5 text-[10px] text-[#a3efe6]">${icon("sparkles", "h-2.5 w-2.5")}${esc(h)}</span>`).join("")}</div>
+          <div class="mt-3 flex flex-wrap gap-1.5">${d.highlights.map((h) => `<span class="flex items-center gap-1 rounded-full border border-[#ff7a5c]/35 bg-[#ff7a5c]/10 px-2.5 py-0.5 text-[10px] text-[#efdba6]">${icon("sparkles", "h-2.5 w-2.5")}${esc(h)}</span>`).join("")}</div>
           <div class="mt-3.5 flex gap-5 border-t border-white/10 pt-3">${d.stats.map((s) => `<div><p class="font-display text-sm font-bold text-white">${esc(s.value)}</p><p class="text-[10px] text-slate-400">${esc(s.label)}</p></div>`).join("")}</div>
         </div>`;
       } else popup.innerHTML = "";
@@ -989,19 +989,19 @@
       stay: D.stay.map((e) => ({ art: e.art, artIcon: "bed-double", badge: e.type, title: e.name, lines: [["map-pin", e.area], ["star", `${fmt(e.rating, 1)} · ${e.priceRange}`]] })),
       eat: D.eat.map((e) => ({ art: e.art, artIcon: "utensils-crossed", badge: e.cuisine, badgeColor: "#c2410c", title: e.name, lines: [["map-pin", e.area], ["utensils-crossed", e.signature]] })),
       otop: D.otop.map((e) => ({ art: e.art, artIcon: "shopping-bag", badge: e.category, badgeColor: "#6d28d9", title: e.name, lines: [["shopping-bag", e.producer], [null, e.price]] })),
-      culture: D.culture.map((e) => ({ art: e.art, artIcon: "drama", badge: e.type, badgeColor: "#e2674f", title: e.name, lines: [["drama", e.period], [null, e.description]] })),
-      goods: D.goods.map((e) => ({ art: e.art, artIcon: "sparkles", badge: e.category, badgeColor: "#0f9a84", title: e.name, lines: [[null, e.description]] })),
+      culture: D.culture.map((e) => ({ art: e.art, artIcon: "drama", badge: e.type, badgeColor: "#b07a1f", title: e.name, lines: [["drama", e.period], [null, e.description]] })),
+      goods: D.goods.map((e) => ({ art: e.art, artIcon: "sparkles", badge: e.category, badgeColor: "#2e7d5b", title: e.name, lines: [[null, e.description]] })),
     };
     return map[tab];
   }
   function renderExplore(tab) {
     mount($("#explore-body"), `<div class="tab-swap grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">${exploreCards(tab).map((c, i) => `
       <div data-parallax="${i % 2 === 0 ? 22 : -14}"><div data-reveal style="--ry:24px;--rd:${0.07 * i}s" class="h-full">
-        <div class="rounded-2xl glass holo-border group flex h-full cursor-pointer flex-col overflow-hidden" data-tilt data-lift="5">
+        <div class="rounded-xl glass holo-border group flex h-full cursor-pointer flex-col overflow-hidden" data-tilt data-lift="5">
           <div class="relative flex h-32 items-center justify-center overflow-hidden" style="background:${c.art}">
             <div class="grid-overlay absolute inset-0 opacity-40"></div>
             ${icon(c.artIcon, "relative h-12 w-12 text-white/55 transition-transform duration-300 group-hover:scale-110")}
-            <span class="font-display absolute top-3.5 left-3.5 rounded-full px-2.5 py-1 text-[10px] font-semibold tracking-wide text-white" style="background:${c.badgeColor || "#0b8199"}">${esc(c.badge)}</span>
+            <span class="font-display absolute top-3.5 left-3.5 rounded-full px-2.5 py-1 text-[10px] font-semibold tracking-wide text-white" style="background:${c.badgeColor || "#1b4f8f"}">${esc(c.badge)}</span>
             <span class="font-display absolute right-3 bottom-2.5 text-[9px] tracking-[0.2em] text-white/45 uppercase">${esc(t("util.sampleImage"))}</span>
           </div>
           <div class="flex flex-1 flex-col p-5">
@@ -1019,21 +1019,21 @@
 
   function renderServices() {
     mount($("#service-cards"), D.services.map((s, i) => `
-      <div data-reveal style="--ry:24px;--rd:${(i % 6) * 0.06}s"><div class="rounded-2xl glass holo-border group h-full cursor-pointer p-5 text-center" data-tilt data-lift="5">
-        <span class="mx-auto flex h-12 w-12 items-center justify-center rounded-2xl border transition-transform duration-300 group-hover:scale-110" style="border-color:${s.color}35;background:${s.color}10;color:${s.color}">${icon(SERVICE_ICONS[s.id], "h-5 w-5")}</span>
+      <div data-reveal style="--ry:24px;--rd:${(i % 6) * 0.06}s"><div class="rounded-xl glass holo-border group h-full cursor-pointer p-5 text-center" data-tilt data-lift="5">
+        <span class="mx-auto flex h-12 w-12 items-center justify-center rounded-xl border transition-transform duration-300 group-hover:scale-110" style="border-color:${s.color}35;background:${s.color}10;color:${s.color}">${icon(SERVICE_ICONS[s.id], "h-5 w-5")}</span>
         <h3 class="font-display mt-3 text-sm font-bold text-navy">${esc(s.title)}</h3>
         <p class="mt-1 line-clamp-2 text-xs leading-relaxed text-slate-500">${esc(s.description)}</p>
       </div></div>`).join(""));
 
     mount($("#econ-cards"), D.econ.map((e, i) => `
-      <div data-reveal style="--ry:20px;--rd:${0.07 * i}s"><div class="rounded-2xl glass holo-border h-full p-4" data-tilt>
+      <div data-reveal style="--ry:20px;--rd:${0.07 * i}s"><div class="rounded-xl glass holo-border h-full p-4" data-tilt>
         <p class="text-xs text-slate-500">${esc(e.label)}</p>
         <p class="font-display mt-1 text-xl font-bold text-gradient-holo">${esc(e.value)}</p>
         <p class="mt-0.5 text-[11px] text-azure/80">${esc(e.note)}</p>
       </div></div>`).join(""));
 
     mount($("#sector-bars"), D.sectors.slice(0, 4).map((s, i) => `
-      <div class="glass rounded-2xl p-4" data-reveal data-share="${s.share}" style="--rx:-24px;--ry:0px;--rd:${0.07 * i}s">
+      <div class="glass rounded-xl p-4" data-reveal data-share="${s.share}" style="--rx:-24px;--ry:0px;--rd:${0.07 * i}s">
         <div class="flex items-center justify-between gap-4"><p class="font-display text-sm font-semibold text-navy">${esc(s.title)}</p>
           <p class="font-display shrink-0 text-sm font-bold" style="color:${s.color}">${esc(s.value)}<span class="ml-2 text-xs font-medium text-mint">+${s.growth}%</span></p></div>
         <div class="mt-2.5 h-1.5 overflow-hidden rounded-full bg-navy/8"><div class="bar-fill h-full rounded-full" style="background:${s.color}"></div></div>
@@ -1043,10 +1043,10 @@
     const shifts = [20, -12, 16];
     mount($("#eservice-cards"), D.eservices.map((s, i) => `
       <div data-parallax="${shifts[i % 3]}"><div data-reveal style="--ry:24px;--rd:${0.06 * i}s" class="h-full">
-        <div class="rounded-2xl glass holo-border group h-full" data-tilt data-lift="5">
+        <div class="rounded-xl glass holo-border group h-full" data-tilt data-lift="5">
           <a href="${s.url}" class="flex h-full flex-col p-6">
             <div class="flex items-start justify-between">
-              <span class="flex h-12 w-12 items-center justify-center rounded-2xl border transition-transform duration-300 group-hover:scale-110" style="color:${s.color};border-color:${s.color}35;background:${s.color}10">${icon(ESERVICE_ICONS[s.id], "h-5.5 w-5.5")}</span>
+              <span class="flex h-12 w-12 items-center justify-center rounded-xl border transition-transform duration-300 group-hover:scale-110" style="color:${s.color};border-color:${s.color}35;background:${s.color}10">${icon(ESERVICE_ICONS[s.id], "h-5.5 w-5.5")}</span>
               ${icon("arrow-up-right", "h-4.5 w-4.5 text-slate-400 transition-all group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-azure")}
             </div>
             <h3 class="font-display mt-4 text-base font-bold text-navy transition-colors group-hover:text-azure">${esc(s.name)}</h3>
@@ -1068,8 +1068,8 @@
     $("#poll-options").innerHTML = D.poll.options.map((o) => {
       const pct = Math.round(((o.baseVotes + (pollVote === o.id ? 1 : 0)) / total) * 100);
       const mine = pollVote === o.id;
-      const state = pollVote ? "cursor-default border-navy/8" : "cursor-pointer border-navy/10 hover:border-azure/50 hover:shadow-[0_8px_24px_-12px_#0b819955]";
-      return `<button data-opt="${o.id}" ${pollVote ? "disabled" : ""} aria-pressed="${mine}" class="relative w-full overflow-hidden rounded-2xl border px-5 py-3.5 text-left transition-all ${state} ${mine ? "border-azure/60 ring-1 ring-azure/30" : ""}">
+      const state = pollVote ? "cursor-default border-navy/8" : "cursor-pointer border-navy/10 hover:border-azure/50 hover:shadow-[0_8px_24px_-12px_#1b4f8f55]";
+      return `<button data-opt="${o.id}" ${pollVote ? "disabled" : ""} aria-pressed="${mine}" class="relative w-full overflow-hidden rounded-xl border px-5 py-3.5 text-left transition-all ${state} ${mine ? "border-azure/60 ring-1 ring-azure/30" : ""}">
         ${pollVote ? `<span class="poll-bar absolute inset-y-0 left-0 ${mine ? "bg-azure/15" : "bg-navy/5"}" style="width:${animate ? 0 : pct}%;transition:width .9s cubic-bezier(.22,1,.36,1)" data-pct="${pct}"></span>` : ""}
         <span class="relative flex items-center justify-between gap-3">
           <span class="flex items-center gap-2.5">${mine ? icon("circle-check", "h-4.5 w-4.5 shrink-0 text-azure") : ""}<span class="font-display text-sm font-semibold sm:text-base ${mine ? "text-azure" : "text-navy"}">${esc(o.label)}</span></span>
@@ -1094,7 +1094,7 @@
   /* Agencies, news, contact                                             */
   /* ------------------------------------------------------------------ */
   function renderAgencies() {
-    const item = (a, dup) => `<a href="${a.url}" target="_blank" rel="noopener noreferrer" ${dup ? 'aria-hidden="true" tabindex="-1"' : ""} class="glass group/item flex shrink-0 items-center gap-3.5 rounded-full py-2.5 pr-6 pl-2.5 transition-all hover:shadow-[0_8px_24px_-12px_#0b819955]">
+    const item = (a, dup) => `<a href="${a.url}" target="_blank" rel="noopener noreferrer" ${dup ? 'aria-hidden="true" tabindex="-1"' : ""} class="glass group/item flex shrink-0 items-center gap-3.5 rounded-full py-2.5 pr-6 pl-2.5 transition-all hover:shadow-[0_8px_24px_-12px_#1b4f8f55]">
       ${a.logo ? `<span class="flex h-12 w-12 items-center justify-center overflow-hidden rounded-full border border-navy/10 bg-white p-1"><img src="${a.logo}" alt="โลโก้ ${esc(a.name)}" class="h-full w-full object-contain" /></span>`
         : `<span class="font-display flex h-12 w-12 items-center justify-center rounded-full bg-azure text-xs font-bold text-white">${esc(a.abbr)}</span>`}
       <span class="font-display text-base font-medium whitespace-nowrap text-slate-600 transition-colors group-hover/item:text-azure">${esc(a.name)}</span>
@@ -1102,7 +1102,7 @@
     $("#agency-track").innerHTML = D.agencies.map((a) => item(a, false)).join("") + D.agencies.map((a) => item(a, true)).join("");
 
     mount($("#related-links"), D.relatedLinks.map((l, i) => `
-      <a ${ext(l.url)} class="group flex items-center gap-3.5 rounded-2xl p-4 transition-all ${l.featured ? "relative overflow-hidden bg-[#06303f] text-white shadow-[0_14px_34px_-18px_#06303f]" : "glass holo-border"}" data-reveal style="--ry:16px;--rd:${0.04 * i}s">
+      <a ${ext(l.url)} class="group flex items-center gap-3.5 rounded-xl p-4 transition-all ${l.featured ? "relative overflow-hidden bg-[#0c2340] text-white shadow-[0_14px_34px_-18px_#0c2340]" : "glass holo-border"}" data-reveal style="--ry:16px;--rd:${0.04 * i}s">
         ${l.featured ? `<span class="rayong-ribbon absolute inset-x-0 top-0 h-1" aria-hidden="true"></span>` : ""}
         <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl ${l.featured ? "bg-white/10 text-[#f4b400]" : "border border-azure/25 bg-azure/6 text-azure"}">${icon(l.icon, "h-5 w-5")}</span>
         <span class="min-w-0 flex-1"><span class="font-display block truncate text-sm font-semibold ${l.featured ? "" : "text-navy transition-colors group-hover:text-azure"}">${esc(l.name)}</span>
@@ -1113,10 +1113,10 @@
   /* ------------------------------------------------------------------ */
   /* Government information systems                                      */
   /* ------------------------------------------------------------------ */
-  const SYSTEM_COLORS = ["#0b8199", "#1e4fa3", "#0f9a84", "#d7263d"];
+  const SYSTEM_COLORS = ["#1b4f8f", "#1e4fa3", "#2e7d5b", "#d7263d"];
   function renderGovSystems() {
     mount($("#govsystems-grid"), D.govSystems.map((s, i) => `
-      <div data-reveal style="--ry:22px;--rd:${0.04 * i}s" class="h-full"><a ${ext(s.url)} class="rounded-2xl glass holo-border group flex h-full flex-col p-5" data-tilt data-lift="4">
+      <div data-reveal style="--ry:22px;--rd:${0.04 * i}s" class="h-full"><a ${ext(s.url)} class="rounded-xl glass holo-border group flex h-full flex-col p-5" data-tilt data-lift="4">
         <div class="flex items-start justify-between gap-3">${iconTile(s.icon, SYSTEM_COLORS[i % SYSTEM_COLORS.length])}
           ${icon("arrow-up-right", "h-4 w-4 text-slate-400 transition-colors group-hover:text-azure")}</div>
         <h3 class="font-display mt-4 text-sm leading-snug font-semibold text-navy transition-colors group-hover:text-azure sm:text-base">${esc(s.name)}</h3>
@@ -1130,7 +1130,7 @@
     const shifts = [22, 0, -22];
     mount($("#news-cards"), D.news.slice(0, 3).map((n, i) => `
       <div data-parallax="${shifts[i]}"><div data-reveal style="--ry:28px;--rd:${0.08 * i}s" class="h-full">
-        <div class="rounded-2xl glass holo-border group flex h-full cursor-pointer flex-col overflow-hidden" data-tilt data-lift="5">
+        <div class="rounded-xl glass holo-border group flex h-full cursor-pointer flex-col overflow-hidden" data-tilt data-lift="5">
           <div class="relative flex h-32 items-center justify-center overflow-hidden" style="background:${n.color}">
             <div class="grid-overlay absolute inset-0 opacity-30"></div>
             ${icon(NEWS_ICONS[n.category] || "newspaper", "relative h-12 w-12 text-white/60 transition-transform duration-300 group-hover:scale-110")}
@@ -1231,8 +1231,8 @@
     let typing = false;
     const draw = () => {
       log.innerHTML = msgs.map((m) => `<div class="msg-in flex ${m.role === "user" ? "justify-end" : "justify-start"}">
-        <div class="max-w-[85%] rounded-2xl px-4 py-2.5 text-[13px] leading-relaxed whitespace-pre-line ${m.role === "user" ? "rounded-br-md bg-azure text-white" : "rounded-bl-md border border-navy/10 bg-navy/5 text-slate-700"}">${esc(m.text)}</div></div>`).join("") +
-        (typing ? `<div class="flex justify-start"><div class="flex items-center gap-1.5 rounded-2xl rounded-bl-md border border-navy/10 bg-navy/5 px-4 py-3">${[0, 1, 2].map((i) => `<span class="typing-dot h-1.5 w-1.5 rounded-full bg-cyan" style="animation-delay:${0.2 * i}s"></span>`).join("")}</div></div>` : "");
+        <div class="max-w-[85%] rounded-xl px-4 py-2.5 text-[13px] leading-relaxed whitespace-pre-line ${m.role === "user" ? "rounded-br-md bg-azure text-white" : "rounded-bl-md border border-navy/10 bg-navy/5 text-slate-700"}">${esc(m.text)}</div></div>`).join("") +
+        (typing ? `<div class="flex justify-start"><div class="flex items-center gap-1.5 rounded-xl rounded-bl-md border border-navy/10 bg-navy/5 px-4 py-3">${[0, 1, 2].map((i) => `<span class="typing-dot h-1.5 w-1.5 rounded-full bg-cyan" style="animation-delay:${0.2 * i}s"></span>`).join("")}</div></div>` : "");
       log.scrollTo({ top: log.scrollHeight, behavior: "smooth" });
     };
     const reply = (q) => {

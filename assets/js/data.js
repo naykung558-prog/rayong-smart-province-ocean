@@ -17,7 +17,7 @@ window.SITE_DATA = {
     92,
     100
    ],
-   "color": "#0b8199"
+   "color": "#1b4f8f"
   },
   {
    "label": "เศรษฐกิจ (GPP)",
@@ -35,7 +35,7 @@ window.SITE_DATA = {
     90,
     100
    ],
-   "color": "#0b8199"
+   "color": "#1b4f8f"
   },
   {
    "label": "นักท่องเที่ยว",
@@ -70,7 +70,7 @@ window.SITE_DATA = {
     94,
     100
    ],
-   "color": "#0b8199"
+   "color": "#1b4f8f"
   },
   {
    "label": "การศึกษา",
@@ -87,7 +87,7 @@ window.SITE_DATA = {
     93,
     100
    ],
-   "color": "#0aa2c0"
+   "color": "#2f6db5"
   },
   {
    "label": "พลังงานสะอาด",
@@ -104,7 +104,7 @@ window.SITE_DATA = {
     86,
     100
    ],
-   "color": "#0aa2c0"
+   "color": "#2f6db5"
   },
   {
    "label": "นวัตกรรม",
@@ -138,7 +138,7 @@ window.SITE_DATA = {
     94,
     100
    ],
-   "color": "#0b8199"
+   "color": "#1b4f8f"
   }
  ],
  "governor": {
@@ -190,7 +190,7 @@ window.SITE_DATA = {
    "id": "gov",
    "name": "Smart Government",
    "tagline": "ศูนย์ราชการดิจิทัลไร้กระดาษ",
-   "color": "#0b8199",
+   "color": "#1b4f8f",
    "position": [
     0,
     2.4,
@@ -262,7 +262,7 @@ window.SITE_DATA = {
    "id": "mobility",
    "name": "Smart Mobility",
    "tagline": "โครงข่ายเดินทางไร้รอยต่อ",
-   "color": "#0b8199",
+   "color": "#1b4f8f",
    "position": [
     2.8,
     0.6,
@@ -298,7 +298,7 @@ window.SITE_DATA = {
    "id": "industry",
    "name": "Smart Industry",
    "tagline": "ฐานอุตสาหกรรม 4.0 ของ EEC",
-   "color": "#0b8199",
+   "color": "#1b4f8f",
    "position": [
     3.4,
     1,
@@ -334,7 +334,7 @@ window.SITE_DATA = {
    "id": "environment",
    "name": "Smart Environment",
    "tagline": "เมืองคาร์บอนต่ำ อากาศสะอาด",
-   "color": "#0aa2c0",
+   "color": "#2f6db5",
    "position": [
     -2.6,
     0.7,
@@ -500,7 +500,7 @@ window.SITE_DATA = {
    "id": "gov",
    "name": "Smart Government",
    "tagline": "ศูนย์ราชการดิจิทัลไร้กระดาษ",
-   "color": "#0b8199",
+   "color": "#1b4f8f",
    "position": [
     0,
     2.4,
@@ -572,7 +572,7 @@ window.SITE_DATA = {
    "id": "mobility",
    "name": "Smart Mobility",
    "tagline": "โครงข่ายเดินทางไร้รอยต่อ",
-   "color": "#0b8199",
+   "color": "#1b4f8f",
    "position": [
     2.8,
     0.6,
@@ -608,7 +608,7 @@ window.SITE_DATA = {
    "id": "industry",
    "name": "Smart Industry",
    "tagline": "ฐานอุตสาหกรรม 4.0 ของ EEC",
-   "color": "#0b8199",
+   "color": "#1b4f8f",
    "position": [
     3.4,
     1,
@@ -644,7 +644,7 @@ window.SITE_DATA = {
    "id": "environment",
    "name": "Smart Environment",
    "tagline": "เมืองคาร์บอนต่ำ อากาศสะอาด",
-   "color": "#0aa2c0",
+   "color": "#2f6db5",
    "position": [
     -2.6,
     0.7,
@@ -718,7 +718,7 @@ window.SITE_DATA = {
    "id": "population",
    "label": "ประชากรในเขตเมือง",
    "unit": "พันคน",
-   "color": "#0b8199",
+   "color": "#1b4f8f",
    "current": 486,
    "change": 2.4,
    "decimals": 0,
@@ -764,7 +764,7 @@ window.SITE_DATA = {
    "id": "traffic",
    "label": "ปริมาณจราจรเฉลี่ย",
    "unit": "พันคัน/วัน",
-   "color": "#0b8199",
+   "color": "#1b4f8f",
    "current": 312,
    "change": -3.2,
    "decimals": 0,
@@ -787,7 +787,7 @@ window.SITE_DATA = {
    "id": "ev",
    "label": "การชาร์จ EV รายเดือน",
    "unit": "พันครั้ง",
-   "color": "#0aa2c0",
+   "color": "#2f6db5",
    "current": 148,
    "change": 14.6,
    "decimals": 0,
@@ -810,7 +810,7 @@ window.SITE_DATA = {
    "id": "air",
    "label": "PM2.5 เฉลี่ย",
    "unit": "µg/m³",
-   "color": "#0aa2c0",
+   "color": "#2f6db5",
    "current": 12.4,
    "change": -18.4,
    "decimals": 1,
@@ -833,7 +833,7 @@ window.SITE_DATA = {
    "id": "rain",
    "label": "ปริมาณฝนสะสม",
    "unit": "มม.",
-   "color": "#0b8199",
+   "color": "#1b4f8f",
    "current": 1420,
    "change": 4.2,
    "decimals": 0,
@@ -856,7 +856,7 @@ window.SITE_DATA = {
    "id": "economy",
    "label": "มูลค่าการลงทุนใหม่",
    "unit": "พันล้านบาท",
-   "color": "#0b8199",
+   "color": "#1b4f8f",
    "current": 68.4,
    "change": 11.2,
    "decimals": 1,
@@ -907,7 +907,7 @@ window.SITE_DATA = {
    "time": "09:00–20:00 น.",
    "location": "ตลาดกลางผลไม้ตะพง อ.เมืองระยอง",
    "category": "เทศกาล",
-   "color": "#e2674f"
+   "color": "#b07a1f"
   },
   {
    "id": "ev-2",
@@ -916,7 +916,7 @@ window.SITE_DATA = {
    "time": "10:00–18:00 น.",
    "location": "ลานกิจกรรม Passione Shopping Destination",
    "category": "กิจกรรม",
-   "color": "#0b8199"
+   "color": "#1b4f8f"
   },
   {
    "id": "ev-3",
@@ -925,7 +925,7 @@ window.SITE_DATA = {
    "time": "13:30–16:30 น.",
    "location": "ศาลากลางจังหวัดระยอง ห้องภักดีศรีสงคราม",
    "category": "ประชุม",
-   "color": "#0aa2c0"
+   "color": "#2f6db5"
   },
   {
    "id": "ev-4",
@@ -934,7 +934,7 @@ window.SITE_DATA = {
    "time": "09:00–16:00 น.",
    "location": "สำนักงานเกษตรจังหวัดระยอง",
    "category": "อบรม",
-   "color": "#0f9a84"
+   "color": "#2e7d5b"
   },
   {
    "id": "ev-5",
@@ -943,7 +943,7 @@ window.SITE_DATA = {
    "time": "05:30–09:00 น.",
    "location": "หาดแหลมเจริญ อ.เมืองระยอง",
    "category": "กิจกรรม",
-   "color": "#0b8199"
+   "color": "#1b4f8f"
   },
   {
    "id": "ev-6",
@@ -952,7 +952,7 @@ window.SITE_DATA = {
    "time": "09:30–12:00 น.",
    "location": "ศูนย์ราชการจังหวัดระยอง",
    "category": "ประชุม",
-   "color": "#0aa2c0"
+   "color": "#2f6db5"
   },
   {
    "id": "ev-7",
@@ -961,7 +961,7 @@ window.SITE_DATA = {
    "time": "16:00–22:00 น.",
    "location": "หาดแม่รำพึง",
    "category": "เทศกาล",
-   "color": "#e2674f"
+   "color": "#b07a1f"
   },
   {
    "id": "ev-8",
@@ -970,7 +970,7 @@ window.SITE_DATA = {
    "time": "09:00–15:30 น.",
    "location": "หอการค้าจังหวัดระยอง",
    "category": "อบรม",
-   "color": "#0f9a84"
+   "color": "#2e7d5b"
   },
   {
    "id": "ev-9",
@@ -979,7 +979,7 @@ window.SITE_DATA = {
    "time": "08:00–12:00 น.",
    "location": "ทุ่งโปรงทอง อ.แกลง",
    "category": "กิจกรรม",
-   "color": "#0f9a84"
+   "color": "#2e7d5b"
   }
  ],
  "pr": [
@@ -989,7 +989,7 @@ window.SITE_DATA = {
    "excerpt": "ร่วมเป็นตัวแทนชุมชนช่วยเหลือประชาชนใช้งานบริการรัฐดิจิทัล รับสมัครถึง 30 มิ.ย. 2569 ผ่านแอป Rayong Connect",
    "date": "1 มิ.ย. 2569",
    "unit": "สำนักงานจังหวัดระยอง",
-   "color": "#0b8199"
+   "color": "#1b4f8f"
   },
   {
    "id": "pr2",
@@ -997,7 +997,7 @@ window.SITE_DATA = {
    "excerpt": "เวทีรับฟังความคิดเห็น 4 อำเภอ ระหว่าง 15–26 มิ.ย. 2569 พร้อมช่องทางออนไลน์ผ่านแพลตฟอร์ม Rayong Voice",
    "date": "28 พ.ค. 2569",
    "unit": "สำนักงานโยธาธิการและผังเมืองจังหวัด",
-   "color": "#0aa2c0"
+   "color": "#2f6db5"
   },
   {
    "id": "pr3",
@@ -1005,7 +1005,7 @@ window.SITE_DATA = {
    "excerpt": "สนับสนุนเครื่องจักรไถกลบฟรีและรับซื้อเศษวัสดุเกษตร 68 ชุมชน ลงทะเบียนรับสิทธิ์ได้ที่เกษตรอำเภอทุกแห่ง",
    "date": "22 พ.ค. 2569",
    "unit": "สำนักงานทรัพยากรธรรมชาติและสิ่งแวดล้อมจังหวัด",
-   "color": "#0b8199"
+   "color": "#1b4f8f"
   },
   {
    "id": "pr4",
@@ -1021,7 +1021,7 @@ window.SITE_DATA = {
    "excerpt": "ทำบัตรประชาชน เปลี่ยนชื่อ-สกุล และลงทะเบียน One Province One ID ถึงหมู่บ้าน ตรวจสอบตารางจุดบริการ 32 จุด",
    "date": "12 พ.ค. 2569",
    "unit": "ที่ทำการปกครองจังหวัดระยอง",
-   "color": "#0aa2c0"
+   "color": "#2f6db5"
   },
   {
    "id": "pr6",
@@ -1029,7 +1029,7 @@ window.SITE_DATA = {
    "excerpt": "ทีม 'น้ำใสระยอง' จากโรงเรียนระยองวิทยาคมคว้ารางวัลชนะเลิศด้วยระบบเซนเซอร์ตรวจคุณภาพน้ำคลองต้นทุนต่ำ",
    "date": "6 พ.ค. 2569",
    "unit": "สำนักงานศึกษาธิการจังหวัด",
-   "color": "#0b8199"
+   "color": "#1b4f8f"
   }
  ],
  "procurement": [
@@ -1128,7 +1128,7 @@ window.SITE_DATA = {
    "title": "วีดิทัศน์แนะนำวิสัยทัศน์ Rayong SMART PROVINCE",
    "duration": "4:32",
    "date": "พ.ค. 2569",
-   "art": "#0b8199",
+   "art": "#1b4f8f",
    "url": "#"
   },
   {
@@ -1136,7 +1136,7 @@ window.SITE_DATA = {
    "type": "infographic",
    "title": "อินโฟกราฟิก: 10 ตัวชี้วัดเมืองอัจฉริยะระยอง ปี 2569",
    "date": "เม.ย. 2569",
-   "art": "#0f9a84",
+   "art": "#2e7d5b",
    "url": "#"
   },
   {
@@ -1145,7 +1145,7 @@ window.SITE_DATA = {
    "title": "สารคดีสั้น: วิถีประมงพื้นบ้านปากน้ำประแสกับเทคโนโลยีใหม่",
    "duration": "12:08",
    "date": "มี.ค. 2569",
-   "art": "#e2674f",
+   "art": "#b07a1f",
    "url": "#"
   },
   {
@@ -1424,7 +1424,7 @@ window.SITE_DATA = {
    "area": "หาดแม่รำพึง",
    "priceRange": "1,800–4,200 บาท/คืน",
    "rating": 4.5,
-   "art": "#0b8199"
+   "art": "#1b4f8f"
   },
   {
    "id": "stay-3",
@@ -1433,7 +1433,7 @@ window.SITE_DATA = {
    "area": "ตะพง อ.เมืองระยอง",
    "priceRange": "900–1,600 บาท/คืน",
    "rating": 4.8,
-   "art": "#0f9a84"
+   "art": "#2e7d5b"
   },
   {
    "id": "stay-4",
@@ -1442,7 +1442,7 @@ window.SITE_DATA = {
    "area": "ปากน้ำประแส อ.แกลง",
    "priceRange": "1,400–3,000 บาท/คืน",
    "rating": 4.6,
-   "art": "#e2674f"
+   "art": "#b07a1f"
   }
  ],
  "eat": [
@@ -1452,7 +1452,7 @@ window.SITE_DATA = {
    "cuisine": "ซีฟู้ดพื้นถิ่น",
    "area": "อ.แกลง",
    "signature": "กั้งกระดานนึ่งมะนาว · หมึกไข่ต้มน้ำปลา",
-   "art": "#0aa2c0"
+   "art": "#2f6db5"
   },
   {
    "id": "eat-2",
@@ -1468,7 +1468,7 @@ window.SITE_DATA = {
    "cuisine": "ซีฟู้ด & วิวทะเล",
    "area": "บ้านเพ อ.เมืองระยอง",
    "signature": "ปลากะพงทอดน้ำปลา · แกงส้มปลากะพงยอดมะพร้าว",
-   "art": "#0b8199"
+   "art": "#1b4f8f"
   },
   {
    "id": "eat-4",
@@ -1476,7 +1476,7 @@ window.SITE_DATA = {
    "cuisine": "อาหารไทย & บุฟเฟ่ต์ผลไม้",
    "area": "ตะพง อ.เมืองระยอง",
    "signature": "ข้าวเหนียวทุเรียนหมอนทอง · ส้มตำผลไม้รวม",
-   "art": "#0f9a84"
+   "art": "#2e7d5b"
   }
  ],
  "otop": [
@@ -1486,7 +1486,7 @@ window.SITE_DATA = {
    "producer": "วิสาหกิจชุมชนตะพง",
    "category": "อาหารแปรรูป",
    "price": "120–350 บาท",
-   "art": "#e2674f"
+   "art": "#b07a1f"
   },
   {
    "id": "otop-2",
@@ -1520,7 +1520,7 @@ window.SITE_DATA = {
    "type": "ประเพณี",
    "period": "พฤศจิกายน–ธันวาคม",
    "description": "ประเพณีเก่าแก่คู่เมืองระยอง ห่มผ้าองค์พระเจดีย์กลางน้ำ พร้อมขบวนเรือประดับไฟกลางแม่น้ำระยอง",
-   "art": "#e2674f"
+   "art": "#b07a1f"
   },
   {
    "id": "cul-2",
@@ -1528,7 +1528,7 @@ window.SITE_DATA = {
    "type": "ประเพณี",
    "period": "พฤษภาคม",
    "description": "งานประจำปีเปิดฤดูท่องเที่ยวทะเลระยอง ขบวนแห่ทางน้ำ การแข่งขันกีฬาชายหาด และตลาดอาหารทะเล",
-   "art": "#0b8199"
+   "art": "#1b4f8f"
   },
   {
    "id": "cul-3",
@@ -1545,7 +1545,7 @@ window.SITE_DATA = {
    "name": "ทุเรียนหมอนทองระยอง",
    "category": "ผลไม้ GI",
    "description": "ราชาผลไม้จากสวนตะพง เนื้อหนานุ่ม หวานมัน ขึ้นทะเบียนสิ่งบ่งชี้ทางภูมิศาสตร์",
-   "art": "#e2674f"
+   "art": "#b07a1f"
   },
   {
    "id": "good-2",
@@ -1566,7 +1566,7 @@ window.SITE_DATA = {
    "name": "สละสุมาลี",
    "category": "ผลไม้",
    "description": "สละพันธุ์ดีรสหวานหอม ปลูกมากที่ อ.แกลง ของฝากยอดนิยมประจำจังหวัด",
-   "art": "#0f9a84"
+   "art": "#2e7d5b"
   }
  ],
  "services": [
@@ -1580,7 +1580,7 @@ window.SITE_DATA = {
     "สวัสดิการอัจฉริยะ",
     "ภาษีท้องถิ่น e-Tax"
    ],
-   "color": "#0b8199"
+   "color": "#1b4f8f"
   },
   {
    "id": "business",
@@ -1592,7 +1592,7 @@ window.SITE_DATA = {
     "จับคู่ซัพพลายเออร์ EEC",
     "สิทธิประโยชน์ BOI"
    ],
-   "color": "#0b8199"
+   "color": "#1b4f8f"
   },
   {
    "id": "tourism",
@@ -1616,7 +1616,7 @@ window.SITE_DATA = {
     "ติดตามสถานะคำร้อง",
     "Rayong Voice รับฟังประชาชน"
    ],
-   "color": "#0b8199"
+   "color": "#1b4f8f"
   },
   {
    "id": "emergency",
@@ -1640,7 +1640,7 @@ window.SITE_DATA = {
     "คอร์สทักษะดิจิทัลฟรี",
     "Digital ID Wallet"
    ],
-   "color": "#0aa2c0"
+   "color": "#2f6db5"
   }
  ],
  "econ": [
@@ -1673,7 +1673,7 @@ window.SITE_DATA = {
    "value": "6.8 แสนล้านบาท",
    "growth": 12.4,
    "share": 100,
-   "color": "#0b8199"
+   "color": "#1b4f8f"
   },
   {
    "id": "smart-industry",
@@ -1682,7 +1682,7 @@ window.SITE_DATA = {
    "value": "2.4 แสนล้านบาท",
    "growth": 18.2,
    "share": 72,
-   "color": "#0b8199"
+   "color": "#1b4f8f"
   },
   {
    "id": "innovation",
@@ -1700,7 +1700,7 @@ window.SITE_DATA = {
    "value": "8.2 หมื่นล้านบาท",
    "growth": 31.8,
    "share": 52,
-   "color": "#0aa2c0"
+   "color": "#2f6db5"
   },
   {
    "id": "logistics",
@@ -1718,7 +1718,7 @@ window.SITE_DATA = {
    "value": "3.8 หมื่นล้านบาท",
    "growth": 28.2,
    "share": 32,
-   "color": "#0b8199"
+   "color": "#1b4f8f"
   }
  ],
  "eservices": [
@@ -1726,21 +1726,21 @@ window.SITE_DATA = {
    "id": "es-1",
    "name": "ยื่นคำร้องออนไลน์",
    "description": "ยื่นเอกสาร คำร้องทั่วไป และติดตามสถานะแบบเรียลไทม์",
-   "color": "#0b8199",
+   "color": "#1b4f8f",
    "url": "#"
   },
   {
    "id": "es-2",
    "name": "ชำระภาษีและค่าธรรมเนียม",
    "description": "ภาษีที่ดิน สิ่งปลูกสร้าง ป้าย และค่าธรรมเนียมท้องถิ่น",
-   "color": "#0f9a84",
+   "color": "#2e7d5b",
    "url": "#"
   },
   {
    "id": "es-3",
    "name": "จองคิวรับบริการ",
    "description": "จองคิวล่วงหน้าทุกหน่วยงาน ลดเวลารอที่สำนักงาน",
-   "color": "#0aa2c0",
+   "color": "#2f6db5",
    "url": "#"
   },
   {
@@ -1761,7 +1761,7 @@ window.SITE_DATA = {
    "id": "es-6",
    "name": "บริการสำหรับผู้ประกอบการ",
    "description": "จดทะเบียนพาณิชย์ ขอรับการส่งเสริมการลงทุน EEC",
-   "color": "#e2674f",
+   "color": "#b07a1f",
    "url": "#"
   }
  ],
@@ -1812,7 +1812,7 @@ window.SITE_DATA = {
    "title": "ระยองเปิดตัวระบบ Digital Twin เมืองเฟส 2 ครอบคลุม 6 เขตอัจฉริยะ",
    "excerpt": "ศูนย์บัญชาการเมืองอัจฉริยะเชื่อมข้อมูลเรียลไทม์จากเซนเซอร์กว่า 5,000 จุด พยากรณ์จราจรและคุณภาพอากาศล่วงหน้า 48 ชั่วโมง",
    "date": "28 พ.ค. 2026",
-   "color": "#0b8199"
+   "color": "#1b4f8f"
   },
   {
    "id": "n2",
@@ -1820,7 +1820,7 @@ window.SITE_DATA = {
    "title": "โซลาร์ฟาร์มลอยน้ำอ่างเก็บน้ำดอกกรายผลิตไฟฟ้าทะลุ 48 GWh",
    "excerpt": "โครงการพลังงานสะอาดที่ใหญ่ที่สุดของจังหวัด ลดการปล่อยคาร์บอนเทียบเท่าปลูกต้นไม้ 2.1 ล้านต้น",
    "date": "22 พ.ค. 2026",
-   "color": "#0aa2c0"
+   "color": "#2f6db5"
   },
   {
    "id": "n3",
@@ -1836,7 +1836,7 @@ window.SITE_DATA = {
    "title": "เปิดรับฟังความเห็นแผนแม่บท Rayong Smart Province ระยะ 3 (2027–2030)",
    "excerpt": "ประชาชนร่วมออกแบบอนาคตเมืองผ่านแพลตฟอร์ม Rayong Voice ได้ตั้งแต่วันนี้ถึง 30 มิ.ย. 2026",
    "date": "10 พ.ค. 2026",
-   "color": "#0b8199"
+   "color": "#1b4f8f"
   },
   {
    "id": "n5",
@@ -1844,7 +1844,7 @@ window.SITE_DATA = {
    "title": "EV Shuttle สายใหม่เชื่อมสถานีรถไฟความเร็วสูง–บ้านเพ–หาดแม่รำพึง",
    "excerpt": "รถรับส่งไฟฟ้าไร้คนขับระดับ 4 ทดลองวิ่งเส้นทางท่องเที่ยวชายฝั่ง ฟรีตลอดเดือนมิถุนายน",
    "date": "6 พ.ค. 2026",
-   "color": "#0b8199"
+   "color": "#1b4f8f"
   },
   {
    "id": "n6",
@@ -2094,7 +2094,7 @@ window.SITE_DATA = {
    "name": "ระบบสารบรรณอิเล็กทรอนิกส์",
    "description": "รับ–ส่งหนังสือราชการ ลงทะเบียนและติดตามเอกสาร",
    "icon": "mail-check",
-   "color": "#0b8199",
+   "color": "#1b4f8f",
    "url": "https://www.rayongsaraban.com/rygmenu/"
   },
   {
@@ -2102,7 +2102,7 @@ window.SITE_DATA = {
    "name": "ระบบจองห้องประชุม",
    "description": "ตรวจสอบห้องว่างและจองห้องประชุมศาลากลางจังหวัด",
    "icon": "presentation",
-   "color": "#0f9a84",
+   "color": "#2e7d5b",
    "url": "https://www.rayongsaraban.com/rygmenu/"
   },
   {
@@ -2118,7 +2118,7 @@ window.SITE_DATA = {
    "name": "หนังสือเวียน สนจ.รย.",
    "description": "หนังสือเวียนจากสำนักงานจังหวัดระยอง",
    "icon": "files",
-   "color": "#e2674f",
+   "color": "#b07a1f",
    "url": "http://rayong.go.th/web/department/detail/52"
   }
  ],
@@ -2170,7 +2170,7 @@ window.SITE_DATA = {
    "name": "หนังสือเวียน สนจ.รย.",
    "description": "หนังสือเวียนและแจ้งเวียนจากสำนักงานจังหวัด",
    "icon": "files",
-   "color": "#0b8199",
+   "color": "#1b4f8f",
    "url": "http://rayong.go.th/web/department/detail/52"
   },
   {
@@ -2194,7 +2194,7 @@ window.SITE_DATA = {
    "name": "กลุ่มงานอำนวยการ",
    "description": "งานสารบรรณ งานการเงิน บัญชี และพัสดุ",
    "icon": "briefcase",
-   "color": "#0f9a84",
+   "color": "#2e7d5b",
    "url": "http://rayong.go.th/web/department/detail/55"
   },
   {
@@ -2202,7 +2202,7 @@ window.SITE_DATA = {
    "name": "กลุ่มงานบริหารทรัพยากรบุคคล",
    "description": "การบรรจุ แต่งตั้ง และพัฒนาบุคลากร",
    "icon": "users",
-   "color": "#e2674f",
+   "color": "#b07a1f",
    "url": "http://rayong.go.th/web/department/detail/56"
   },
   {
