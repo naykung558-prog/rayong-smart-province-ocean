@@ -129,9 +129,25 @@
         </div>
       </div>
 
-      <a href="#about" class="fade-in-late font-display absolute bottom-6 left-1/2 z-10 flex -translate-x-1/2 flex-col items-center gap-2 text-[10px] tracking-[0.3em] text-white/55 uppercase" aria-label="เลื่อนลงเพื่อสำรวจ">
+      <a href="#banners" class="fade-in-late font-display absolute bottom-6 left-1/2 z-10 flex -translate-x-1/2 flex-col items-center gap-2 text-[10px] tracking-[0.3em] text-white/55 uppercase" aria-label="เลื่อนลงเพื่อสำรวจ">
         เลื่อนลงเพื่อสำรวจ<span class="hero-bob"><i data-lucide="arrow-down" class="h-4 w-4"></i></span>
       </a>
+    </section>
+
+    <!-- ===================== BANNERS ===================== -->
+    <section id="banners" class="relative scroll-mt-28 pt-16 pb-4" aria-roledescription="carousel" data-i18n-aria="sec.banners.label" aria-label="ป้ายประชาสัมพันธ์">
+      <div class="mx-auto max-w-7xl px-5 lg:px-8" data-reveal style="--ry:28px">
+        <div id="banner-show" class="group relative overflow-hidden rounded-2xl bg-white shadow-[0_24px_60px_-28px_#06303f66] ring-1 ring-navy/8">
+          <div id="banner-track" class="relative aspect-[1280/580]"></div>
+          <button id="banner-prev" class="banner-nav left-3" data-i18n-aria="sec.banners.prev" aria-label="ภาพก่อนหน้า"><i data-lucide="chevron-left" class="h-5 w-5"></i></button>
+          <button id="banner-next" class="banner-nav right-3" data-i18n-aria="sec.banners.next" aria-label="ภาพถัดไป"><i data-lucide="chevron-right" class="h-5 w-5"></i></button>
+          <span class="rayong-ribbon absolute inset-x-0 bottom-0 h-1" aria-hidden="true"></span>
+        </div>
+        <div class="mt-4 flex items-center justify-between gap-4">
+          <p id="banner-caption" class="font-display min-w-0 flex-1 truncate text-sm text-slate-600" aria-live="polite"></p>
+          <div id="banner-dots" class="flex shrink-0 items-center gap-2"></div>
+        </div>
+      </div>
     </section>
 
     <!-- ===================== ABOUT ===================== -->
@@ -181,11 +197,14 @@
               </div>
               <p class="font-display mt-6 border-t border-navy/10 pt-5 text-lg font-bold text-gradient-holo">“ระยองเมืองน่าอยู่ เศรษฐกิจมูลค่าสูง สังคมมีสุข สิ่งแวดล้อมยั่งยืน”</p>
             </div>
-            <div>
-              <h3 class="font-display mb-4 text-base font-bold text-navy" data-i18n="sec.governor.activities">กิจกรรมผู้บริหารล่าสุด</h3>
-              <div id="gov-activities" class="grid grid-cols-1 gap-3 sm:grid-cols-2"></div>
-            </div>
           </div>
+        </div>
+        <div id="activities" class="mt-14 scroll-mt-28">
+          <div class="mb-6 flex flex-wrap items-end justify-between gap-3">
+            <h3 class="font-display flex items-center gap-2.5 text-xl font-bold text-navy sm:text-2xl"><i data-lucide="camera" class="h-5 w-5 text-azure"></i><span data-i18n="sec.governor.activities">กิจกรรมผู้บริหาร</span></h3>
+            <a href="http://rayong.go.th/web/activity" target="_blank" rel="noopener noreferrer" class="font-display flex items-center gap-1.5 text-sm font-semibold text-azure transition-colors hover:text-navy"><span data-i18n="sec.governor.activitiesMore">ดูกิจกรรมทั้งหมด</span><i data-lucide="arrow-up-right" class="h-4 w-4"></i></a>
+          </div>
+          <div id="gov-activities" class="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4"></div>
         </div>
       </div>
     </section>
@@ -261,10 +280,10 @@
       <div class="orb bottom-20 left-[-8%]" data-color="#0aa2c0" data-size="420" data-speed="-70"></div>
       <div class="relative mx-auto max-w-7xl px-5 lg:px-8">
         <div class="section-head" data-key="sec.announcements"></div>
-        <div class="tabs glass mb-8 inline-flex rounded-2xl p-1.5" data-tabs="announce"></div>
+        <div class="tabs glass mb-8 inline-flex max-w-full flex-wrap rounded-2xl p-1.5" data-tabs="announce"></div>
         <div id="announce-body"></div>
         <div class="mt-8 flex justify-center">
-          <button class="font-display flex items-center gap-2 rounded-full bg-azure px-6 py-2.5 text-sm font-semibold text-white shadow-[0_6px_18px_-6px_#0b819988] transition-colors hover:bg-[#086a7e]">ดูประกาศทั้งหมด <i data-lucide="arrow-right" class="h-4 w-4"></i></button>
+          <a id="announce-more" href="#" target="_blank" rel="noopener noreferrer" class="font-display flex items-center gap-2 rounded-full bg-azure px-6 py-2.5 text-sm font-semibold text-white shadow-[0_6px_18px_-6px_#0b819988] transition-colors hover:bg-[#086a7e]"><span data-i18n="sec.announcements.more">ดูทั้งหมดบนเว็บไซต์จังหวัด</span> <i data-lucide="arrow-up-right" class="h-4 w-4"></i></a>
         </div>
       </div>
     </section>
@@ -353,6 +372,15 @@
       </div>
     </section>
 
+    <!-- ===================== GOVERNMENT SYSTEMS ===================== -->
+    <section id="govsystems" class="relative scroll-mt-28 overflow-hidden py-24">
+      <div class="orb top-10 right-[-6%]" data-color="#1e4fa3" data-size="420" data-speed="60"></div>
+      <div class="relative mx-auto max-w-7xl px-5 lg:px-8">
+        <div class="section-head" data-key="sec.govsystems"></div>
+        <div id="govsystems-grid" class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4"></div>
+      </div>
+    </section>
+
     <!-- ===================== POLL ===================== -->
     <section id="poll" class="relative scroll-mt-28 overflow-hidden py-24">
       <div class="orb top-0 left-[-7%]" data-color="#0b8199" data-size="420" data-speed="60"></div>
@@ -387,6 +415,10 @@
         <div class="pointer-events-none absolute inset-y-0 left-0 z-10 w-16 bg-deep [mask-image:linear-gradient(90deg,black,transparent)] sm:w-28"></div>
         <div class="pointer-events-none absolute inset-y-0 right-0 z-10 w-16 bg-deep [mask-image:linear-gradient(270deg,black,transparent)] sm:w-28"></div>
         <div id="agency-track" class="animate-ticker flex w-max gap-4 py-1 group-hover:[animation-play-state:paused]"></div>
+      </div>
+      <div id="related" class="mx-auto mt-12 max-w-7xl scroll-mt-28 px-5 lg:px-8">
+        <h3 class="font-display mb-5 flex items-center gap-2.5 text-lg font-bold text-navy" data-reveal style="--ry:16px"><i data-lucide="link-2" class="h-5 w-5 text-azure"></i><span data-i18n="sec.agencies.related">ลิงก์หน่วยงานที่เกี่ยวข้อง</span></h3>
+        <div id="related-links" class="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3"></div>
       </div>
     </section>
 

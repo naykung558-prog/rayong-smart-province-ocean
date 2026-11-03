@@ -210,11 +210,11 @@
   /* Header                                                              */
   /* ------------------------------------------------------------------ */
   const NAV = [
-    { id: "about", items: ["about", "governor"] },
+    { id: "about", items: ["about", "governor", "activities"] },
     { id: "smart", items: ["twin", "data", "calendar"] },
     { id: "travel", items: ["map", "explore"] },
-    { id: "services", items: ["services", "eservice", "announcements"] },
-    { id: "info", items: ["resources", "poll", "agencies", "news"] },
+    { id: "services", items: ["services", "eservice", "govsystems", "announcements"] },
+    { id: "info", items: ["resources", "poll", "agencies", "related", "news"] },
   ];
 
   function renderNav() {
@@ -525,16 +525,88 @@
   }
 
   /* ------------------------------------------------------------------ */
-  /* Governor activities                                                 */
+  /* Banner slideshow                                                    */
+  /* ------------------------------------------------------------------ */
+  // Each slide advances when its dot's progress bar finishes, so pausing the
+  // bar (hover, focus, offscreen) pauses the slideshow too.
+  function initBanners() {
+    const show = $("#banner-show"), track = $("#banner-track"), dots = $("#banner-dots"), cap = $("#banner-caption");
+    const slides = D.banners;
+    let cur = 0;
+    track.innerHTML = slides.map((b, i) => {
+      const img = `<img src="${b.image}" alt="${esc(b.title)}" class="h-full w-full object-cover" draggable="false" ${i ? 'loading="lazy"' : ""} />`;
+      return `<div class="banner-slide" aria-roledescription="slide" aria-label="${i + 1} / ${slides.length}">` +
+        (b.url ? `<a href="${b.url}" target="_blank" rel="noopener noreferrer" class="block h-full w-full">${img}</a>` : img) + `</div>`;
+    }).join("");
+    const drawDots = () => {
+      dots.innerHTML = slides.map((_, i) => `<button class="banner-dot" data-i="${i}" aria-label="${esc(t("sec.banners.goto"))} ${i + 1}"><span></span></button>`).join("");
+    };
+    const go = (n) => {
+      cur = (n + slides.length) % slides.length;
+      $$(".banner-slide", track).forEach((s, i) => {
+        const on = i === cur;
+        s.classList.toggle("is-on", on);
+        s.setAttribute("aria-hidden", !on);
+        const a = $("a", s);
+        if (a) a.tabIndex = on ? 0 : -1;
+      });
+      $$(".banner-dot", dots).forEach((d, i) => {
+        d.classList.remove("is-on");
+        d.toggleAttribute("aria-current", i === cur);
+      });
+      const dot = $$(".banner-dot", dots)[cur];
+      void dot.offsetWidth; // restart the progress animation
+      dot.classList.add("is-on");
+      cap.textContent = slides[cur].title;
+    };
+    drawDots();
+    langListeners.push(() => { drawDots(); go(cur); });
+    dots.addEventListener("animationend", () => go(cur + 1));
+    dots.addEventListener("click", (e) => { const b = e.target.closest("[data-i]"); if (b) go(+b.dataset.i); });
+    $("#banner-prev").addEventListener("click", () => go(cur - 1));
+    $("#banner-next").addEventListener("click", () => go(cur + 1));
+    show.addEventListener("keydown", (e) => {
+      if (e.key === "ArrowLeft") go(cur - 1);
+      if (e.key === "ArrowRight") go(cur + 1);
+    });
+    // Pause while hovered, focused or scrolled out of view
+    const section = $("#banners");
+    const pause = (on) => section.classList.toggle("is-paused", on);
+    let hovering = false, inView = false;
+    const sync = () => pause(hovering || !inView || show.contains(document.activeElement));
+    show.addEventListener("pointerenter", () => { hovering = true; sync(); });
+    show.addEventListener("pointerleave", () => { hovering = false; sync(); });
+    show.addEventListener("focusin", sync);
+    show.addEventListener("focusout", () => setTimeout(sync));
+    new IntersectionObserver(([e]) => { inView = e.isIntersecting; sync(); }, { threshold: 0.4 }).observe(show);
+    // Swipe on touch screens; a swipe must not also open the slide's link
+    let x0 = null, swiped = false;
+    track.addEventListener("pointerdown", (e) => { x0 = e.clientX; swiped = false; });
+    track.addEventListener("pointerup", (e) => {
+      if (x0 === null) return;
+      const dx = e.clientX - x0;
+      x0 = null;
+      if (Math.abs(dx) > 40) { swiped = true; go(cur + (dx < 0 ? 1 : -1)); }
+    });
+    track.addEventListener("click", (e) => { if (swiped) { e.preventDefault(); swiped = false; } }, true);
+    go(0);
+  }
+
+  /* ------------------------------------------------------------------ */
+  /* Executive activities (real photos from rayong.go.th)                */
   /* ------------------------------------------------------------------ */
   function renderGovernor() {
     mount($("#gov-activities"), D.activities.map((a, i) => `
-      <div data-reveal style="--ry:20px;--rd:${0.08 * i}s"><div class="rounded-2xl glass holo-border p-4 h-full" data-tilt data-lift="3">
-        <div class="mb-2 flex items-center justify-between gap-2">${chip(a.tag, a.color)}
-          <span class="flex items-center gap-1 text-[11px] text-slate-500">${icon("calendar-days", "h-3 w-3")}${esc(a.date)}</span></div>
-        <p class="font-display text-sm leading-snug font-semibold text-navy">${esc(a.title)}</p>
-        <p class="mt-1.5 flex items-center gap-1.5 text-xs text-slate-500">${icon("map-pin", "h-3 w-3 shrink-0 text-azure")}${esc(a.location)}</p>
-      </div></div>`).join(""));
+      <div data-reveal style="--ry:24px;--rd:${0.08 * i}s" class="h-full"><a href="${a.url}" target="_blank" rel="noopener noreferrer" class="rounded-2xl glass holo-border group flex h-full flex-col overflow-hidden" data-tilt data-lift="5">
+        <div class="relative aspect-[550/400] overflow-hidden bg-abyss">
+          <img src="${a.photo}" alt="${esc(a.person)} ${esc(a.title)}" loading="lazy" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
+          <span class="font-display absolute top-3 left-3 flex items-center gap-1.5 rounded-full bg-white/95 px-2.5 py-1 text-[10px] font-semibold text-navy shadow-sm">${icon("calendar-days", "h-3 w-3 text-azure")}${esc(a.date)}</span>
+        </div>
+        <div class="flex flex-1 flex-col p-4">
+          <p class="font-display text-[11px] leading-snug font-semibold text-azure">${esc(a.person)}</p>
+          <h4 class="font-display mt-1.5 line-clamp-3 flex-1 text-sm leading-snug font-semibold text-navy transition-colors group-hover:text-azure">${esc(a.title)}</h4>
+          <p class="mt-3 flex items-center gap-1.5 border-t border-navy/8 pt-3 text-[11px] text-slate-500">${icon("map-pin", "h-3 w-3 shrink-0 text-azure")}<span class="truncate">${esc(a.location)}</span></p>
+        </div></a></div>`).join(""));
   }
 
   /* ------------------------------------------------------------------ */
@@ -704,8 +776,94 @@
   /* Announcements                                                       */
   /* ------------------------------------------------------------------ */
   const PROC_COLORS = { "ประกาศจัดซื้อจัดจ้าง": "#0b8199", "ประกาศผู้ชนะ": "#0f9d76", "ร่าง TOR": "#c2410c", "ราคากลาง": "#0aa2c0" };
+  const ANNOUNCE_TABS = [["pr", "megaphone"], ["procurement", "gavel"], ["datasets", "library"], ["eoffice", "monitor-check"],
+    ["agenda", "calendar-clock"], ["downloads", "folder-down"], ["damrongdhama", "scale"]];
+  const DOC_FORMAT = { PDF: ["file-text", "#c2410c"], WEB: ["globe", "#1e4fa3"], DATA: ["database", "#0f9a84"] };
+  const ext = (url) => `href="${url}" target="_blank" rel="noopener noreferrer"`;
+  const iconTile = (name, c, size = "h-11 w-11") =>
+    `<span class="flex ${size} shrink-0 items-center justify-center rounded-xl border" style="color:${c};border-color:${c}33;background:${c}0d">${icon(name, "h-5 w-5")}</span>`;
   function renderAnnouncements(tab) {
     const body = $("#announce-body");
+    $("#announce-more").href = D.hubLinks[tab];
+    if (tab === "datasets") {
+      mount(body, `<div class="tab-swap grid grid-cols-1 gap-3 lg:grid-cols-2">${D.provinceDocs.map((d, i) => {
+        const [ic, c] = DOC_FORMAT[d.format] || DOC_FORMAT.PDF;
+        return `<a ${ext(d.url)} class="rounded-2xl glass holo-border group flex items-center gap-4 p-4 sm:p-5" data-reveal style="--ry:18px;--rd:${0.04 * i}s">
+          ${iconTile(ic, c)}
+          <div class="min-w-0 flex-1"><h3 class="font-display truncate text-sm font-semibold text-navy transition-colors group-hover:text-azure sm:text-base">${esc(d.title)}</h3>
+            <p class="mt-0.5 text-xs text-slate-500"><span class="font-display font-semibold" style="color:${c}">${d.format}</span> · ${esc(d.note)}</p></div>
+          ${icon(d.format === "PDF" ? "download" : "arrow-up-right", "h-4 w-4 shrink-0 text-slate-400 transition-colors group-hover:text-azure")}
+        </a>`;
+      }).join("")}</div>`);
+      return;
+    }
+    if (tab === "eoffice") {
+      mount(body, `<div class="tab-swap">
+        <p class="mb-5 flex items-center gap-2 text-sm text-slate-500">${icon("lock-keyhole", "h-4 w-4 text-azure")}${esc(t("sec.announcements.eofficeNote"))}</p>
+        <div class="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">${D.eoffice.map((e, i) => `
+          <div data-reveal style="--ry:22px;--rd:${0.06 * i}s" class="h-full"><a ${ext(e.url)} class="rounded-2xl glass holo-border group flex h-full flex-col p-6" data-tilt data-lift="4">
+            ${iconTile(e.icon, e.color, "h-12 w-12")}
+            <h3 class="font-display mt-4 text-base font-semibold text-navy transition-colors group-hover:text-azure">${esc(e.name)}</h3>
+            <p class="mt-1.5 flex-1 text-xs leading-relaxed text-slate-500">${esc(e.description)}</p>
+            <span class="font-display mt-4 flex items-center gap-1.5 text-xs font-semibold text-azure">${icon("log-in", "h-3.5 w-3.5")}เข้าสู่ระบบ</span>
+          </a></div>`).join("")}</div></div>`);
+      return;
+    }
+    if (tab === "agenda") {
+      const days = [...new Set(D.agenda.map((a) => a.day))];
+      mount(body, `<div class="tab-swap">
+        <p class="mb-5 flex items-center gap-2 text-xs text-slate-500">${icon("info", "h-3.5 w-3.5 text-amber")}${esc(t("util.sampleAgenda"))}</p>
+        <div class="grid grid-cols-1 gap-6 lg:grid-cols-3">${days.map((day, di) => `
+          <div data-reveal style="--ry:22px;--rd:${0.08 * di}s"><div class="rounded-2xl glass holo-border h-full p-5">
+            <p class="font-display mb-4 flex items-center gap-2 text-sm font-bold text-navy">${icon("calendar-days", "h-4 w-4 text-azure")}${esc(day)}</p>
+            <ol class="relative space-y-5 border-l-2 border-azure/20 pl-5">${D.agenda.filter((a) => a.day === day).map((a) => `
+              <li class="relative"><span class="absolute top-1.5 -left-[27px] h-3 w-3 rounded-full border-2 border-white bg-azure shadow"></span>
+                <p class="font-display text-xs font-semibold text-azure">${esc(a.time)} · ${esc(a.who)}</p>
+                <p class="font-display mt-1 text-sm leading-snug font-semibold text-navy">${esc(a.title)}</p>
+                <p class="mt-1 flex items-center gap-1.5 text-[11px] text-slate-500">${icon("map-pin", "h-3 w-3 shrink-0")}${esc(a.place)}</p></li>`).join("")}
+            </ol></div></div>`).join("")}</div></div>`);
+      return;
+    }
+    if (tab === "downloads") {
+      mount(body, `<div class="tab-swap">
+        <p class="mb-5 flex items-center gap-2 text-sm text-slate-500">${icon("folder-open", "h-4 w-4 text-azure")}${esc(t("sec.announcements.downloadsNote"))}</p>
+        <div class="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">${D.workGroups.map((g, i) => `
+          <div data-reveal style="--ry:22px;--rd:${0.05 * i}s" class="h-full"><a ${ext(g.url)} class="rounded-2xl glass holo-border group flex h-full items-start gap-4 p-5" data-tilt data-lift="4">
+            ${iconTile(g.icon, g.color)}
+            <div class="min-w-0 flex-1"><h3 class="font-display text-sm leading-snug font-semibold text-navy transition-colors group-hover:text-azure sm:text-base">${esc(g.name)}</h3>
+              <p class="mt-1 text-xs leading-relaxed text-slate-500">${esc(g.description)}</p>
+              <span class="font-display mt-3 flex items-center gap-1.5 text-xs font-semibold text-azure">${icon("download", "h-3.5 w-3.5")}${esc(t("sec.resources.download"))}</span></div>
+          </a></div>`).join("")}</div></div>`);
+      return;
+    }
+    if (tab === "damrongdhama") {
+      const dd = D.damrongdhama;
+      mount(body, `<div class="tab-swap grid grid-cols-1 gap-6 lg:grid-cols-5">
+        <div class="lg:col-span-2" data-reveal style="--ry:22px"><div class="relative h-full overflow-hidden rounded-2xl bg-[#06303f] p-7 text-white">
+          <span class="rayong-ribbon absolute inset-x-0 top-0 h-1" aria-hidden="true"></span>
+          ${icon("scale", "absolute -right-4 -bottom-6 h-40 w-40 text-white/5")}
+          <p class="font-display text-lg font-bold">${esc(t("sec.announcements.damrong.title"))}</p>
+          <p class="mt-1 text-sm text-white/70">${esc(t("sec.announcements.damrong.lead"))}</p>
+          <a href="tel:${dd.hotline}" class="mt-6 flex items-center gap-4">
+            <span class="flex h-14 w-14 items-center justify-center rounded-2xl bg-white/10">${icon("phone-call", "h-7 w-7 text-[#f4b400]")}</span>
+            <span><span class="font-display block text-5xl leading-none font-bold tracking-tight">${dd.hotline}</span><span class="mt-1 block text-xs text-white/70">${esc(dd.hours)}</span></span></a>
+          <p class="mt-6 flex items-start gap-2 border-t border-white/10 pt-4 text-xs text-white/70">${icon("map-pin", "mt-0.5 h-3.5 w-3.5 shrink-0")}${esc(dd.address)}</p>
+        </div></div>
+        <div class="flex flex-col gap-6 lg:col-span-3">
+          <div class="grid grid-cols-1 gap-3 sm:grid-cols-2">${dd.actions.map((a, i) => `
+            <a ${ext(a.url)} class="rounded-2xl glass holo-border group flex items-center gap-3 p-4" data-reveal style="--ry:18px;--rd:${0.05 * i}s">
+              ${iconTile(a.icon, i < 2 ? "#0b8199" : "#d7263d", "h-10 w-10")}
+              <span class="font-display flex-1 text-sm font-semibold text-navy transition-colors group-hover:text-azure">${esc(a.label)}</span>
+              ${icon("arrow-up-right", "h-4 w-4 shrink-0 text-slate-400 transition-colors group-hover:text-azure")}</a>`).join("")}</div>
+          <div class="rounded-2xl glass holo-border p-5" data-reveal style="--ry:18px;--rd:.3s">
+            <p class="font-display mb-4 text-sm font-bold text-navy">${esc(t("sec.announcements.damrong.steps"))}</p>
+            <ol class="grid grid-cols-2 gap-4 sm:grid-cols-4">${dd.steps.map((s, i) => `
+              <li class="flex flex-col items-start gap-2"><span class="font-display flex h-8 w-8 items-center justify-center rounded-full bg-azure text-sm font-bold text-white">${i + 1}</span>
+                <span class="text-xs leading-snug text-slate-600">${esc(s)}</span></li>`).join("")}</ol>
+          </div>
+        </div></div>`);
+      return;
+    }
     if (tab === "pr") {
       mount(body, `<div class="tab-swap grid grid-cols-1 gap-5 sm:grid-cols-2">${D.pr.map((a, i) => `
         <div data-parallax="${i % 2 === 0 ? 20 : -16}"><div data-reveal style="--ry:24px;--rd:${0.06 * i}s" class="h-full">
@@ -942,6 +1100,28 @@
       <span class="font-display text-base font-medium whitespace-nowrap text-slate-600 transition-colors group-hover/item:text-azure">${esc(a.name)}</span>
       ${icon("external-link", "h-3.5 w-3.5 text-slate-400 transition-colors group-hover/item:text-azure")}</a>`;
     $("#agency-track").innerHTML = D.agencies.map((a) => item(a, false)).join("") + D.agencies.map((a) => item(a, true)).join("");
+
+    mount($("#related-links"), D.relatedLinks.map((l, i) => `
+      <a ${ext(l.url)} class="group flex items-center gap-3.5 rounded-2xl p-4 transition-all ${l.featured ? "relative overflow-hidden bg-[#06303f] text-white shadow-[0_14px_34px_-18px_#06303f]" : "glass holo-border"}" data-reveal style="--ry:16px;--rd:${0.04 * i}s">
+        ${l.featured ? `<span class="rayong-ribbon absolute inset-x-0 top-0 h-1" aria-hidden="true"></span>` : ""}
+        <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl ${l.featured ? "bg-white/10 text-[#f4b400]" : "border border-azure/25 bg-azure/6 text-azure"}">${icon(l.icon, "h-5 w-5")}</span>
+        <span class="min-w-0 flex-1"><span class="font-display block truncate text-sm font-semibold ${l.featured ? "" : "text-navy transition-colors group-hover:text-azure"}">${esc(l.name)}</span>
+          <span class="mt-0.5 block truncate text-xs ${l.featured ? "text-white/70" : "text-slate-500"}">${esc(l.note)}</span></span>
+        ${icon("arrow-up-right", `h-4 w-4 shrink-0 ${l.featured ? "text-white/60" : "text-slate-400 transition-colors group-hover:text-azure"}`)}</a>`).join(""));
+  }
+
+  /* ------------------------------------------------------------------ */
+  /* Government information systems                                      */
+  /* ------------------------------------------------------------------ */
+  const SYSTEM_COLORS = ["#0b8199", "#1e4fa3", "#0f9a84", "#d7263d"];
+  function renderGovSystems() {
+    mount($("#govsystems-grid"), D.govSystems.map((s, i) => `
+      <div data-reveal style="--ry:22px;--rd:${0.04 * i}s" class="h-full"><a ${ext(s.url)} class="rounded-2xl glass holo-border group flex h-full flex-col p-5" data-tilt data-lift="4">
+        <div class="flex items-start justify-between gap-3">${iconTile(s.icon, SYSTEM_COLORS[i % SYSTEM_COLORS.length])}
+          ${icon("arrow-up-right", "h-4 w-4 text-slate-400 transition-colors group-hover:text-azure")}</div>
+        <h3 class="font-display mt-4 text-sm leading-snug font-semibold text-navy transition-colors group-hover:text-azure sm:text-base">${esc(s.name)}</h3>
+        <p class="mt-1 text-xs text-slate-500">${esc(s.owner)}</p>
+      </a></div>`).join(""));
   }
 
   const NEWS_ICONS = { "ข่าว": "newspaper", "ประกาศ": "megaphone", "กิจกรรม": "party-popper", "สมาร์ทซิตี้": "building-2" };
@@ -975,7 +1155,14 @@
   /* ------------------------------------------------------------------ */
   const searchIndex = [
     { id: "governor", title: D.governor.name, subtitle: D.governor.position, sectionId: "governor", cat: "nav.governor" },
-    ...D.activities.map((e) => ({ id: e.id, title: e.title, subtitle: `${e.date} · ${e.location}`, sectionId: "governor", cat: "nav.governor" })),
+    ...D.activities.map((e) => ({ id: e.id, title: e.title, subtitle: `${e.date} · ${e.person}`, sectionId: "activities", cat: "nav.activities" })),
+    ...D.banners.map((e) => ({ id: e.id, title: e.title, sectionId: "banners", cat: "sec.banners.label" })),
+    ...D.provinceDocs.map((e) => ({ id: e.id, title: e.title, subtitle: `${e.format} · ${e.note}`, sectionId: "announcements", cat: "sec.announcements.tab.datasets" })),
+    ...D.eoffice.map((e) => ({ id: e.id, title: e.name, subtitle: e.description, sectionId: "announcements", cat: "sec.announcements.tab.eoffice" })),
+    ...D.workGroups.map((e) => ({ id: e.id, title: e.name, subtitle: e.description, sectionId: "announcements", cat: "sec.announcements.tab.downloads" })),
+    { id: "damrongdhama", title: "ศูนย์ดำรงธรรมจังหวัดระยอง", subtitle: "สายด่วน 1567 · ร้องเรียน ร้องทุกข์", sectionId: "announcements", cat: "sec.announcements.tab.damrongdhama" },
+    ...D.govSystems.map((e) => ({ id: e.id, title: e.name, subtitle: e.owner, sectionId: "govsystems", cat: "nav.govsystems" })),
+    ...D.relatedLinks.map((e) => ({ id: e.id, title: e.name, subtitle: e.note, sectionId: "related", cat: "nav.related" })),
     ...D.events.map((e) => ({ id: e.id, title: e.title, subtitle: `${e.day} มิ.ย. 2569 · ${e.location}`, sectionId: "calendar", cat: "nav.calendar" })),
     ...D.zones.map((e) => ({ id: e.id, title: e.name, subtitle: e.tagline, sectionId: "twin", cat: "nav.twin" })),
     ...D.stay.map((e) => ({ id: e.id, title: e.name, subtitle: `${e.type} · ${e.area}`, sectionId: "explore", cat: "sec.explore.tab.stay" })),
@@ -1090,6 +1277,7 @@
     renderSectionHeads();
     initHeader();
     initHero();
+    initBanners();
     renderAbout();
     renderGovernor();
     renderTwinUI();
@@ -1098,10 +1286,8 @@
 
     let announceTab = "pr", resourceTab = "data", exploreTab = "stay";
     const drawTabs = () => {
-      tabs($('[data-tabs="announce"]'), [
-        { id: "pr", icon: "megaphone", label: () => "ข่าวประชาสัมพันธ์" },
-        { id: "procurement", icon: "gavel", label: () => "ข่าวประกวดราคา" },
-      ], announceTab, (id) => renderAnnouncements((announceTab = id)));
+      tabs($('[data-tabs="announce"]'), ANNOUNCE_TABS.map(([id, ic]) => ({ id, icon: ic, pad: "px-4", label: () => t(`sec.announcements.tab.${id}`) })),
+        announceTab, (id) => renderAnnouncements((announceTab = id)));
       tabs($('[data-tabs="resources"]'), [
         { id: "data", icon: "database", label: () => t("sec.resources.tab.data") },
         { id: "media", icon: "clapperboard", label: () => t("sec.resources.tab.media") },
@@ -1116,11 +1302,12 @@
     renderExplore(exploreTab);
     renderServices();
     initPoll();
+    renderGovSystems();
     renderAgencies();
     renderNews();
     initSearch();
     initChat();
-    langListeners.push(() => { drawTabs(); renderResources(resourceTab); renderExplore(exploreTab); renderServices(); renderNews(); });
+    langListeners.push(() => { drawTabs(); renderAnnouncements(announceTab); renderResources(resourceTab); renderExplore(exploreTab); renderServices(); renderNews(); });
 
     applyLang();
     observeReveals();

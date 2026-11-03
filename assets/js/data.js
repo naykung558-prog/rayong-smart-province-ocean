@@ -149,36 +149,40 @@ window.SITE_DATA = {
  },
  "activities": [
   {
-   "id": "act-1",
-   "date": "2 มิ.ย. 2569",
-   "title": "เปิดศูนย์บัญชาการเมืองอัจฉริยะ (City Command Center) ระยะที่ 2",
-   "location": "ศูนย์ราชการจังหวัดระยอง",
-   "tag": "Smart City",
-   "color": "#0b8199"
+   "id": "act-3904",
+   "date": "1 พ.ย. 2569",
+   "person": "นายไตรภพ วงศ์ไตรรัตน์ ผู้ว่าราชการจังหวัดระยอง",
+   "title": "เป็นประธานโครงการ “แสงนำใจไทยทั้งชาติ เดิน วิ่ง ปั่น ป้องกันอัมพาต ครั้งที่ 12 เฉลิมพระเกียรติ”",
+   "location": "สนามกีฬากลางจังหวัดระยอง",
+   "photo": "assets/images/activities/20261102_69792.jpg",
+   "url": "http://rayong.go.th/web/activity/detail/3904"
   },
   {
-   "id": "act-2",
-   "date": "28 พ.ค. 2569",
-   "title": "ลงพื้นที่ติดตามโครงการฟื้นฟูชายหาดแม่รำพึงและระบบเฝ้าระวังคุณภาพน้ำทะเล",
-   "location": "หาดแม่รำพึง อ.เมืองระยอง",
-   "tag": "สิ่งแวดล้อม",
-   "color": "#0f9a84"
+   "id": "act-3903",
+   "date": "1 พ.ย. 2569",
+   "person": "นายกำธร เวหน รองผู้ว่าราชการจังหวัดระยอง",
+   "title": "เป็นประธานงานปริวาสกรรม ประจำปี 2569 ร่วมทำบุญตักบาตรและถวายน้ำปานะพระภิกษุสงฆ์",
+   "location": "วัดช้างชนศิริราษฎร์บำรุง ต.ตะพง",
+   "photo": "assets/images/activities/20261102_98534.jpg",
+   "url": "http://rayong.go.th/web/activity/detail/3903"
   },
   {
-   "id": "act-3",
-   "date": "21 พ.ค. 2569",
-   "title": "ประชุมร่วมนักลงทุน EEC ส่งเสริมอุตสาหกรรมยานยนต์ไฟฟ้าและพลังงานสะอาด",
-   "location": "นิคมอุตสาหกรรมมาบตาพุด",
-   "tag": "เศรษฐกิจ",
-   "color": "#0aa2c0"
+   "id": "act-3902",
+   "date": "30 ต.ค. 2569",
+   "person": "นางสาวสลารีวรรณ ทัพทวี รองผู้ว่าราชการจังหวัดระยอง",
+   "title": "เป็นประธานเปิดนิทรรศการให้ความรู้โรคหลอดเลือดสมอง โครงการแสงนำใจไทยทั้งชาติ ครั้งที่ 12",
+   "location": "ศูนย์การค้าแพชชั่น ช้อปปิ้งเดสติเนชั่น",
+   "photo": "assets/images/activities/20261102_96717.jpg",
+   "url": "http://rayong.go.th/web/activity/detail/3902"
   },
   {
-   "id": "act-4",
-   "date": "15 พ.ค. 2569",
-   "title": "มอบทุนการศึกษาเยาวชนต้นแบบดิจิทัล ประจำปี 2569 จำนวน 120 ทุน",
-   "location": "โรงเรียนระยองวิทยาคม",
-   "tag": "การศึกษา",
-   "color": "#e2674f"
+   "id": "act-3901",
+   "date": "28 ต.ค. 2569",
+   "person": "นางสาวสลารีวรรณ ทัพทวี รองผู้ว่าราชการจังหวัดระยอง",
+   "title": "ให้การต้อนรับ พลอากาศเอก สมคิด สุขบาง ในกิจกรรมศึกษาดูงานเพื่อสร้างแรงบันดาลใจให้กับเยาวชน",
+   "location": "โรงแยกก๊าซธรรมชาติ จ.ระยอง",
+   "photo": "assets/images/activities/20261029_94509.jpg",
+   "url": "http://rayong.go.th/web/activity/detail/3901"
   }
  ],
  "zones": [
@@ -1984,7 +1988,440 @@ window.SITE_DATA = {
   "firstWeekday": 0,
   "labelTh": "มิถุนายน 2569",
   "labelEn": "June 2026"
- }
+ },
+ "banners": [
+  {
+   "id": "bn-7",
+   "title": "7 แนวทางสำคัญ ผู้ว่าราชการจังหวัดระยอง “สร้างระยองน่าอยู่”",
+   "image": "assets/images/banners/20251216_33721.png",
+   "url": ""
+  },
+  {
+   "id": "bn-plan14",
+   "title": "แผน 14 ประเทศไทยต้องไปต่อ! สแกนเพื่อร่วมแสดงความคิดเห็นต่ออนาคตประเทศไทย",
+   "image": "assets/images/banners/20260515_68937.png",
+   "url": "https://14thplan.nesdc.go.th"
+  },
+  {
+   "id": "bn-survey",
+   "title": "Online Survey 2569 แบบสำรวจความพึงพอใจของประชาชนต่อการให้บริการตามคู่มือสำหรับประชาชน",
+   "image": "assets/images/banners/20260421_69781.jpg",
+   "url": "https://eoffice.opdc.go.th/l/29f5322e"
+  },
+  {
+   "id": "bn-ita",
+   "title": "ITA จังหวัดระยอง การประเมินคุณธรรมและความโปร่งใสในการดำเนินงานของหน่วยงานภาครัฐ",
+   "image": "assets/images/banners/20260331_65007.jpg",
+   "url": "http://rayong.go.th/web/department/detail/182"
+  },
+  {
+   "id": "bn-nogift",
+   "title": "No Gift Policy ประกาศเจตนารมณ์ “สุจริต โปร่งใส จังหวัดระยองใสสะอาด ๒๕๖๙”",
+   "image": "assets/images/banners/20251230_32734.jpg",
+   "url": "http://rayong.go.th/web/assets/uploads/department/document/20251230_40225.pdf"
+  }
+ ],
+ "hubLinks": {
+  "pr": "http://rayong.go.th/web/department/detail/50",
+  "procurement": "http://rayong.go.th/web/department/detail/51",
+  "datasets": "http://rayong.go.th/web/department",
+  "eoffice": "https://www.rayongsaraban.com/rygmenu/",
+  "agenda": "http://rayong.go.th/web/department/detail/22",
+  "downloads": "http://rayong.go.th/web/department",
+  "damrongdhama": "http://rayong.go.th/web/department/detail/53"
+ },
+ "provinceDocs": [
+  {
+   "id": "doc-strategy",
+   "title": "ยุทธศาสตร์การพัฒนาจังหวัดระยอง",
+   "format": "PDF",
+   "note": "แผนพัฒนาจังหวัด",
+   "url": "http://rayong.go.th/web/assets/uploads/department/document/20260205_83438.pdf"
+  },
+  {
+   "id": "doc-structure",
+   "title": "โครงสร้างจังหวัดระยอง",
+   "format": "PDF",
+   "note": "ส่วนราชการและหน่วยงาน",
+   "url": "http://rayong.go.th/web/assets/uploads/department/document/20260216_25381.pdf"
+  },
+  {
+   "id": "doc-brief",
+   "title": "บรรยายสรุปจังหวัดระยอง",
+   "format": "PDF",
+   "note": "ข้อมูลภาพรวมจังหวัด",
+   "url": "http://rayong.go.th/web/assets/uploads/department/document/20250829_62650.pdf"
+  },
+  {
+   "id": "doc-annual",
+   "title": "รายงานประจำปีจังหวัดระยอง",
+   "format": "WEB",
+   "note": "รายงานผลการดำเนินงาน",
+   "url": "http://rayong.go.th/web/department/detail/125"
+  },
+  {
+   "id": "doc-opendata",
+   "title": "ศูนย์กลางข้อมูลเปิดภาครัฐ (ข้อมูลจังหวัดระยอง)",
+   "format": "DATA",
+   "note": "data.go.th",
+   "url": "https://data.go.th/dataset/?q=%E0%B8%A3%E0%B8%B0%E0%B8%A2%E0%B8%AD%E0%B8%87"
+  },
+  {
+   "id": "doc-stat",
+   "title": "สถิติจังหวัดระยอง",
+   "format": "DATA",
+   "note": "สำนักงานสถิติจังหวัดระยอง",
+   "url": "https://rayong.nso.go.th/"
+  },
+  {
+   "id": "doc-tourist",
+   "title": "หนังสือ “Tourist Rayong”",
+   "format": "PDF",
+   "note": "หนังสือประชาสัมพันธ์",
+   "url": "http://rayong.go.th/web/assets/uploads/department/document/20250829_66532.pdf"
+  },
+  {
+   "id": "doc-itsec",
+   "title": "ความมั่นคงปลอดภัยด้านสารสนเทศจังหวัดระยอง",
+   "format": "PDF",
+   "note": "นโยบายและแนวปฏิบัติ",
+   "url": "http://rayong.go.th/web/assets/uploads/department/document/20251031_30054.pdf"
+  }
+ ],
+ "eoffice": [
+  {
+   "id": "eo-saraban",
+   "name": "ระบบสารบรรณอิเล็กทรอนิกส์",
+   "description": "รับ–ส่งหนังสือราชการ ลงทะเบียนและติดตามเอกสาร",
+   "icon": "mail-check",
+   "color": "#0b8199",
+   "url": "https://www.rayongsaraban.com/rygmenu/"
+  },
+  {
+   "id": "eo-room",
+   "name": "ระบบจองห้องประชุม",
+   "description": "ตรวจสอบห้องว่างและจองห้องประชุมศาลากลางจังหวัด",
+   "icon": "presentation",
+   "color": "#0f9a84",
+   "url": "https://www.rayongsaraban.com/rygmenu/"
+  },
+  {
+   "id": "eo-calendar",
+   "name": "ระบบปฏิทินและนัดหมาย",
+   "description": "ปฏิทินงานและนัดหมายของผู้บริหารจังหวัด",
+   "icon": "calendar-clock",
+   "color": "#1e4fa3",
+   "url": "http://rayong.go.th/web/department/detail/22"
+  },
+  {
+   "id": "eo-circular",
+   "name": "หนังสือเวียน สนจ.รย.",
+   "description": "หนังสือเวียนจากสำนักงานจังหวัดระยอง",
+   "icon": "files",
+   "color": "#e2674f",
+   "url": "http://rayong.go.th/web/department/detail/52"
+  }
+ ],
+ "agenda": [
+  {
+   "id": "ag-1",
+   "day": "วันนี้",
+   "time": "09:00 น.",
+   "who": "ผู้ว่าราชการจังหวัดระยอง",
+   "title": "ประชุมคณะกรมการจังหวัดและหัวหน้าส่วนราชการ ประจำเดือน",
+   "place": "ห้องประชุมพลา ศาลากลางจังหวัดระยอง"
+  },
+  {
+   "id": "ag-2",
+   "day": "วันนี้",
+   "time": "13:30 น.",
+   "who": "รองผู้ว่าราชการจังหวัดระยอง",
+   "title": "ประชุมติดตามการแก้ไขปัญหาขยะและน้ำเสียในพื้นที่",
+   "place": "ห้องประชุมเพ ศาลากลางจังหวัดระยอง"
+  },
+  {
+   "id": "ag-3",
+   "day": "พรุ่งนี้",
+   "time": "08:30 น.",
+   "who": "ผู้ว่าราชการจังหวัดระยอง",
+   "title": "ตรวจเยี่ยมการให้บริการประชาชน ศูนย์ดำรงธรรมอำเภอ",
+   "place": "ที่ว่าการอำเภอแกลง"
+  },
+  {
+   "id": "ag-4",
+   "day": "พรุ่งนี้",
+   "time": "10:00 น.",
+   "who": "ปลัดจังหวัดระยอง",
+   "title": "ประชุมคณะทำงานศูนย์ดำรงธรรมจังหวัดระยอง",
+   "place": "ศูนย์ดำรงธรรมจังหวัดระยอง"
+  },
+  {
+   "id": "ag-5",
+   "day": "สัปดาห์นี้",
+   "time": "09:30 น.",
+   "who": "รองผู้ว่าราชการจังหวัดระยอง",
+   "title": "ประชุมคณะอนุกรรมการขับเคลื่อนการท่องเที่ยวจังหวัด",
+   "place": "ห้องประชุมแกลง ศาลากลางจังหวัดระยอง"
+  }
+ ],
+ "workGroups": [
+  {
+   "id": "wg-circular",
+   "name": "หนังสือเวียน สนจ.รย.",
+   "description": "หนังสือเวียนและแจ้งเวียนจากสำนักงานจังหวัด",
+   "icon": "files",
+   "color": "#0b8199",
+   "url": "http://rayong.go.th/web/department/detail/52"
+  },
+  {
+   "id": "wg-damrong",
+   "name": "กลุ่มงานศูนย์ดำรงธรรม",
+   "description": "แบบฟอร์มร้องเรียน ร้องทุกข์ และคู่มือการรับเรื่อง",
+   "icon": "scale",
+   "color": "#d7263d",
+   "url": "http://rayong.go.th/web/department/detail/53"
+  },
+  {
+   "id": "wg-strategy",
+   "name": "กลุ่มงานยุทธศาสตร์และข้อมูลเพื่อการพัฒนาจังหวัด",
+   "description": "แผนพัฒนาจังหวัด แผนปฏิบัติราชการ และข้อมูลจังหวัด",
+   "icon": "target",
+   "color": "#1e4fa3",
+   "url": "http://rayong.go.th/web/department/detail/54"
+  },
+  {
+   "id": "wg-admin",
+   "name": "กลุ่มงานอำนวยการ",
+   "description": "งานสารบรรณ งานการเงิน บัญชี และพัสดุ",
+   "icon": "briefcase",
+   "color": "#0f9a84",
+   "url": "http://rayong.go.th/web/department/detail/55"
+  },
+  {
+   "id": "wg-hr",
+   "name": "กลุ่มงานบริหารทรัพยากรบุคคล",
+   "description": "การบรรจุ แต่งตั้ง และพัฒนาบุคลากร",
+   "icon": "users",
+   "color": "#e2674f",
+   "url": "http://rayong.go.th/web/department/detail/56"
+  },
+  {
+   "id": "wg-audit",
+   "name": "หน่วยตรวจสอบภายใน",
+   "description": "รายงานการตรวจสอบและการควบคุมภายใน",
+   "icon": "shield-check",
+   "color": "#f4b400",
+   "url": "http://rayong.go.th/web/department/detail/57"
+  }
+ ],
+ "damrongdhama": {
+  "hotline": "1567",
+  "hours": "รับเรื่องตลอด 24 ชั่วโมง",
+  "address": "ศูนย์ดำรงธรรมจังหวัดระยอง ศาลากลางจังหวัดระยอง",
+  "actions": [
+   {
+    "id": "dd-file",
+    "label": "แจ้งเรื่องร้องเรียน/ร้องทุกข์",
+    "icon": "message-square-warning",
+    "url": "http://rayong.go.th/web/index.php/department/complain"
+   },
+   {
+    "id": "dd-track",
+    "label": "ติดตามเรื่องร้องเรียน/ร้องทุกข์",
+    "icon": "search-check",
+    "url": "http://rayong.go.th/web/index.php/Status_complain/login"
+   },
+   {
+    "id": "dd-corrupt",
+    "label": "แจ้งเรื่องร้องเรียนทุจริต (จังหวัด)",
+    "icon": "shield-alert",
+    "url": "http://rayong.go.th/web/index.php/department/corrupt"
+   },
+   {
+    "id": "dd-corrupt-track",
+    "label": "ติดตามเรื่องร้องเรียนทุจริต",
+    "icon": "file-search",
+    "url": "http://rayong.go.th/web/index.php/Status_corrupt/login"
+   },
+   {
+    "id": "dd-nacc",
+    "label": "ร้องเรียนทุจริต ป.ป.ช.",
+    "icon": "landmark",
+    "url": "https://www.nacc.go.th/allcomplaint"
+   },
+   {
+    "id": "dd-pacc",
+    "label": "ร้องเรียนทุจริต ป.ป.ท.",
+    "icon": "landmark",
+    "url": "https://anonymous.pacc.go.th/"
+   }
+  ],
+  "steps": [
+   "ยื่นเรื่องผ่านช่องทางที่สะดวก",
+   "ศูนย์ดำรงธรรมตรวจสอบและลงทะเบียน",
+   "ส่งเรื่องให้หน่วยงานที่เกี่ยวข้องดำเนินการ",
+   "แจ้งผลและติดตามได้ทางออนไลน์"
+  ]
+ },
+ "govSystems": [
+  {
+   "id": "gs-saraban",
+   "name": "ระบบสารบรรณอิเล็กทรอนิกส์",
+   "owner": "จังหวัดระยอง",
+   "icon": "mail-check",
+   "url": "https://www.rayongsaraban.com/rygmenu/"
+  },
+  {
+   "id": "gs-egp",
+   "name": "ระบบจัดซื้อจัดจ้างภาครัฐ (e-GP)",
+   "owner": "กรมบัญชีกลาง",
+   "icon": "gavel",
+   "url": "https://www.gprocurement.go.th"
+  },
+  {
+   "id": "gs-gfmis",
+   "name": "ระบบบริหารการเงินการคลังภาครัฐ (GFMIS)",
+   "owner": "กรมบัญชีกลาง",
+   "icon": "landmark",
+   "url": "https://www.gfmis.go.th"
+  },
+  {
+   "id": "gs-emenscr",
+   "name": "ระบบติดตามโครงการ (eMENSCR)",
+   "owner": "สำนักงานสภาพัฒนาการเศรษฐกิจและสังคมแห่งชาติ",
+   "icon": "chart-gantt",
+   "url": "https://emenscr.nesdc.go.th"
+  },
+  {
+   "id": "gs-opendata",
+   "name": "ศูนย์กลางข้อมูลเปิดภาครัฐ",
+   "owner": "สำนักงานพัฒนารัฐบาลดิจิทัล",
+   "icon": "database",
+   "url": "https://data.go.th"
+  },
+  {
+   "id": "gs-info",
+   "name": "ศูนย์รวมข้อมูลเพื่อติดต่อราชการ",
+   "owner": "สำนักงาน ก.พ.ร.",
+   "icon": "book-open-check",
+   "url": "https://www.info.go.th"
+  },
+  {
+   "id": "gs-biz",
+   "name": "Biz Portal บริการภาครัฐเพื่อธุรกิจ",
+   "owner": "สำนักงาน ก.พ.ร.",
+   "icon": "store",
+   "url": "https://bizportal.go.th"
+  },
+  {
+   "id": "gs-law",
+   "name": "ระบบกลางทางกฎหมาย",
+   "owner": "สำนักงานคณะกรรมการกฤษฎีกา",
+   "icon": "scale",
+   "url": "https://www.law.go.th"
+  },
+  {
+   "id": "gs-damrong",
+   "name": "ศูนย์ดำรงธรรม กระทรวงมหาดไทย",
+   "owner": "กระทรวงมหาดไทย",
+   "icon": "headset",
+   "url": "http://www.damrongdhama.moi.go.th"
+  },
+  {
+   "id": "gs-ita",
+   "name": "ระบบประเมิน ITA ออนไลน์",
+   "owner": "สำนักงาน ป.ป.ช.",
+   "icon": "badge-check",
+   "url": "https://itas.nacc.go.th"
+  },
+  {
+   "id": "gs-ginfo",
+   "name": "ฐานข้อมูลหน่วยงานภาครัฐ",
+   "owner": "สำนักงานคณะกรรมการข้อมูลข่าวสารของราชการ",
+   "icon": "building-2",
+   "url": "http://www.oic.go.th/ginfo/"
+  },
+  {
+   "id": "gs-eservice",
+   "name": "e-Service จังหวัดระยอง",
+   "owner": "จังหวัดระยอง",
+   "icon": "monitor-smartphone",
+   "url": "http://rayong.go.th/web/department/detail/113"
+  }
+ ],
+ "relatedLinks": [
+  {
+   "id": "rl-district",
+   "name": "ข้อมูลอำเภอในจังหวัดระยอง",
+   "note": "8 อำเภอ 54 ตำบล 439 หมู่บ้าน",
+   "icon": "map",
+   "url": "http://rayong.go.th/web/department/detail/44",
+   "featured": true
+  },
+  {
+   "id": "rl-province",
+   "name": "เว็บไซต์จังหวัดระยอง",
+   "note": "rayong.go.th",
+   "icon": "globe",
+   "url": "http://rayong.go.th/web/home"
+  },
+  {
+   "id": "rl-nso",
+   "name": "สำนักงานสถิติจังหวัดระยอง",
+   "note": "สถิติจังหวัด",
+   "icon": "chart-column",
+   "url": "https://rayong.nso.go.th/"
+  },
+  {
+   "id": "rl-doae",
+   "name": "สำนักงานเกษตรจังหวัดระยอง",
+   "note": "ข้อมูลด้านการเกษตร",
+   "icon": "sprout",
+   "url": "https://rayong.doae.go.th/?page_id=282"
+  },
+  {
+   "id": "rl-industry",
+   "name": "สำนักงานอุตสาหกรรมจังหวัดระยอง",
+   "note": "ข้อมูลด้านอุตสาหกรรม",
+   "icon": "factory",
+   "url": "https://rayong.industry.go.th/th/cms-of-287"
+  },
+  {
+   "id": "rl-mots",
+   "name": "กระทรวงการท่องเที่ยวและกีฬา",
+   "note": "ข้อมูลด้านการท่องเที่ยว",
+   "icon": "palmtree",
+   "url": "https://www.mots.go.th/news/category/808"
+  },
+  {
+   "id": "rl-sme",
+   "name": "สำนักงานส่งเสริมวิสาหกิจขนาดกลางและขนาดย่อม",
+   "note": "สสว.",
+   "icon": "store",
+   "url": "https://www.sme.go.th/"
+  },
+  {
+   "id": "rl-admincourt",
+   "name": "ศาลปกครอง",
+   "note": "admincourt.go.th",
+   "icon": "scale",
+   "url": "http://www.admincourt.go.th/admincourt/site/09illustration.html"
+  },
+  {
+   "id": "rl-social",
+   "name": "Social Network หน่วยงานในจังหวัด",
+   "note": "เพจและช่องทางออนไลน์",
+   "icon": "share-2",
+   "url": "http://rayong.go.th/web/department/detail/114"
+  },
+  {
+   "id": "rl-phone",
+   "name": "หมายเลขโทรศัพท์ฉุกเฉิน",
+   "note": "เบอร์สำคัญในจังหวัด",
+   "icon": "phone-call",
+   "url": "http://rayong.go.th/web/department/detail/191"
+  }
+ ]
 };
 
 window.I18N = {
@@ -2089,8 +2526,8 @@ window.I18N = {
   "en": "e-Service"
  },
  "nav.announcements": {
-  "th": "ข่าวประกาศ",
-  "en": "Announcements"
+  "th": "ศูนย์ข้อมูลข่าวสาร",
+  "en": "Information Center"
  },
  "nav.resources": {
   "th": "คลังข้อมูลและสื่อ",
@@ -2133,8 +2570,8 @@ window.I18N = {
   "en": "The vision and commitment of the provincial leadership, with the latest executive missions and activities."
  },
  "sec.governor.activities": {
-  "th": "กิจกรรมผู้บริหารล่าสุด",
-  "en": "Latest Executive Activities"
+  "th": "กิจกรรมผู้บริหาร",
+  "en": "Executive Activities"
  },
  "sec.twin.eyebrow": {
   "th": "3D Digital Twin",
@@ -2257,16 +2694,16 @@ window.I18N = {
   "en": "Open service"
  },
  "sec.announcements.eyebrow": {
-  "th": "Announcements",
-  "en": "Announcements"
+  "th": "Information Center",
+  "en": "Information Center"
  },
  "sec.announcements.title": {
-  "th": "ข่าวประกาศจังหวัด",
-  "en": "Provincial Announcements"
+  "th": "ศูนย์ข้อมูลข่าวสารจังหวัด",
+  "en": "Provincial Information Center"
  },
  "sec.announcements.description": {
-  "th": "ติดตามข่าวประชาสัมพันธ์และประกาศจัดซื้อจัดจ้างของจังหวัดระยอง โปร่งใส ตรวจสอบได้ทุกขั้นตอน",
-  "en": "Follow Rayong's public relations news and procurement announcements — transparent and verifiable."
+  "th": "ข่าวประชาสัมพันธ์ ประกวดราคา คลังข้อมูล e-Office วาระผู้บริหาร เอกสารดาวน์โหลด และศูนย์ดำรงธรรม รวมไว้ในที่เดียว",
+  "en": "News, procurement, documents, e-Office, executive agenda, downloads and the Damrongdhama Center in one place."
  },
  "sec.resources.eyebrow": {
   "th": "Data & Media Hub",
@@ -2331,5 +2768,109 @@ window.I18N = {
  "sec.news.title": {
   "th": "ข่าวสารและช่องทางติดต่อ",
   "en": "News & Contact Channels"
+ },
+ "nav.activities": {
+  "th": "กิจกรรมผู้บริหาร",
+  "en": "Executive Activities"
+ },
+ "nav.govsystems": {
+  "th": "ระบบสารสนเทศภาครัฐ",
+  "en": "Government Systems"
+ },
+ "nav.related": {
+  "th": "ลิงก์หน่วยงานที่เกี่ยวข้อง",
+  "en": "Related Links"
+ },
+ "sec.announcements.tab.pr": {
+  "th": "ข่าวประชาสัมพันธ์",
+  "en": "News"
+ },
+ "sec.announcements.tab.procurement": {
+  "th": "ประกวดราคา",
+  "en": "Procurement"
+ },
+ "sec.announcements.tab.datasets": {
+  "th": "คลังข้อมูล",
+  "en": "Documents"
+ },
+ "sec.announcements.tab.eoffice": {
+  "th": "e-Office",
+  "en": "e-Office"
+ },
+ "sec.announcements.tab.agenda": {
+  "th": "วาระผู้บริหาร",
+  "en": "Executive Agenda"
+ },
+ "sec.announcements.tab.downloads": {
+  "th": "ดาวน์โหลดเอกสาร",
+  "en": "Downloads"
+ },
+ "sec.announcements.tab.damrongdhama": {
+  "th": "ศูนย์ดำรงธรรม",
+  "en": "Damrongdhama Center"
+ },
+ "sec.announcements.more": {
+  "th": "ดูทั้งหมดบนเว็บไซต์จังหวัด",
+  "en": "View all on the province website"
+ },
+ "sec.announcements.downloadsNote": {
+  "th": "เอกสารของกลุ่มงานในสำนักงานจังหวัดระยอง",
+  "en": "Documents from work groups of the Rayong Provincial Office"
+ },
+ "sec.announcements.eofficeNote": {
+  "th": "สำหรับเจ้าหน้าที่ — เข้าสู่ระบบด้วยบัญชีของหน่วยงาน",
+  "en": "For officials — sign in with your agency account"
+ },
+ "sec.announcements.damrong.title": {
+  "th": "ศูนย์ดำรงธรรมจังหวัดระยอง",
+  "en": "Rayong Damrongdhama Center"
+ },
+ "sec.announcements.damrong.lead": {
+  "th": "รับเรื่องร้องเรียน ร้องทุกข์ ขอความช่วยเหลือ และให้คำปรึกษา",
+  "en": "Complaints, petitions, assistance and advice"
+ },
+ "sec.announcements.damrong.steps": {
+  "th": "ขั้นตอนการรับเรื่อง",
+  "en": "How it works"
+ },
+ "sec.governor.activitiesMore": {
+  "th": "ดูกิจกรรมทั้งหมด",
+  "en": "View all activities"
+ },
+ "sec.banners.label": {
+  "th": "ป้ายประชาสัมพันธ์",
+  "en": "Announcement banners"
+ },
+ "sec.banners.prev": {
+  "th": "ภาพก่อนหน้า",
+  "en": "Previous slide"
+ },
+ "sec.banners.next": {
+  "th": "ภาพถัดไป",
+  "en": "Next slide"
+ },
+ "sec.banners.goto": {
+  "th": "ไปที่ภาพ",
+  "en": "Go to slide"
+ },
+ "sec.govsystems.eyebrow": {
+  "th": "Government Systems",
+  "en": "Government Systems"
+ },
+ "sec.govsystems.title": {
+  "th": "ระบบสารสนเทศภาครัฐ",
+  "en": "Government Information Systems"
+ },
+ "sec.govsystems.description": {
+  "th": "ทางลัดสู่ระบบงานและบริการดิจิทัลของภาครัฐที่ใช้บ่อย",
+  "en": "Shortcuts to frequently used government systems and digital services."
+ },
+ "sec.agencies.related": {
+  "th": "ลิงก์หน่วยงานที่เกี่ยวข้อง",
+  "en": "Related Agency Links"
+ },
+ "util.sampleAgenda": {
+  "th": "ข้อมูลตัวอย่าง · ดูวาระจริงได้ที่ระบบปฏิทินและนัดหมาย",
+  "en": "Sample data · see the real agenda in the calendar system"
  }
 };
