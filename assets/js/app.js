@@ -59,7 +59,7 @@
   // Rolling wave seam at the top of a section whose colour differs from the one above it
   function initWaveDividers() {
     const sections = $$("main > section");
-    const tone = (s) => (s.classList.contains("bg-abyss") ? "#bde3e3" : "#bde3e3");
+    const tone = (s) => (s.classList.contains("bg-abyss") ? "#edf1f6" : "#f6f7f9");
     sections.forEach((s, i) => {
       if (i < 2) return; // hero has its own waves; about sits on the same sand
       const prev = tone(sections[i - 1]);
@@ -75,15 +75,15 @@
   /* Living sea background                                               */
   /* ------------------------------------------------------------------ */
   const SEA_ART = {
-    fish: `<svg viewBox="0 0 40 20"><g class="fin-wiggle"><path d="M2 10 Q14 0 28 10 Q14 20 2 10Z" fill="currentColor"/><path d="M27 10 L38 3 L36 10 L38 17Z" fill="currentColor"/></g><circle cx="8" cy="9" r="1.3" fill="#bde3e3"/></svg>`,
-    stripe: `<svg viewBox="0 0 48 24"><g class="fin-wiggle"><path d="M2 12 Q16 0 34 12 Q16 24 2 12Z" fill="currentColor"/><path d="M33 12 L46 4 L43 12 L46 20Z" fill="currentColor"/><path d="M14 5 Q12 12 14 19 M21 4 Q19 12 21 20" stroke="#bde3e3" stroke-opacity=".55" stroke-width="2" fill="none"/></g><circle cx="7" cy="11" r="1.4" fill="#bde3e3"/></svg>`,
-    turtle: `<svg viewBox="0 0 80 50"><g class="fin-wiggle"><path d="M22 14 Q10 2 4 8 Q12 14 24 20Z M22 36 Q10 48 4 42 Q12 36 24 30Z M54 16 Q66 8 70 12 Q62 18 52 21Z M54 34 Q66 42 70 38 Q62 32 52 29Z" fill="currentColor" opacity=".8"/></g><ellipse cx="38" cy="25" rx="20" ry="14" fill="currentColor"/><path d="M28 18 L38 14 L48 18 L48 32 L38 36 L28 32Z M38 14 V36 M28 25 H48" fill="none" stroke="#bde3e3" stroke-opacity=".35" stroke-width="1.4"/><ellipse cx="62" cy="25" rx="8" ry="6" fill="currentColor"/><circle cx="65" cy="23" r="1.2" fill="#bde3e3"/></svg>`,
+    fish: `<svg viewBox="0 0 40 20"><g class="fin-wiggle"><path d="M2 10 Q14 0 28 10 Q14 20 2 10Z" fill="currentColor"/><path d="M27 10 L38 3 L36 10 L38 17Z" fill="currentColor"/></g><circle cx="8" cy="9" r="1.3" fill="#f6f7f9"/></svg>`,
+    stripe: `<svg viewBox="0 0 48 24"><g class="fin-wiggle"><path d="M2 12 Q16 0 34 12 Q16 24 2 12Z" fill="currentColor"/><path d="M33 12 L46 4 L43 12 L46 20Z" fill="currentColor"/><path d="M14 5 Q12 12 14 19 M21 4 Q19 12 21 20" stroke="#f6f7f9" stroke-opacity=".55" stroke-width="2" fill="none"/></g><circle cx="7" cy="11" r="1.4" fill="#f6f7f9"/></svg>`,
+    turtle: `<svg viewBox="0 0 80 50"><g class="fin-wiggle"><path d="M22 14 Q10 2 4 8 Q12 14 24 20Z M22 36 Q10 48 4 42 Q12 36 24 30Z M54 16 Q66 8 70 12 Q62 18 52 21Z M54 34 Q66 42 70 38 Q62 32 52 29Z" fill="currentColor" opacity=".8"/></g><ellipse cx="38" cy="25" rx="20" ry="14" fill="currentColor"/><path d="M28 18 L38 14 L48 18 L48 32 L38 36 L28 32Z M38 14 V36 M28 25 H48" fill="none" stroke="#f6f7f9" stroke-opacity=".35" stroke-width="1.4"/><ellipse cx="62" cy="25" rx="8" ry="6" fill="currentColor"/><circle cx="65" cy="23" r="1.2" fill="#f6f7f9"/></svg>`,
     jelly: `<svg viewBox="0 0 40 70"><path class="bell" d="M4 22 Q4 2 20 2 Q36 2 36 22 Q30 19 26 23 Q20 19 14 23 Q10 19 4 22Z" fill="currentColor" fill-opacity=".55"/><g fill="none" stroke="currentColor" stroke-opacity=".45" stroke-width="1.4" stroke-linecap="round"><path d="M10 23 Q6 36 11 48 T9 66"/><path d="M17 24 Q21 38 16 50 T19 68"/><path d="M24 24 Q20 36 25 48 T22 64"/><path d="M31 23 Q35 34 30 46 T33 60"/></g></svg>`,
     ray: `<svg viewBox="0 0 90 50"><path d="M45 8 Q60 10 86 26 Q62 30 50 40 L46 49 L44 49 L40 40 Q28 30 4 26 Q30 10 45 8Z" fill="currentColor"/><path d="M45 40 Q47 46 52 49" stroke="currentColor" fill="none" stroke-width="1.5"/></svg>`,
     weed: `<svg viewBox="0 0 60 160"><g fill="none" stroke="currentColor" stroke-linecap="round"><path class="sway" style="animation-duration:4.2s" d="M14 160 Q4 130 16 104 T12 54 T20 8" stroke-width="5"/><path class="sway" style="animation-duration:5.1s" d="M32 160 Q42 128 30 98 T36 46 T30 20" stroke-width="6" opacity=".8"/><path class="sway" style="animation-duration:3.6s" d="M48 160 Q40 140 50 118 T46 76" stroke-width="4" opacity=".65"/></g></svg>`,
     coral: `<svg viewBox="0 0 90 90"><g class="sway" style="animation-duration:7s" fill="none" stroke="currentColor" stroke-width="7" stroke-linecap="round"><path d="M45 90 V54 M45 62 Q30 52 28 30 M28 42 Q16 36 14 20 M45 56 Q62 46 62 24 M62 36 Q74 30 76 14 M45 54 V20"/></g><g fill="currentColor"><circle cx="28" cy="28" r="4.5"/><circle cx="14" cy="18" r="4"/><circle cx="62" cy="22" r="4.5"/><circle cx="76" cy="12" r="4"/><circle cx="45" cy="18" r="5"/></g></svg>`,
-    star: `<svg viewBox="0 0 40 40"><path d="M20 2 L25 15 L38 15 L27.5 23 L31.5 37 L20 29 L8.5 37 L12.5 23 L2 15 L15 15Z" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><g fill="#bde3e3" opacity=".5"><circle cx="20" cy="12" r="1"/><circle cx="26" cy="18" r="1"/><circle cx="14" cy="18" r="1"/><circle cx="20" cy="22" r="1"/></g></svg>`,
-    shell: `<svg viewBox="0 0 40 36"><path d="M20 34 L4 18 Q4 2 20 2 Q36 2 36 18Z" fill="currentColor"/><path d="M20 34 L10 6 M20 34 L20 3 M20 34 L30 6 M20 34 L5 15 M20 34 L35 15" stroke="#bde3e3" stroke-opacity=".45" stroke-width="1.3"/></svg>`,
+    star: `<svg viewBox="0 0 40 40"><path d="M20 2 L25 15 L38 15 L27.5 23 L31.5 37 L20 29 L8.5 37 L12.5 23 L2 15 L15 15Z" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><g fill="#f6f7f9" opacity=".5"><circle cx="20" cy="12" r="1"/><circle cx="26" cy="18" r="1"/><circle cx="14" cy="18" r="1"/><circle cx="20" cy="22" r="1"/></g></svg>`,
+    shell: `<svg viewBox="0 0 40 36"><path d="M20 34 L4 18 Q4 2 20 2 Q36 2 36 18Z" fill="currentColor"/><path d="M20 34 L10 6 M20 34 L20 3 M20 34 L30 6 M20 34 L5 15 M20 34 L35 15" stroke="#f6f7f9" stroke-opacity=".45" stroke-width="1.3"/></svg>`,
   };
 
   // Cartoon creatures, bubbles and seabed decorations are off for the formal look;
