@@ -37,8 +37,65 @@
   const t = (key, fallback) => (DICT[key] && DICT[key][settings.lang]) ?? fallback ?? key;
   const langListeners = [];
 
+  // data.js content and the page copy are Thai. In English every Thai text node and label is
+  // swapped for its translation as it appears; the Thai is kept so switching back restores it.
+  const EN = window.I18N_EN;
+  const tr = (s) => (settings.lang === "en" && EN ? EN.translate(s) : s);
+  const TR_ATTRS = ["alt", "title", "placeholder", "aria-label"];
+  const thText = new WeakMap(), thAttr = new WeakMap();
+  const HAS_TH = /[฀-๿]/;
+  function trText(n) {
+    const v = n.nodeValue;
+    if (!HAS_TH.test(v)) return;
+    const en = EN.translate(v);
+    if (en !== v) { thText.set(n, v); n.nodeValue = en; }
+  }
+  function trAttrs(el) {
+    for (const a of TR_ATTRS) {
+      const v = el.getAttribute(a);
+      if (!v || !HAS_TH.test(v)) continue;
+      const en = EN.translate(v);
+      if (en === v) continue;
+      if (!thAttr.has(el)) thAttr.set(el, {});
+      thAttr.get(el)[a] = v;
+      el.setAttribute(a, en);
+    }
+  }
+  function trTree(root) {
+    if (root.nodeType === 3) return trText(root);
+    if (root.nodeType !== 1 || root.closest("script,style")) return;
+    trAttrs(root);
+    root.querySelectorAll("[alt],[title],[placeholder],[aria-label]").forEach(trAttrs);
+    const w = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
+    for (let n; (n = w.nextNode());) if (!n.parentElement.closest("script,style")) trText(n);
+  }
+  function restoreThai() {
+    const w = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
+    for (let n; (n = w.nextNode());) if (thText.has(n)) { n.nodeValue = thText.get(n); thText.delete(n); }
+    document.querySelectorAll("[alt],[title],[placeholder],[aria-label]").forEach((el) => {
+      const orig = thAttr.get(el);
+      if (orig) { for (const a in orig) el.setAttribute(a, orig[a]); thAttr.delete(el); }
+    });
+  }
+  const THAI_TITLE = document.title;
+  function initTranslator() {
+    if (!EN) return;
+    new MutationObserver((muts) => {
+      if (settings.lang !== "en") return;
+      for (const m of muts) {
+        if (m.type === "childList") m.addedNodes.forEach(trTree);
+        else if (m.type === "characterData") trText(m.target);
+        else trAttrs(m.target);
+      }
+    }).observe(document.body, { subtree: true, childList: true, characterData: true, attributes: true, attributeFilter: TR_ATTRS });
+  }
+
   function applyLang() {
     document.documentElement.lang = settings.lang;
+    if (EN) {
+      if (settings.lang === "en") trTree(document.body); else restoreThai();
+      document.title = settings.lang === "en" ? EN.translate(THAI_TITLE) : THAI_TITLE;
+    }
     $$("[data-i18n]").forEach((el) => (el.textContent = t(el.dataset.i18n, el.textContent)));
     $$("[data-i18n-aria]").forEach((el) => el.setAttribute("aria-label", t(el.dataset.i18nAria)));
     $$("[data-i18n-placeholder]").forEach((el) => (el.placeholder = t(el.dataset.i18nPlaceholder)));
@@ -54,7 +111,6 @@
   /* ------------------------------------------------------------------ */
   /* Section headings                                                    */
   /* ------------------------------------------------------------------ */
-  const WAVE_GLYPH = `<svg class="eyebrow-wave" viewBox="0 0 28 8" aria-hidden="true"><defs><linearGradient id="ry-wave" x1="0" x2="28" y1="0" y2="0" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#d7263d"/><stop offset=".5" stop-color="#f4b400"/><stop offset="1" stop-color="#1e4fa3"/></linearGradient></defs><path d="M0 4 Q3.5 0 7 4 T14 4 T21 4 T28 4" fill="none" stroke="url(#ry-wave)" stroke-width="1.8" stroke-linecap="round" opacity=".85"/></svg>`;
 
   // Rolling wave seam wherever a solid-coloured section meets one that shows the sea
   // behind it. The solid colour always draws the wave: hanging down into the next
@@ -210,9 +266,13 @@
       }
       const eyebrow = t(`${key}.eyebrow`, "");
       const desc = t(`${key}.description`, "");
+      // English line under the title, last word in gold
+      const words = esc(eyebrow).split(" ");
+      const en = words.length > 1 ? `${words.slice(0, -1).join(" ")} <b>${words.at(-1)}</b>` : `<b>${words[0]}</b>`;
       el.innerHTML =
-        (eyebrow ? `<span class="font-display inline-flex items-center gap-2 text-xs font-semibold tracking-[0.3em] text-azure uppercase">${WAVE_GLYPH}${esc(eyebrow)}</span>` : "") +
         `<h2 class="font-display max-w-3xl text-3xl font-bold leading-snug text-navy sm:text-4xl">${esc(t(`${key}.title`))}</h2>` +
+        (eyebrow ? `<span class="head-en -mt-1">${en}</span>` : "") +
+        `<span class="head-bar" aria-hidden="true"></span>` +
         (desc && desc !== `${key}.description` ? `<p class="max-w-2xl text-base leading-relaxed text-slate-600">${esc(desc)}</p>` : "");
     });
   }
@@ -1119,15 +1179,16 @@
   /* ------------------------------------------------------------------ */
   /* Government information systems                                      */
   /* ------------------------------------------------------------------ */
-  const SYSTEM_COLORS = ["#1b4f8f", "#1e4fa3", "#2e7d5b", "#d7263d"];
   function renderGovSystems() {
-    mount($("#govsystems-grid"), D.govSystems.map((s, i) => `
-      <div data-reveal style="--ry:22px;--rd:${0.04 * i}s" class="h-full"><a ${ext(s.url)} class="rounded-xl glass holo-border group flex h-full flex-col p-5" data-tilt data-lift="4">
-        <div class="flex items-start justify-between gap-3">${iconTile(s.icon, SYSTEM_COLORS[i % SYSTEM_COLORS.length])}
-          ${icon("arrow-up-right", "h-4 w-4 text-slate-400 transition-colors group-hover:text-azure")}</div>
-        <h3 class="font-display mt-4 text-sm leading-snug font-semibold text-navy transition-colors group-hover:text-azure sm:text-base">${esc(s.name)}</h3>
-        <p class="mt-1 text-xs text-slate-500">${esc(s.owner)}</p>
-      </a></div>`).join(""));
+    // Navy and gold tiles in a checkerboard across the 4-column grid
+    mount($("#govsystems-grid"), D.govSystems.map((s, i) => {
+      const gold = ((i % 4) + Math.floor(i / 4)) % 2 === 1;
+      return `<div data-reveal style="--ry:22px;--rd:${0.04 * i}s" class="h-full"><a ${ext(s.url)} class="sys-tile${gold ? " is-gold" : ""}" style="--c:${gold ? "#e3b53c" : "#1b4f8f"}">
+        ${icon(s.icon)}
+        <span class="font-display text-sm leading-snug font-semibold sm:text-base">${esc(s.name)}</span>
+        <span class="text-xs opacity-80">${esc(s.owner)}</span>
+      </a></div>`;
+    }).join(""));
   }
 
   const NEWS_ICONS = { "ข่าว": "newspaper", "ประกาศ": "megaphone", "กิจกรรม": "party-popper", "สมาร์ทซิตี้": "building-2" };
@@ -1196,7 +1257,7 @@
     const draw = () => {
       const q = input.value.trim().toLowerCase();
       const words = q.split(/\s+/);
-      results = q ? searchIndex.filter((r) => words.every((w) => `${r.title} ${r.subtitle || ""}`.toLowerCase().includes(w))).slice(0, 12) : [];
+      results = q ? searchIndex.filter((r) => words.every((w) => `${r.title} ${r.subtitle || ""} ${tr(r.title)} ${tr(r.subtitle || "")}`.toLowerCase().includes(w))).slice(0, 12) : [];
       active = Math.min(active, Math.max(results.length - 1, 0));
       out.innerHTML = !q ? `<p class="px-4 py-8 text-center text-sm text-slate-500">${esc(t("util.searchHint"))}</p>`
         : !results.length ? `<p class="px-4 py-8 text-center text-sm text-slate-500">${esc(t("util.noResult"))}</p>`
@@ -1243,7 +1304,8 @@
     };
     const reply = (q) => {
       const s = q.toLowerCase();
-      const hit = D.chatReplies.find((r) => r.keywords.some((k) => s.includes(k)));
+      const enKeys = (EN && EN.chatKeywords) || [];
+      const hit = D.chatReplies.find((r, i) => r.keywords.some((k) => s.includes(k)) || (enKeys[i] || []).some((k) => s.includes(k)));
       return hit ? hit.reply : CHAT_FALLBACK;
     };
     const ask = (text) => {
@@ -1275,6 +1337,7 @@
   /* ------------------------------------------------------------------ */
   function boot() {
     applyFont();
+    initTranslator();
     initOrbs();
     initWaveDividers();
     initSeaBackground();

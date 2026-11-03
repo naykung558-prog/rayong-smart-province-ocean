@@ -255,7 +255,6 @@ body {
 .wave-divider.bottom { inset: auto 0 0 0; transform: scaleY(-1); }
 
 /* Eyebrow wave glyph */
-.eyebrow-wave { width: 28px; height: 8px; }
 
 /* Floating seashell/fish decorations */
 .sea-float { animation: float-y 7s ease-in-out infinite; }
@@ -420,3 +419,43 @@ section > .relative, section > .mx-auto { position: relative; z-index: 1; }
   .banner-dot.is-on span { animation: none; width: 100%; }
   .banner-slide { transition: none; }
 }
+
+/* Province identity row (motto) — label over a ringed line icon */
+.identity-row li { display: flex; flex-direction: column; align-items: center; gap: .7rem; text-align: center; }
+.identity-label { font-family: var(--font-display); font-size: .95rem; font-weight: 700; color: var(--c); }
+.identity-icon {
+  display: grid; place-items: center; height: 4.5rem; width: 4.5rem; border-radius: 9999px;
+  color: var(--c); background: #fff; border: 2px solid color-mix(in srgb, var(--c) 30%, transparent);
+  box-shadow: 0 10px 24px -14px var(--c); transition: transform .3s ease, background-color .3s, color .3s;
+}
+.identity-icon svg { height: 2rem; width: 2rem; stroke-width: 1.5; }
+.identity-row li:hover .identity-icon { transform: translateY(-3px); background: var(--c); color: #fff; }
+
+/* Quick-access band */
+.quick-band {
+  display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .5rem; padding: 1.25rem;
+  border-radius: 1rem; background: linear-gradient(180deg, #ffffff, #e9f1fb); border: 1px solid #1b4f8f1f;
+  box-shadow: 0 18px 40px -26px #0c234066;
+}
+@media (min-width: 640px) { .quick-band { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media (min-width: 1024px) { .quick-band { grid-template-columns: repeat(6, minmax(0, 1fr)); } }
+.quick-band a {
+  display: flex; flex-direction: column; align-items: center; gap: .6rem; padding: 1rem .5rem; border-radius: .75rem;
+  font-family: var(--font-display); font-size: .875rem; font-weight: 600; color: #0c2340; text-align: center;
+  transition: background-color .25s, color .25s;
+}
+.quick-band a:hover { background: #1b4f8f; color: #fff; }
+.quick-icon { display: grid; place-items: center; height: 3rem; width: 3rem; border-radius: .75rem; background: #1b4f8f12; color: #1b4f8f; transition: background-color .25s, color .25s; }
+.quick-icon svg { height: 1.5rem; width: 1.5rem; }
+.quick-band a:hover .quick-icon { background: #ffffff26; color: #f4d27a; }
+
+/* Bilingual section heads: Thai title, English line with a gold last word, tricolour bar */
+.head-en { font-family: var(--font-display); font-size: .75rem; font-weight: 600; letter-spacing: .3em; text-transform: uppercase; color: #64748b; }
+.head-en b { color: #b8892b; font-weight: 700; }
+.head-bar { display: block; height: 4px; width: 56px; border-radius: 9999px; background: linear-gradient(90deg, #d7263d 0 33%, #f4b400 33% 66%, #1e4fa3 66%); }
+
+/* Government systems: solid colour tiles */
+.sys-tile { display: flex; height: 100%; flex-direction: column; align-items: center; justify-content: center; gap: .9rem; padding: 1.6rem 1rem; border-radius: .9rem; text-align: center; color: #fff; background: var(--c); box-shadow: 0 16px 30px -20px var(--c); transition: transform .3s ease, filter .3s; }
+.sys-tile:hover { transform: translateY(-4px); filter: brightness(1.08); }
+.sys-tile svg { height: 2.6rem; width: 2.6rem; stroke-width: 1.5; }
+.sys-tile.is-gold { color: #0c2340; }
