@@ -11,10 +11,10 @@ body {
   font-size: 1.0625rem;
   max-width: 100vw;
 }
-::selection { color: #0c2340; background: #1b4f8f2e; }
+::selection { color: #0c2340; background: #1e4fa32e; }
 ::-webkit-scrollbar { width: 10px; }
 ::-webkit-scrollbar-track { background: #edf1f6; }
-::-webkit-scrollbar-thumb { background: #1b4f8f; border: 2px solid #edf1f6; border-radius: 8px; }
+::-webkit-scrollbar-thumb { background: #1e4fa3; border: 2px solid #edf1f6; border-radius: 8px; }
 
 /* Glass surfaces */
 .glass {
@@ -41,12 +41,12 @@ body {
   padding: 1px;
   border-radius: inherit;
   pointer-events: none;
-  background: #1b4f8f38;
+  background: #1e4fa338;
   -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
   mask: linear-gradient(#fff 0 0) content-box exclude, linear-gradient(#fff 0 0);
 }
-.text-gradient-holo { color: #1b4f8f; }
+.text-gradient-holo { color: #1e4fa3; }
 
 /* Rayong provincial colours: red, yellow, blue blended like a sunset over the sea */
 .rayong-ribbon { background: linear-gradient(90deg, #d7263d, #f4b400 50%, #1e4fa3); }
@@ -61,7 +61,7 @@ body {
   pointer-events: none;
 }
 #site-header.glass-strong::after { opacity: .75; }
-.text-glow-cyan { text-shadow: 0 2px 24px #1b4f8f38; }
+.text-glow-cyan { text-shadow: 0 2px 24px #1e4fa338; }
 .grid-overlay {
   background-image: linear-gradient(#0c23400d 1px, #0000 0), linear-gradient(90deg, #0c23400d 1px, #0000 0);
   background-size: 56px 56px;
@@ -168,10 +168,10 @@ body {
 }
 .glass {
   background: #ffffffcc;
-  border-color: #1b4f8f22;
+  border-color: #1e4fa322;
   box-shadow: inset 0 1px #ffffffe6, 0 18px 44px -20px #0c234033;
 }
-.glass-strong { border-color: #1b4f8f26; }
+.glass-strong { border-color: #1e4fa326; }
 
 /* Ripple-line pattern instead of the square grid */
 .grid-overlay {
@@ -181,7 +181,7 @@ body {
 
 /* Sea-glass gradient headline */
 .text-ocean-gradient {
-  background: linear-gradient(100deg, #e3c26f 0%, #efdba6 30%, #ffffff 45%, #7ee8dc 60%, #2fd2c0 100%);
+  background: linear-gradient(100deg, #f4b400 0%, #fbe3a1 30%, #ffffff 45%, #7ee8dc 60%, #2fd2c0 100%);
   background-size: 220% 100%;
   -webkit-background-clip: text;
   background-clip: text;
@@ -223,7 +223,7 @@ body {
   bottom: -20px;
   border-radius: 9999px;
   border: 1px solid #ffffff66;
-  background: radial-gradient(circle at 30% 30%, #ffffffaa, #efdba622 60%, transparent 70%);
+  background: radial-gradient(circle at 30% 30%, #ffffffaa, #fbe3a122 60%, transparent 70%);
   animation: bubble-rise linear infinite;
   opacity: 0;
 }
@@ -273,7 +273,7 @@ body { position: relative; }
   pointer-events: none;
 }
 /* Creatures */
-.critter { position: absolute; color: #1b4f8f; will-change: transform; }
+.critter { position: absolute; color: #1e4fa3; will-change: transform; }
 .critter svg { display: block; width: 100%; height: 100%; }
 .swim-r { animation: swim-r linear infinite; }
 .swim-l { animation: swim-l linear infinite; }
@@ -290,7 +290,7 @@ body { position: relative; }
   position: absolute;
   bottom: -30px;
   border-radius: 9999px;
-  border: 1px solid #1b4f8f33;
+  border: 1px solid #1e4fa333;
   background: radial-gradient(circle at 30% 30%, #ffffffcc, #ffffff22 60%, transparent 70%);
   animation: bg-bubble-rise linear infinite;
 }
@@ -374,7 +374,7 @@ section > .relative, section > .mx-auto { position: relative; z-index: 1; }
   transform: translateY(-50%) scale(.9);
   transition: opacity .25s ease, transform .25s ease, background-color .2s;
 }
-.banner-nav:hover { background: #fff; color: #1b4f8f; }
+.banner-nav:hover { background: #fff; color: #1e4fa3; }
 #banner-show:hover .banner-nav, .banner-nav:focus-visible { opacity: 1; transform: translateY(-50%) scale(1); }
 @media (hover: none) { .banner-nav { opacity: .9; transform: translateY(-50%) scale(.85); } }
 .banner-dot { position: relative; height: 8px; width: 8px; overflow: hidden; border-radius: 9999px; background: #0c234026; transition: width .4s ease, background-color .3s; }
@@ -403,7 +403,7 @@ section > .relative, section > .mx-auto { position: relative; z-index: 1; }
 /* Quick-access band */
 .quick-band {
   display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .5rem; padding: 1.25rem;
-  border-radius: 1rem; background: linear-gradient(180deg, #ffffff, #e9f1fb); border: 1px solid #1b4f8f1f;
+  border-radius: 1rem; background: linear-gradient(180deg, #ffffff, #e9f1fb); border: 1px solid #1e4fa31f;
   box-shadow: 0 18px 40px -26px #0c234066;
 }
 @media (min-width: 640px) { .quick-band { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
@@ -413,14 +413,17 @@ section > .relative, section > .mx-auto { position: relative; z-index: 1; }
   font-family: var(--font-display); font-size: .875rem; font-weight: 600; color: #0c2340; text-align: center;
   transition: background-color .25s, color .25s;
 }
-.quick-band a:hover { background: #1b4f8f; color: #fff; }
-.quick-icon { display: grid; place-items: center; height: 3rem; width: 3rem; border-radius: .75rem; background: #1b4f8f12; color: #1b4f8f; transition: background-color .25s, color .25s; }
+.quick-band a:hover { background: #1e4fa3; color: #fff; }
+.quick-icon { display: grid; place-items: center; height: 3rem; width: 3rem; border-radius: .75rem; background: #1e4fa312; color: #1e4fa3; transition: background-color .25s, color .25s; }
 .quick-icon svg { height: 1.5rem; width: 1.5rem; }
+/* Icons cycle through the provincial red, yellow and blue */
+.quick-band a:nth-child(3n+1) .quick-icon { background: #d7263d14; color: #d7263d; }
+.quick-band a:nth-child(3n+2) .quick-icon { background: #f4b40024; color: #a87a00; }
 .quick-band a:hover .quick-icon { background: #ffffff26; color: #f4d27a; }
 
 /* Bilingual section heads: Thai title, English line with a gold last word, tricolour bar */
 .head-en { font-family: var(--font-display); font-size: .75rem; font-weight: 600; letter-spacing: .3em; text-transform: uppercase; color: #64748b; }
-.head-en b { color: #b8892b; font-weight: 700; }
+.head-en b { color: #d7263d; font-weight: 700; }
 .head-bar { display: block; height: 4px; width: 56px; border-radius: 9999px; background: linear-gradient(90deg, #d7263d 0 33%, #f4b400 33% 66%, #1e4fa3 66%); }
 
 /* Government systems: solid colour tiles */
@@ -445,9 +448,9 @@ section > .relative, section > .mx-auto { position: relative; z-index: 1; }
 .hero-news { top: 8.25rem; }
 .hero-news-label {
   display: inline-flex; flex-shrink: 0; align-items: center; gap: .45rem; padding: .45rem .9rem; border-radius: 9999px;
-  background: #c0392b; color: #fff; font-size: .85rem; font-weight: 700; box-shadow: 0 0 0 0 #c0392b99; animation: news-pulse 2.4s ease-out infinite;
+  background: #d7263d; color: #fff; font-size: .85rem; font-weight: 700; box-shadow: 0 0 0 0 #d7263d99; animation: news-pulse 2.4s ease-out infinite;
 }
-@keyframes news-pulse { 70% { box-shadow: 0 0 0 10px #c0392b00; } 100% { box-shadow: 0 0 0 0 #c0392b00; } }
+@keyframes news-pulse { 70% { box-shadow: 0 0 0 10px #d7263d00; } 100% { box-shadow: 0 0 0 0 #d7263d00; } }
 .hero-news-viewport {
   position: relative; min-width: 0; flex: 1; overflow: hidden; padding: .5rem 0; border-radius: 9999px;
   background: #0a1f3a8c; border: 1px solid #ffffff1f; backdrop-filter: blur(6px);
@@ -468,7 +471,7 @@ section > .relative, section > .mx-auto { position: relative; z-index: 1; }
   filter: drop-shadow(0 2px 10px #08142899); animation: shimmer 3.6s linear infinite;
 }
 .shimmer-text.is-gold {
-  background-image: linear-gradient(110deg, #e3c26f 0 40%, #fff6d5 48%, #ffffff 50%, #fff6d5 52%, #e3c26f 60% 100%);
+  background-image: linear-gradient(110deg, #f4b400 0 40%, #fff6d5 48%, #ffffff 50%, #fff6d5 52%, #f4b400 60% 100%);
   animation-delay: .6s;
 }
 @keyframes shimmer { from { background-position: 100% 0; } to { background-position: -50% 0; } }

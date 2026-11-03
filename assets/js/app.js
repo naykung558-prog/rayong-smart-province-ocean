@@ -159,7 +159,7 @@
     const rnd = seeded(404);
     // Faint far-away silhouettes give depth behind the cartoon cast
     const critters = !PLAYFUL ? [] : [
-      { art: "fish", n: 3, w: [18, 26], op: [0.08, 0.12], dur: [50, 70], color: "#1b4f8f" },
+      { art: "fish", n: 3, w: [18, 26], op: [0.08, 0.12], dur: [50, 70], color: "#1e4fa3" },
       { art: "ray", n: 2, w: [110, 150], op: [0.05, 0.07], dur: [80, 110], color: "#0c2340", sm: true },
     ];
     let html = `<div class="swimmers">`;
@@ -228,12 +228,12 @@
   // Seaweed, coral, starfish and shells resting at the bottom of sand-coloured sections
   const SEABED = {
     about: [["weed", "left-[1%] bottom-0 h-40 w-16", "#2e7d5b", 0.22], ["coral", "right-[3%] bottom-0 h-24 w-24", "#d7263d", 0.2], ["star", "right-[12%] bottom-4 h-8 w-8", "#f4b400", 0.35]],
-    governor: [["shell", "left-[2%] bottom-6 h-7 w-8", "#b07a1f", 0.3], ["weed", "right-[1%] bottom-0 h-36 w-14", "#2f6db5", 0.2]],
-    twin: [["coral", "left-[1%] bottom-0 h-20 w-20 hide-sm", "#1e4fa3", 0.18], ["star", "right-[4%] bottom-8 h-7 w-7", "#b07a1f", 0.35]],
+    governor: [["shell", "left-[2%] bottom-6 h-7 w-8", "#c99400", 0.3], ["weed", "right-[1%] bottom-0 h-36 w-14", "#2f6db5", 0.2]],
+    twin: [["coral", "left-[1%] bottom-0 h-20 w-20 hide-sm", "#1e4fa3", 0.18], ["star", "right-[4%] bottom-8 h-7 w-7", "#c99400", 0.35]],
     announcements: [["weed", "right-[1%] bottom-0 h-44 w-16", "#2e7d5b", 0.2], ["shell", "left-[3%] bottom-6 h-8 w-9", "#f4b400", 0.32]],
     map: [["coral", "right-[2%] bottom-0 h-24 w-24 hide-sm", "#d7263d", 0.18]],
     explore: [["weed", "left-[1%] bottom-0 h-40 w-16", "#2f6db5", 0.22], ["star", "left-[7%] bottom-5 h-8 w-8", "#f4b400", 0.4], ["coral", "right-[2%] bottom-0 h-28 w-28", "#2e7d5b", 0.18]],
-    services: [["shell", "right-[4%] bottom-6 h-7 w-8", "#b07a1f", 0.3], ["weed", "left-[1%] bottom-0 h-36 w-14", "#2e7d5b", 0.2]],
+    services: [["shell", "right-[4%] bottom-6 h-7 w-8", "#c99400", 0.3], ["weed", "left-[1%] bottom-0 h-36 w-14", "#2e7d5b", 0.2]],
     poll: [["coral", "left-[3%] bottom-0 h-28 w-28", "#d7263d", 0.2], ["weed", "right-[3%] bottom-0 h-44 w-16", "#2f6db5", 0.22], ["star", "right-[10%] bottom-6 h-7 w-7", "#f4b400", 0.4]],
   };
   function initSeabed() {
@@ -501,7 +501,7 @@
   // Tabs with a sliding active pill
   function tabs(container, items, active, onChange) {
     container.classList.add("relative");
-    container.innerHTML = `<span class="tab-pill absolute rounded-xl bg-azure shadow-[0_4px_14px_#1b4f8f44] transition-all duration-500 ease-[cubic-bezier(.34,1.3,.64,1)]"></span>` +
+    container.innerHTML = `<span class="tab-pill absolute rounded-xl bg-azure shadow-[0_4px_14px_#1e4fa344] transition-all duration-500 ease-[cubic-bezier(.34,1.3,.64,1)]"></span>` +
       items.map((it) => `<button data-id="${it.id}" class="font-display relative flex items-center gap-2 rounded-xl ${it.pad || "px-5"} py-2.5 text-sm font-semibold transition-colors">${icon(it.icon, "relative z-10 h-4 w-4")}<span class="relative z-10">${esc(it.label())}</span></button>`).join("");
     const pill = $(".tab-pill", container);
     let current = active;
@@ -683,7 +683,7 @@
     const drawLegend = () => {
       legend.innerHTML = D.zones.map((z) => {
         const on = twin.selected === z.id;
-        return `<button data-zone="${z.id}" class="pointer-events-auto flex items-center gap-2 rounded-lg px-3 py-1.5 text-left text-xs backdrop-blur transition-all ${on ? "bg-white opacity-100 shadow-[0_4px_14px_#1b4f8f33] ring-1 ring-azure/30" : "bg-white/85 opacity-85 hover:bg-white hover:opacity-100"}">
+        return `<button data-zone="${z.id}" class="pointer-events-auto flex items-center gap-2 rounded-lg px-3 py-1.5 text-left text-xs backdrop-blur transition-all ${on ? "bg-white opacity-100 shadow-[0_4px_14px_#1e4fa333] ring-1 ring-azure/30" : "bg-white/85 opacity-85 hover:bg-white hover:opacity-100"}">
           <span class="h-2 w-2 rounded-full" style="background:${z.color}"></span><span class="font-display text-navy">${esc(z.name)}</span></button>`;
       }).join("");
     };
@@ -724,7 +724,7 @@
   /* ------------------------------------------------------------------ */
   const LIVE_IDS = ["weather", "pm25", "tourists", "energy"];
   const LIVE_ICONS = { weather: "thermometer", pm25: "wind", tourists: "users", energy: "zap" };
-  const STATUS = { good: { label: "ดีมาก", color: "#2e7d5b" }, normal: { label: "ปกติ", color: "#1b4f8f" }, warning: { label: "เฝ้าระวัง", color: "#b07a1f" } };
+  const STATUS = { good: { label: "ดีมาก", color: "#2e7d5b" }, normal: { label: "ปกติ", color: "#1e4fa3" }, warning: { label: "เฝ้าระวัง", color: "#c99400" } };
   const TREND_IDS = ["visitors", "ev", "air", "economy"];
   const MONTHS = ["ม.ค.", "ก.พ.", "มี.ค.", "เม.ย.", "พ.ค.", "มิ.ย.", "ก.ค.", "ส.ค.", "ก.ย.", "ต.ค.", "พ.ย.", "ธ.ค."];
 
@@ -808,7 +808,7 @@
       cells.map((d) => {
         if (!d) return "<span></span>";
         const sel = d === calDay, has = eventDays.has(d);
-        const cls = sel ? "bg-azure text-white shadow-[0_6px_18px_#1b4f8f55]" : has ? "bg-azure/8 text-navy hover:bg-azure/15" : "text-slate-500 hover:bg-navy/5";
+        const cls = sel ? "bg-azure text-white shadow-[0_6px_18px_#1e4fa355]" : has ? "bg-azure/8 text-navy hover:bg-azure/15" : "text-slate-500 hover:bg-navy/5";
         return `<button data-day="${d}" aria-pressed="${sel}" aria-label="กิจกรรมวันที่ ${d}" class="font-display relative flex aspect-square flex-col items-center justify-center rounded-xl text-sm font-medium transition-all ${cls}">${d}${has ? `<span class="absolute bottom-1.5 h-1 w-1 rounded-full ${sel ? "bg-white" : "bg-azure"}"></span>` : ""}</button>`;
       }).join("");
     $("#cal-heading").textContent = `${t("sec.calendar.eventsOn")} ${calDay} ${settings.lang === "th" ? "มิ.ย. 2569" : "Jun 2026"}`;
@@ -833,7 +833,7 @@
   /* ------------------------------------------------------------------ */
   /* Announcements                                                       */
   /* ------------------------------------------------------------------ */
-  const PROC_COLORS = { "ประกาศจัดซื้อจัดจ้าง": "#1b4f8f", "ประกาศผู้ชนะ": "#0f9d76", "ร่าง TOR": "#c2410c", "ราคากลาง": "#2f6db5" };
+  const PROC_COLORS = { "ประกาศจัดซื้อจัดจ้าง": "#1e4fa3", "ประกาศผู้ชนะ": "#0f9d76", "ร่าง TOR": "#c2410c", "ราคากลาง": "#2f6db5" };
   const ANNOUNCE_TABS = [["pr", "megaphone"], ["procurement", "gavel"], ["datasets", "library"], ["eoffice", "monitor-check"],
     ["agenda", "calendar-clock"], ["downloads", "folder-down"], ["damrongdhama", "scale"]];
   const DOC_FORMAT = { PDF: ["file-text", "#c2410c"], WEB: ["globe", "#1e4fa3"], DATA: ["database", "#2e7d5b"] };
@@ -910,7 +910,7 @@
         <div class="flex flex-col gap-6 lg:col-span-3">
           <div class="grid grid-cols-1 gap-3 sm:grid-cols-2">${dd.actions.map((a, i) => `
             <a ${ext(a.url)} class="rounded-xl glass holo-border group flex items-center gap-3 p-4" data-reveal style="--ry:18px;--rd:${0.05 * i}s">
-              ${iconTile(a.icon, i < 2 ? "#1b4f8f" : "#d7263d", "h-10 w-10")}
+              ${iconTile(a.icon, i < 2 ? "#1e4fa3" : "#d7263d", "h-10 w-10")}
               <span class="font-display flex-1 text-sm font-semibold text-navy transition-colors group-hover:text-azure">${esc(a.label)}</span>
               ${icon("arrow-up-right", "h-4 w-4 shrink-0 text-slate-400 transition-colors group-hover:text-azure")}</a>`).join("")}</div>
           <div class="rounded-xl glass holo-border p-5" data-reveal style="--ry:18px;--rd:.3s">
@@ -934,7 +934,7 @@
           </div></div></div>`).join("")}</div>`);
     } else {
       mount(body, `<div class="tab-swap space-y-4">${D.procurement.map((p, i) => {
-        const c = PROC_COLORS[p.type] || "#1b4f8f";
+        const c = PROC_COLORS[p.type] || "#1e4fa3";
         return `<div data-reveal style="--ry:20px;--rd:${0.05 * i}s"><div class="rounded-xl glass holo-border group cursor-pointer p-5 sm:p-6" data-tilt data-lift="3">
           <div class="flex items-start gap-4">
             <span class="mt-0.5 flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border" style="color:${c};border-color:${c}33;background:${c}0d">${icon("file-text", "h-5 w-5")}</span>
@@ -962,7 +962,7 @@
     const body = $("#resources-body");
     if (tab === "data") {
       mount(body, `<div class="tab-swap space-y-3">${D.datasets.map((d, i) => {
-        const [ic, c] = FORMAT[d.format] || ["file-text", "#1b4f8f"];
+        const [ic, c] = FORMAT[d.format] || ["file-text", "#1e4fa3"];
         return `<div class="rounded-xl glass holo-border group flex items-center gap-4 p-4 sm:p-5" data-reveal style="--ry:18px;--rd:${0.05 * i}s">
           <span class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border" style="color:${c};border-color:${c}33;background:${c}0d">${icon(ic, "h-5 w-5")}</span>
           <div class="min-w-0 flex-1"><h3 class="font-display truncate text-sm font-semibold text-navy sm:text-base">${esc(d.title)}</h3>
@@ -1002,9 +1002,9 @@
       list.innerHTML = D.attractions.map((a) => {
         const on = mapState.attraction === a.id, dim = mapState.attraction && !on;
         return `<button data-attr="${a.id}" class="group flex w-full items-center gap-4 py-3.5 text-left transition-opacity ${dim ? "opacity-50" : ""}">
-          <span class="relative h-14 w-20 shrink-0 overflow-hidden rounded-xl border transition-all ${on ? "border-[#e3c26f]/70 ring-2 ring-[#e3c26f]/40" : "border-white/15"}">
+          <span class="relative h-14 w-20 shrink-0 overflow-hidden rounded-xl border transition-all ${on ? "border-[#f4b400]/70 ring-2 ring-[#f4b400]/40" : "border-white/15"}">
             <img src="${a.photo}" alt="${esc(a.name)}" loading="lazy" class="absolute inset-0 h-full w-full object-cover transition-transform duration-300 group-hover:scale-110" /></span>
-          <span><span class="font-display block text-sm font-semibold text-white group-hover:text-[#efdba6]">${esc(a.name)}</span>
+          <span><span class="font-display block text-sm font-semibold text-white group-hover:text-[#fbe3a1]">${esc(a.name)}</span>
             <span class="mt-0.5 block text-xs text-slate-400">${esc(a.district)}</span></span></button>`;
       }).join("");
       const a = D.attractions.find((x) => x.id === mapState.attraction);
@@ -1016,11 +1016,11 @@
       } else if (d) {
         popup.innerHTML = `<div class="chat-in absolute right-5 bottom-5 z-20 w-[calc(100%-2.5rem)] overflow-hidden rounded-xl border border-white/20 bg-[#04293a]/90 p-5 shadow-[0_18px_40px_-12px_rgba(0,0,0,0.7)] backdrop-blur sm:w-80">
           <div class="flex items-start justify-between gap-3">
-            <div><h4 class="font-display text-base font-bold text-white">${esc(d.name)}</h4><p class="mt-0.5 text-[11px] leading-relaxed text-[#efdba6]">${esc(d.tagline)}</p></div>
+            <div><h4 class="font-display text-base font-bold text-white">${esc(d.name)}</h4><p class="mt-0.5 text-[11px] leading-relaxed text-[#fbe3a1]">${esc(d.tagline)}</p></div>
             <button data-close class="shrink-0 rounded-lg border border-white/15 p-1.5 text-white/60 transition-colors hover:bg-white/10 hover:text-white" aria-label="ปิดรายละเอียดอำเภอ">${icon("x", "h-3.5 w-3.5")}</button>
           </div>
           <p class="mt-2.5 text-xs leading-relaxed text-slate-300/90">${esc(d.description)}</p>
-          <div class="mt-3 flex flex-wrap gap-1.5">${d.highlights.map((h) => `<span class="flex items-center gap-1 rounded-full border border-[#ff7a5c]/35 bg-[#ff7a5c]/10 px-2.5 py-0.5 text-[10px] text-[#efdba6]">${icon("sparkles", "h-2.5 w-2.5")}${esc(h)}</span>`).join("")}</div>
+          <div class="mt-3 flex flex-wrap gap-1.5">${d.highlights.map((h) => `<span class="flex items-center gap-1 rounded-full border border-[#ff7a5c]/35 bg-[#ff7a5c]/10 px-2.5 py-0.5 text-[10px] text-[#fbe3a1]">${icon("sparkles", "h-2.5 w-2.5")}${esc(h)}</span>`).join("")}</div>
           <div class="mt-3.5 flex gap-5 border-t border-white/10 pt-3">${d.stats.map((s) => `<div><p class="font-display text-sm font-bold text-white">${esc(s.value)}</p><p class="text-[10px] text-slate-400">${esc(s.label)}</p></div>`).join("")}</div>
         </div>`;
       } else popup.innerHTML = "";
@@ -1047,7 +1047,7 @@
       stay: D.stay.map((e) => ({ art: e.art, artIcon: "bed-double", badge: e.type, title: e.name, lines: [["map-pin", e.area], ["star", `${fmt(e.rating, 1)} · ${e.priceRange}`]] })),
       eat: D.eat.map((e) => ({ art: e.art, artIcon: "utensils-crossed", badge: e.cuisine, badgeColor: "#c2410c", title: e.name, lines: [["map-pin", e.area], ["utensils-crossed", e.signature]] })),
       otop: D.otop.map((e) => ({ art: e.art, artIcon: "shopping-bag", badge: e.category, badgeColor: "#6d28d9", title: e.name, lines: [["shopping-bag", e.producer], [null, e.price]] })),
-      culture: D.culture.map((e) => ({ art: e.art, artIcon: "drama", badge: e.type, badgeColor: "#b07a1f", title: e.name, lines: [["drama", e.period], [null, e.description]] })),
+      culture: D.culture.map((e) => ({ art: e.art, artIcon: "drama", badge: e.type, badgeColor: "#c99400", title: e.name, lines: [["drama", e.period], [null, e.description]] })),
       goods: D.goods.map((e) => ({ art: e.art, artIcon: "sparkles", badge: e.category, badgeColor: "#2e7d5b", title: e.name, lines: [[null, e.description]] })),
     };
     return map[tab];
@@ -1059,7 +1059,7 @@
           <div class="relative flex h-32 items-center justify-center overflow-hidden" style="background:${c.art}">
             <div class="grid-overlay absolute inset-0 opacity-40"></div>
             ${icon(c.artIcon, "relative h-12 w-12 text-white/55 transition-transform duration-300 group-hover:scale-110")}
-            <span class="font-display absolute top-3.5 left-3.5 rounded-full px-2.5 py-1 text-[10px] font-semibold tracking-wide text-white" style="background:${c.badgeColor || "#1b4f8f"}">${esc(c.badge)}</span>
+            <span class="font-display absolute top-3.5 left-3.5 rounded-full px-2.5 py-1 text-[10px] font-semibold tracking-wide text-white" style="background:${c.badgeColor || "#1e4fa3"}">${esc(c.badge)}</span>
             <span class="font-display absolute right-3 bottom-2.5 text-[9px] tracking-[0.2em] text-white/45 uppercase">${esc(t("util.sampleImage"))}</span>
           </div>
           <div class="flex flex-1 flex-col p-5">
@@ -1126,7 +1126,7 @@
     $("#poll-options").innerHTML = D.poll.options.map((o) => {
       const pct = Math.round(((o.baseVotes + (pollVote === o.id ? 1 : 0)) / total) * 100);
       const mine = pollVote === o.id;
-      const state = pollVote ? "cursor-default border-navy/8" : "cursor-pointer border-navy/10 hover:border-azure/50 hover:shadow-[0_8px_24px_-12px_#1b4f8f55]";
+      const state = pollVote ? "cursor-default border-navy/8" : "cursor-pointer border-navy/10 hover:border-azure/50 hover:shadow-[0_8px_24px_-12px_#1e4fa355]";
       return `<button data-opt="${o.id}" ${pollVote ? "disabled" : ""} aria-pressed="${mine}" class="relative w-full overflow-hidden rounded-xl border px-5 py-3.5 text-left transition-all ${state} ${mine ? "border-azure/60 ring-1 ring-azure/30" : ""}">
         ${pollVote ? `<span class="poll-bar absolute inset-y-0 left-0 ${mine ? "bg-azure/15" : "bg-navy/5"}" style="width:${animate ? 0 : pct}%;transition:width .9s cubic-bezier(.22,1,.36,1)" data-pct="${pct}"></span>` : ""}
         <span class="relative flex items-center justify-between gap-3">
@@ -1152,7 +1152,7 @@
   /* Agencies, news, contact                                             */
   /* ------------------------------------------------------------------ */
   function renderAgencies() {
-    const item = (a, dup) => `<a href="${a.url}" target="_blank" rel="noopener noreferrer" ${dup ? 'aria-hidden="true" tabindex="-1"' : ""} class="glass group/item flex shrink-0 items-center gap-3.5 rounded-full py-2.5 pr-6 pl-2.5 transition-all hover:shadow-[0_8px_24px_-12px_#1b4f8f55]">
+    const item = (a, dup) => `<a href="${a.url}" target="_blank" rel="noopener noreferrer" ${dup ? 'aria-hidden="true" tabindex="-1"' : ""} class="glass group/item flex shrink-0 items-center gap-3.5 rounded-full py-2.5 pr-6 pl-2.5 transition-all hover:shadow-[0_8px_24px_-12px_#1e4fa355]">
       ${a.logo ? `<span class="flex h-12 w-12 items-center justify-center overflow-hidden rounded-full border border-navy/10 bg-white p-1"><img src="${a.logo}" alt="โลโก้ ${esc(a.name)}" class="h-full w-full object-contain" /></span>`
         : `<span class="font-display flex h-12 w-12 items-center justify-center rounded-full bg-azure text-xs font-bold text-white">${esc(a.abbr)}</span>`}
       <span class="font-display text-base font-medium whitespace-nowrap text-slate-600 transition-colors group-hover/item:text-azure">${esc(a.name)}</span>
@@ -1172,10 +1172,11 @@
   /* Government information systems                                      */
   /* ------------------------------------------------------------------ */
   function renderGovSystems() {
-    // Navy and gold tiles in a checkerboard across the 4-column grid
+    // Provincial blue, yellow and red tiles in turn
+    const TILE = ["#1e4fa3", "#f4b400", "#d7263d"];
     mount($("#govsystems-grid"), D.govSystems.map((s, i) => {
-      const gold = ((i % 4) + Math.floor(i / 4)) % 2 === 1;
-      return `<div data-reveal style="--ry:22px;--rd:${0.04 * i}s" class="h-full"><a ${ext(s.url)} class="sys-tile${gold ? " is-gold" : ""}" style="--c:${gold ? "#e3b53c" : "#1b4f8f"}">
+      const c = TILE[i % 3];
+      return `<div data-reveal style="--ry:22px;--rd:${0.04 * i}s" class="h-full"><a ${ext(s.url)} class="sys-tile${c === "#f4b400" ? " is-gold" : ""}" style="--c:${c}">
         ${icon(s.icon)}
         <span class="font-display text-sm leading-snug font-semibold sm:text-base">${esc(s.name)}</span>
         <span class="text-xs opacity-80">${esc(s.owner)}</span>
