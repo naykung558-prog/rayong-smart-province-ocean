@@ -134,6 +134,14 @@
     "แจ้งเหตุฉุกเฉิน SOS": "SOS emergency alert", "ปรึกษาแพทย์ทางไกล": "Remote doctor consultation", "กิจกรรมชุมชน": "Community activities",
 
     // ----- Live data -----
+    "คุณภาพอากาศดีทั้ง 8 อำเภอ · AQI เฉลี่ย 42": "Good air quality in all 8 districts · average AQI 42",
+    "เรือบ้านเพ–เกาะเสม็ด ให้บริการปกติ คลื่นสูง 0.8 ม.": "Ban Phe–Ko Samet boats running normally · waves 0.8 m",
+    "จราจรถนนสุขุมวิทช่วงตัวเมืองระยอง คล่องตัว": "Traffic flowing smoothly on Sukhumvit Rd through Rayong town",
+    "ปริมาณน้ำอ่างเก็บน้ำดอกกราย 78% ของความจุ": "Dok Krai Reservoir at 78% of capacity",
+    "สถานีชาร์จ EV ว่าง 214 จาก 320 สถานี": "214 of 320 EV charging stations available",
+    "ศูนย์ดำรงธรรมรับเรื่องวันนี้ 36 เรื่อง · สายด่วน 1567": "Damrongdhama Center: 36 cases received today · hotline 1567",
+    "เตือนภัย: ฝนฟ้าคะนองบางพื้นที่ อ.แกลง และ อ.เขาชะเมา ช่วงบ่าย": "Alert: afternoon thunderstorms in parts of Klaeng and Khao Chamao",
+    "เซนเซอร์ IoT ออนไลน์ 5,012 จุด · ระบบปกติ 14/14": "5,012 IoT sensors online · all systems normal 14/14",
     "อุณหภูมิ": "Temperature", "ดัชนีคุณภาพอากาศ (AQI)": "Air Quality Index (AQI)", "ความคล่องตัวจราจร": "Traffic flow",
     "นักท่องเที่ยววันนี้": "Visitors today", "คน": "people", "คำขอบริการรัฐวันนี้": "Service requests today", "เรื่อง": "requests",
     "ปริมาณน้ำอ่างเก็บน้ำ": "Reservoir level", "การใช้พลังงาน": "Energy use", "คาร์บอนลดสะสมปีนี้": "Carbon saved this year", "ตัน": "tonnes",
