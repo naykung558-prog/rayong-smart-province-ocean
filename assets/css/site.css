@@ -427,22 +427,17 @@ section > .relative, section > .mx-auto { position: relative; z-index: 1; }
 .sys-tile svg { height: 2.6rem; width: 2.6rem; stroke-width: 1.5; }
 .sys-tile.is-gold { color: #0c2340; }
 
-/* Aerial photo behind a solid section (live data, media hub): washed out on the left
-   for the heading and faded into the section colour at the wave seams */
-.section-photo {
-  position: absolute; inset: 0;
-  background:
-    linear-gradient(90deg, #dde6f2f2 0%, #dde6f2cc 40%, #dde6f259 75%, #dde6f226 100%),
-    var(--photo) center 45% / cover no-repeat;
-  -webkit-mask-image: linear-gradient(180deg, transparent 0, #000 12%, #000 88%, transparent 100%);
-  mask-image: linear-gradient(180deg, transparent 0, #000 12%, #000 88%, transparent 100%);
+/* Full-strength photo behind a section; the heading sits on a frosted panel so it stays readable */
+.section-photo { position: absolute; inset: 0; background: var(--photo) center 45% / cover no-repeat; }
+.section-photo ~ * .section-head {
+  width: fit-content; max-width: 100%; padding: 1.25rem 1.5rem; border-radius: 1rem;
+  background: #ffffffd9; box-shadow: 0 16px 40px -24px #0c234099; backdrop-filter: blur(6px);
 }
 .photo-coast { --photo: url("../images/rayong-coast.webp"); }
 .photo-samet { --photo: url("../images/ko-samet.webp"); }
 .photo-pier { --photo: url("../images/samet-pier.webp"); }
 .photo-beach { --photo: url("../images/beach-boats.webp"); }
-/* News runs into the contact list and footer, so the photo covers only the top */
-.photo-sunset { --photo: url("../images/sunset-pier.webp"); bottom: auto; height: 860px; background-position: center 60%, center 60%; }
+.photo-sunset { --photo: url("../images/sunset-pier.webp"); background-position: center 60%; }
 
 /* Breaking-news strip under the header */
 .hero-news { top: 8.25rem; }
