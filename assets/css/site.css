@@ -5,7 +5,7 @@ html.lenis, html.lenis body { height: auto; }
 .lenis.lenis-smooth { scroll-behavior: auto !important; }
 body, html { overflow-x: clip; }
 body {
-  background: #f6f7f9;
+  background: #bde3e3;
   color: #0c2340;
   font-family: "Sarabun", sans-serif;
   font-size: 1.0625rem;
@@ -13,8 +13,8 @@ body {
 }
 ::selection { color: #0c2340; background: #1b4f8f2e; }
 ::-webkit-scrollbar { width: 10px; }
-::-webkit-scrollbar-track { background: #edf1f6; }
-::-webkit-scrollbar-thumb { background: #1b4f8f; border: 2px solid #edf1f6; border-radius: 8px; }
+::-webkit-scrollbar-track { background: #bde3e3; }
+::-webkit-scrollbar-thumb { background: #1b4f8f; border: 2px solid #bde3e3; border-radius: 8px; }
 
 /* Glass surfaces */
 .glass {
@@ -161,10 +161,7 @@ body {
 /* Ocean theme                                                         */
 /* ================================================================== */
 body {
-  background:
-    radial-gradient(1200px 600px at 100% 0%, #e6edf7 0%, transparent 60%),
-    radial-gradient(900px 500px at 0% 100%, #f4efe3 0%, transparent 60%),
-    #f6f7f9;
+  background: #bde3e3;
 }
 .glass {
   background: #ffffffcc;
@@ -193,9 +190,9 @@ body {
 /* Hero: layered rolling waves */
 .hero-waves {
   z-index: 5;
-  --w1: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 160' preserveAspectRatio='none'%3E%3Cpath d='M0 90 C180 50 360 130 540 90 S900 50 1080 90 S1300 120 1440 90 V160 H0Z' fill='%23c5d3e6' fill-opacity='.22'/%3E%3C/svg%3E");
-  --w2: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 160' preserveAspectRatio='none'%3E%3Cpath d='M0 110 C240 80 480 140 720 110 S1200 80 1440 110 V160 H0Z' fill='%23dde5f0' fill-opacity='.35'/%3E%3C/svg%3E");
-  --w3: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 160' preserveAspectRatio='none'%3E%3Cpath d='M0 130 C200 112 400 150 720 130 S1240 112 1440 130 V160 H0Z' fill='%23f6f7f9'/%3E%3C/svg%3E");
+  --w1: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 160' preserveAspectRatio='none'%3E%3Cpath d='M0 90 C180 50 360 130 540 90 S900 50 1080 90 S1300 120 1440 90 V160 H0Z' fill='%238fcacb' fill-opacity='.22'/%3E%3C/svg%3E");
+  --w2: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 160' preserveAspectRatio='none'%3E%3Cpath d='M0 110 C240 80 480 140 720 110 S1200 80 1440 110 V160 H0Z' fill='%23d6eeee' fill-opacity='.35'/%3E%3C/svg%3E");
+  --w3: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 160' preserveAspectRatio='none'%3E%3Cpath d='M0 130 C200 112 400 150 720 130 S1240 112 1440 130 V160 H0Z' fill='%23bde3e3'/%3E%3C/svg%3E");
   background-image: var(--w1), var(--w2), var(--w3);
   background-repeat: repeat-x;
   background-size: 1440px 100%, 1100px 100%, 1600px 100%;
@@ -418,3 +415,6 @@ section > .relative, section > .mx-auto { position: relative; z-index: 1; }
   .banner-dot.is-on span { animation: none; width: 100%; }
   .banner-slide { transition: none; }
 }
+
+/* One even background colour: no depth tint or sunbeams over it */
+#sea-bg .depth, #sea-bg .beams, .orb { display: none; }
