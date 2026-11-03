@@ -476,3 +476,49 @@ section > .relative, section > .mx-auto { position: relative; z-index: 1; }
 .photo-beach { --photo: url("../images/beach-boats.webp"); }
 /* News runs into the contact list and footer, so the photo covers only the top */
 .photo-sunset { --photo: url("../images/sunset-pier.webp"); bottom: auto; height: 860px; background-position: center 60%, center 60%; }
+
+/* Breaking-news strip under the header */
+.hero-news { top: 8.25rem; }
+.hero-news-label {
+  display: inline-flex; flex-shrink: 0; align-items: center; gap: .45rem; padding: .45rem .9rem; border-radius: 9999px;
+  background: #c0392b; color: #fff; font-size: .85rem; font-weight: 700; box-shadow: 0 0 0 0 #c0392b99; animation: news-pulse 2.4s ease-out infinite;
+}
+@keyframes news-pulse { 70% { box-shadow: 0 0 0 10px #c0392b00; } 100% { box-shadow: 0 0 0 0 #c0392b00; } }
+.hero-news-viewport {
+  position: relative; min-width: 0; flex: 1; overflow: hidden; padding: .5rem 0; border-radius: 9999px;
+  background: #0a1f3a8c; border: 1px solid #ffffff1f; backdrop-filter: blur(6px);
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 4%, #000 96%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 4%, #000 96%, transparent);
+}
+.hero-news-track { display: flex; width: max-content; animation: ticker 70s linear infinite; }
+.hero-news:hover .hero-news-track, .hero-news:focus-within .hero-news-track { animation-play-state: paused; }
+.hero-news-item { display: inline-flex; align-items: center; gap: .6rem; padding: 0 1.75rem; white-space: nowrap; font-size: .9rem; color: #f1f5f9; transition: color .2s; }
+.hero-news-item:hover { color: #f4d27a; }
+.hero-news-dot { height: 6px; width: 6px; border-radius: 9999px; background: #f4b400; box-shadow: 0 0 8px #f4b400; }
+
+/* Hero title: a light sweep across the text plus twinkling sparkles */
+.hero-title { position: relative; }
+.shimmer-text {
+  background: linear-gradient(110deg, #fff 0 40%, #f4d27a 45%, #fffbe9 50%, #f4d27a 55%, #fff 60% 100%);
+  background-size: 300% 100%; -webkit-background-clip: text; background-clip: text; color: transparent;
+  filter: drop-shadow(0 2px 10px #08142899); animation: shimmer 3.6s linear infinite;
+}
+.shimmer-text.is-gold {
+  background-image: linear-gradient(110deg, #e3c26f 0 40%, #fff6d5 48%, #ffffff 50%, #fff6d5 52%, #e3c26f 60% 100%);
+  animation-delay: .6s;
+}
+@keyframes shimmer { from { background-position: 100% 0; } to { background-position: -50% 0; } }
+.sparkle {
+  position: absolute; height: 28px; width: 28px; pointer-events: none; transform: scale(0);
+  background: radial-gradient(circle, #fff 0 12%, transparent 13%), conic-gradient(from 45deg, transparent 0 20%, #fff8 22%, transparent 24% 45%, #fff8 47%, transparent 49% 70%, #fff8 72%, transparent 74% 95%, #fff8 97%, transparent);
+  clip-path: polygon(50% 0, 58% 42%, 100% 50%, 58% 58%, 50% 100%, 42% 58%, 0 50%, 42% 42%);
+  background-color: #fff6d5; filter: drop-shadow(0 0 6px #f4d27a);
+  animation: twinkle 2.6s ease-in-out var(--d, 0s) infinite;
+}
+@keyframes twinkle { 0%, 100% { transform: scale(0) rotate(0); opacity: 0; } 45% { transform: scale(var(--s, 1)) rotate(90deg); opacity: 1; } 60% { transform: scale(0) rotate(140deg); opacity: 0; } }
+@media (max-width: 640px) { .hero-news { top: 7.5rem; } .hero-news-label span { display: none; } }
+@media (prefers-reduced-motion: reduce) {
+  .shimmer-text, .sparkle, .hero-news-label { animation: none; }
+  .sparkle { display: none; }
+  .hero-news-track { animation-duration: 140s; }
+}

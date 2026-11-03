@@ -595,6 +595,14 @@
   /* ------------------------------------------------------------------ */
   // Each slide advances when its dot's progress bar finishes, so pausing the
   // bar (hover, focus, offscreen) pauses the slideshow too.
+  // Breaking-news strip across the hero: provincial announcements and banner campaigns,
+  // listed twice so the scroll loops without a gap
+  function initHeroNews() {
+    const items = [...D.pr.map((p) => `${p.date} · ${p.title}`), ...D.banners.map((b) => b.title)];
+    const row = items.map((s) => `<a href="#announcements" class="hero-news-item"><span class="hero-news-dot"></span>${esc(s)}</a>`).join("");
+    $("#hero-news-track").innerHTML = row + row.replace(/<a /g, '<a tabindex="-1" aria-hidden="true" ');
+  }
+
   function initBanners() {
     const show = $("#banner-show"), track = $("#banner-track"), dots = $("#banner-dots"), cap = $("#banner-caption");
     const slides = D.banners;
@@ -1346,6 +1354,7 @@
     renderSectionHeads();
     initHeader();
     initHero();
+    initHeroNews();
     initBanners();
     renderAbout();
     renderGovernor();

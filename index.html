@@ -109,13 +109,25 @@
       <div id="hero-bubbles" class="pointer-events-none absolute inset-0 overflow-hidden"></div>
       <div class="hero-waves pointer-events-none absolute inset-x-0 bottom-0 h-40" aria-hidden="true"></div>
 
-      <div id="hero-content" class="relative z-10 mx-auto w-full max-w-7xl px-5 pt-24 pb-16 lg:px-8">
+      <div id="hero-news" class="hero-news absolute inset-x-0 z-20" role="region" aria-label="ข่าวสำคัญ">
+        <div class="mx-auto flex max-w-7xl items-center gap-4 px-5 lg:px-8">
+          <a href="#announcements" class="hero-news-label font-display"><i data-lucide="megaphone" class="h-4 w-4"></i><span>ข่าวสำคัญ</span></a>
+          <div class="hero-news-viewport"><div id="hero-news-track" class="hero-news-track"></div></div>
+        </div>
+      </div>
+
+      <div id="hero-content" class="relative z-10 mx-auto w-full max-w-7xl px-5 pt-40 pb-16 lg:px-8">
         <div class="max-w-2xl">
           <p class="hero-in font-display mb-6 flex items-center gap-3 text-sm font-semibold tracking-[0.12em] text-[#e3c26f]">
             <i data-lucide="landmark" class="h-4 w-4"></i>เว็บไซต์ทางการจังหวัดระยอง · Official Website of Rayong Province
           </p>
-          <h1 class="hero-in font-display text-5xl font-extrabold leading-[1.15] text-white sm:text-6xl lg:text-[5rem]">
-            จังหวัดระยอง<span class="mt-2 block text-2xl font-semibold tracking-[0.3em] text-[#e3c26f] sm:text-3xl lg:text-[2.1rem]">RAYONG PROVINCE</span>
+          <h1 class="hero-in hero-title font-display text-5xl font-extrabold leading-[1.15] text-white sm:text-6xl lg:text-[5rem]">
+            <span class="shimmer-text">จังหวัดระยอง</span><span class="shimmer-text is-gold mt-2 block text-2xl font-semibold tracking-[0.3em] sm:text-3xl lg:text-[2.1rem]">RAYONG PROVINCE</span>
+            <span class="sparkle" style="top:4%;left:2%;--d:0s" aria-hidden="true"></span>
+            <span class="sparkle" style="top:18%;left:58%;--d:1.1s;--s:.8" aria-hidden="true"></span>
+            <span class="sparkle" style="top:52%;left:96%;--d:2.3s" aria-hidden="true"></span>
+            <span class="sparkle" style="top:74%;left:30%;--d:.6s;--s:.6" aria-hidden="true"></span>
+            <span class="sparkle" style="top:88%;left:78%;--d:1.7s;--s:.7" aria-hidden="true"></span>
           </h1>
           <div class="hero-in mt-7 flex items-start gap-4">
             <span class="mt-1.5 h-14 w-1 shrink-0 rounded-full bg-gradient-to-b from-ry-red via-ry-yellow to-ry-blue"></span>

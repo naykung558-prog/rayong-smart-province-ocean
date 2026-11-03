@@ -52,7 +52,7 @@
     // ----- Province identity strip -----
     "ผลไม้รสล้ำ": "Delicious fruit", "อุตสาหกรรมก้าวหน้า": "Advanced industry", "น้ำปลารสเด็ด": "Fine fish sauce",
     "เกาะเสม็ดสวยหรู": "Beautiful Ko Samet", "สุนทรภู่กวีเอก": "Sunthorn Phu, great poet",
-    "ทางลัดบริการ": "Quick access", "e-Office จังหวัดระยอง": "Rayong e-Office", "ศูนย์ดำรงธรรม 1567": "Damrongdhama Center 1567",
+    "ทางลัดบริการ": "Quick access", "ข่าวสำคัญ": "Breaking news", "e-Office จังหวัดระยอง": "Rayong e-Office", "ศูนย์ดำรงธรรม 1567": "Damrongdhama Center 1567",
     "ITA จังหวัดระยอง": "Rayong ITA", "ข้อมูลจังหวัด": "Province data", "จองห้องประชุม": "Book a meeting room",
 
     // ----- KPIs -----
