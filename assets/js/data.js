@@ -145,7 +145,7 @@ window.SITE_DATA = {
   "name": "นายไตรภพ วงศ์ไตรรัตน์",
   "position": "ผู้ว่าราชการจังหวัดระยอง",
   "since": "พ.ศ. 2566",
-  "photo": "assets/images/governor.jpg"
+  "photo": "assets/images/governor.webp"
  },
  "activities": [
   {
