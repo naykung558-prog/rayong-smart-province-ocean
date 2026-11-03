@@ -460,13 +460,15 @@ section > .relative, section > .mx-auto { position: relative; z-index: 1; }
 .sys-tile svg { height: 2.6rem; width: 2.6rem; stroke-width: 1.5; }
 .sys-tile.is-gold { color: #0c2340; }
 
-/* Real-time data: aerial photo of the Rayong coast behind the cards, washed out on the
-   left for the heading and faded into the section colour at the wave seams */
-.data-photo {
+/* Aerial photo behind a solid section (live data, media hub): washed out on the left
+   for the heading and faded into the section colour at the wave seams */
+.section-photo {
   position: absolute; inset: 0;
   background:
     linear-gradient(90deg, #dde6f2f2 0%, #dde6f2cc 40%, #dde6f259 75%, #dde6f226 100%),
-    url("../images/rayong-coast.webp") center 45% / cover no-repeat;
+    var(--photo) center 45% / cover no-repeat;
   -webkit-mask-image: linear-gradient(180deg, transparent 0, #000 12%, #000 88%, transparent 100%);
   mask-image: linear-gradient(180deg, transparent 0, #000 12%, #000 88%, transparent 100%);
 }
+.photo-coast { --photo: url("../images/rayong-coast.webp"); }
+.photo-samet { --photo: url("../images/ko-samet.webp"); }
