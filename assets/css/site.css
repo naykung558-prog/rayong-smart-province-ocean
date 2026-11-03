@@ -413,7 +413,12 @@ section > .relative, section > .mx-auto { position: relative; z-index: 1; }
 .sys-tile.is-gold { color: #0c2340; }
 
 /* Full-strength photo behind a section; the heading sits on a frosted panel so it stays readable */
-.section-photo { position: absolute; inset: 0; background: var(--photo) center 45% / cover no-repeat; }
+.section-photo {
+  position: absolute; inset: 0; background: var(--photo) center 45% / cover no-repeat;
+  /* Photos are 800px wide, so sharpen and add a touch of contrast; own layer keeps the filter cached */
+  filter: url(#sharpen) contrast(1.06) saturate(1.12);
+  will-change: transform;
+}
 .section-photo ~ * .section-head {
   width: fit-content; max-width: 100%; padding: 1.25rem 1.5rem; border-radius: 1rem;
   background: #ffffffd9; box-shadow: 0 16px 40px -24px #0c234099; backdrop-filter: blur(6px);

@@ -49,6 +49,10 @@
   </script>
 </head>
 <body class="bg-deep text-navy antialiased">
+  <!-- Sharpening kernel for the section photos (they are upscaled on wide screens) -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <filter id="sharpen" color-interpolation-filters="sRGB"><feConvolveMatrix order="3" preserveAlpha="true" kernelMatrix="0 -0.6 0 -0.6 3.4 -0.6 0 -0.6 0"/></filter>
+  </svg>
 
   <!-- ===================== HEADER ===================== -->
   <header id="site-header" class="header-in fixed inset-x-0 top-0 z-50 transition-all duration-500 bg-transparent py-2.5">
