@@ -112,26 +112,6 @@
   /* Section headings                                                    */
   /* ------------------------------------------------------------------ */
 
-  // Rolling wave seam wherever a solid-coloured section meets one that shows the sea
-  // behind it. The solid colour always draws the wave: hanging down into the next
-  // section, or rising up from the bottom of the previous one.
-  function initWaveDividers() {
-    const sections = $$("main > section");
-    const solid = (s) => s.classList.contains("bg-abyss");
-    const wave = (host, atBottom) => {
-      const d = document.createElement("div");
-      d.className = `wave-divider${atBottom ? " bottom" : ""}`;
-      d.innerHTML = `<svg viewBox="0 0 2880 56" preserveAspectRatio="none"><path d="M0 0 H2880 V24 C2700 46 2520 8 2340 24 S1980 46 1800 24 S1440 8 1260 24 S900 46 720 24 S360 8 180 24 S0 40 0 24 Z" style="fill:var(--color-abyss, #dde6f2)"/></svg>`;
-      host.prepend(d);
-    };
-    sections.forEach((s, i) => {
-      if (i < 2) return; // hero has its own waves; the banners sit on the same water
-      const prev = sections[i - 1];
-      if (solid(prev) === solid(s)) return;
-      if (solid(prev)) wave(s, false);
-      else wave(prev, true);
-    });
-  }
 
   /* ------------------------------------------------------------------ */
   /* Living sea background                                               */
@@ -1331,7 +1311,6 @@
   function boot() {
     applyFont();
     initTranslator();
-    initWaveDividers();
     initSeaBackground();
     initSeabed();
     renderNav();

@@ -235,26 +235,6 @@ body {
   to { transform: translate3d(0, -95vh, 0); opacity: 0; }
 }
 
-/* Wave seams between sections of different colour */
-.wave-divider {
-  position: absolute;
-  inset: 0 0 auto 0;
-  height: 56px;
-  pointer-events: none;
-  z-index: 1;
-  overflow: hidden;
-}
-.wave-divider svg {
-  width: 200%;
-  height: 100%;
-  display: block;
-  animation: divider-drift 18s linear infinite;
-}
-@keyframes divider-drift { to { transform: translateX(-50%); } }
-/* Rising from the bottom of a see-through section into the solid one below */
-.wave-divider.bottom { inset: auto 0 0 0; transform: scaleY(-1); }
-
-/* Eyebrow wave glyph */
 
 /* Floating seashell/fish decorations */
 .sea-float { animation: float-y 7s ease-in-out infinite; }
@@ -338,7 +318,7 @@ section > .relative, section > .mx-auto { position: relative; z-index: 1; }
 @media (max-width: 767px) { .toon { scale: .7; } .toon.hide-sm { display: none; } }
 
 @media (prefers-reduced-motion: reduce) {
-  #sea-bg *, .toon, .toon *, .bubble, .wave-divider svg, .hero-waves, .hero-rays { animation: none !important; }
+  #sea-bg *, .toon, .toon *, .bubble, .hero-waves, .hero-rays { animation: none !important; }
   #sea-bg .toon, #sea-bg .critter, #sea-bg .bg-bubble { display: none; }
 }
 
