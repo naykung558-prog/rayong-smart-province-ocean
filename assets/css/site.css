@@ -260,13 +260,15 @@ body {
 .sea-float { animation: float-y 7s ease-in-out infinite; }
 
 /* ================================================================== */
-/* Still, light-blue backdrop behind the see-through sections          */
+/* Rayong colours down the page: light red at the top, then light       */
+/* yellow, fading into light blue at the bottom (spans the whole page)  */
 /* ================================================================== */
+body { position: relative; }
 #sea-bg {
-  position: fixed;
+  position: absolute;
   inset: 0;
   z-index: -1;
-  background: #dcedfa;
+  background: linear-gradient(180deg, #fbe1e1 0%, #fdf0cf 38%, #e4f0f5 68%, #d6eafa 100%);
   overflow: hidden;
   pointer-events: none;
 }
