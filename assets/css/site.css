@@ -473,3 +473,5 @@ section > .relative, section > .mx-auto { position: relative; z-index: 1; }
 .photo-coast { --photo: url("../images/rayong-coast.webp"); }
 .photo-samet { --photo: url("../images/ko-samet.webp"); }
 .photo-pier { --photo: url("../images/samet-pier.webp"); }
+/* News runs into the contact list and footer, so the photo covers only the top */
+.photo-sunset { --photo: url("../images/sunset-pier.webp"); bottom: auto; height: 860px; background-position: center 60%, center 60%; }
