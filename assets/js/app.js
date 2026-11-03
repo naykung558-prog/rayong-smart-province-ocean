@@ -56,18 +56,24 @@
   /* ------------------------------------------------------------------ */
   const WAVE_GLYPH = `<svg class="eyebrow-wave" viewBox="0 0 28 8" aria-hidden="true"><defs><linearGradient id="ry-wave" x1="0" x2="28" y1="0" y2="0" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#d7263d"/><stop offset=".5" stop-color="#f4b400"/><stop offset="1" stop-color="#1e4fa3"/></linearGradient></defs><path d="M0 4 Q3.5 0 7 4 T14 4 T21 4 T28 4" fill="none" stroke="url(#ry-wave)" stroke-width="1.8" stroke-linecap="round" opacity=".85"/></svg>`;
 
-  // Rolling wave seam at the top of a section whose colour differs from the one above it
+  // Rolling wave seam wherever a solid-coloured section meets one that shows the sea
+  // behind it. The solid colour always draws the wave: hanging down into the next
+  // section, or rising up from the bottom of the previous one.
   function initWaveDividers() {
     const sections = $$("main > section");
-    const tone = (s) => (s.classList.contains("bg-abyss") ? "#edf1f6" : "#f6f7f9");
-    sections.forEach((s, i) => {
-      if (i < 2) return; // hero has its own waves; about sits on the same sand
-      const prev = tone(sections[i - 1]);
-      if (prev === tone(s)) return;
+    const solid = (s) => s.classList.contains("bg-abyss");
+    const wave = (host, atBottom) => {
       const d = document.createElement("div");
-      d.className = "wave-divider";
-      d.innerHTML = `<svg viewBox="0 0 2880 56" preserveAspectRatio="none"><path d="M0 0 H2880 V24 C2700 46 2520 8 2340 24 S1980 46 1800 24 S1440 8 1260 24 S900 46 720 24 S360 8 180 24 S0 40 0 24 Z" fill="${prev}"/></svg>`;
-      s.prepend(d);
+      d.className = `wave-divider${atBottom ? " bottom" : ""}`;
+      d.innerHTML = `<svg viewBox="0 0 2880 56" preserveAspectRatio="none"><path d="M0 0 H2880 V24 C2700 46 2520 8 2340 24 S1980 46 1800 24 S1440 8 1260 24 S900 46 720 24 S360 8 180 24 S0 40 0 24 Z" style="fill:var(--color-abyss, #dde6f2)"/></svg>`;
+      host.prepend(d);
+    };
+    sections.forEach((s, i) => {
+      if (i < 2) return; // hero has its own waves; the banners sit on the same water
+      const prev = sections[i - 1];
+      if (solid(prev) === solid(s)) return;
+      if (solid(prev)) wave(s, false);
+      else wave(prev, true);
     });
   }
 
@@ -400,7 +406,7 @@
       // Diving deeper: background tint grows and sunbeams fade with page depth
       const sea = $("#sea-bg");
       if (sea) {
-        $(".depth", sea).style.opacity = (0.75 * depth).toFixed(3);
+        $(".depth", sea).style.opacity = (0.5 + 0.35 * depth).toFixed(3);
         $(".beams", sea).style.opacity = (1 - 0.8 * depth).toFixed(3);
       }
       updateHeader();

@@ -251,6 +251,8 @@ body {
   animation: divider-drift 18s linear infinite;
 }
 @keyframes divider-drift { to { transform: translateX(-50%); } }
+/* Rising from the bottom of a see-through section into the solid one below */
+.wave-divider.bottom { inset: auto 0 0 0; transform: scaleY(-1); }
 
 /* Eyebrow wave glyph */
 .eyebrow-wave { width: 28px; height: 8px; }
