@@ -472,3 +472,4 @@ section > .relative, section > .mx-auto { position: relative; z-index: 1; }
 }
 .photo-coast { --photo: url("../images/rayong-coast.webp"); }
 .photo-samet { --photo: url("../images/ko-samet.webp"); }
+.photo-pier { --photo: url("../images/samet-pier.webp"); }
